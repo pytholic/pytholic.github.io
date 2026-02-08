@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEFT-FLANT5 - Raja Haseeb</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#1a202c',
+                            card: '#2d3748',
+                            text: '#e2e8f0',
+                            accent: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body class="bg-dark-bg text-dark-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-gray-700">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Raja Haseeb</a>
+                <div class="flex gap-6">
+                    <a href="../../works.html" class="text-dark-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">PEFT-FLANT5</h1>
+            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2022</span>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+            <p>
+                In this notebook, we will fine-tune a FLAN-T5 model to generate less toxic content with Meta AI's hate speech reward model. The reward model is a binary classifier that predicts either "not hate" or "hate" for the given text. We will use Proximal Policy Optimization (PPO) to fine-tune and reduce the model's toxicity.
+            </p>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-dark-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Notebook</dt>
+                    <dd>
+                        <a href="https://github.com/pytholic/Coursera-Generative-AI-with-LLM/blob/main/Lab_3_fine_tune_model_to_detoxify_summaries.ipynb" target="_blank" class="text-gray-300 hover:text-dark-accent inline-flex items-center gap-2">
+                            Notebook
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                            </svg>
+                        </a>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Platform</dt>
+                    <dd class="text-gray-300">Google Colab</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
+                    <dd class="text-gray-300">PyTorch, Transformers, PEFT, Evaluate</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Project Diagram -->
+        <div class="space-y-6">
+            <pre class="mermaid">
+graph TD
+    %% Base Model & PEFT Setup
+    subgraph BaseSetup [Model Preparation]
+        BM["🧠 Pre-trained FLAN-T5 Model<br/>(Base Model)"]
+        PEFT_A["⚙️ PEFT Adapter Layers<br/>(LoRA, etc.)"]
+
+        BM --> PEFT_A
+
+        PEFT_A --- ParamSplit{ }
+        ParamSplit --> FP["❄️ Frozen Parameters"]
+        ParamSplit --> TP["🔓 Trainable Parameters"]
+
+        BM & TP --> PEFT_Mod["PEFT-modified<br/>FLAN-T5 Model"]
+    end
+
+    %% Phase 1: Supervised Fine-Tuning
+    subgraph SFT [Phase 1: Supervised Fine-Tuning]
+        DSD["📄 Dialog Summarization Dataset<br/>(Input: Dialog, Output: Summary)"]
+        Train_SFT["📈 Training Process<br/>(Forward & Backward Pass)"]
+        FT_Model["📝 Fine-tuned FLAN-T5 Model<br/>for Dialog Summarization"]
+
+        PEFT_Mod --> Train_SFT
+        DSD --> Train_SFT
+        Train_SFT --> FT_Model
+    end
+
+    %% Phase 2: RLHF
+    %% Connecting the Model from SFT to the entire RLHF Subgraph
+    FT_Model --> RLHF
+
+    subgraph RLHF [Phase 2: RLHF Alignment]
+        PPO["⚖️ PPO (RLHF)<br/>Detoxification"]
+        Aligned["✨ Aligned Model"]
+
+        PPO --> Aligned
+    end
+
+    %% Styling - Dark theme compatible colors
+    style BM fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style PEFT_A fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style ParamSplit fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style FP fill:#2d3748,stroke:#718096,color:#e2e8f0
+    style TP fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style PEFT_Mod fill:#2d3748,stroke:#14b8a6,color:#e2e8f0,stroke-width:2px
+    style DSD fill:#2d3748,stroke:#9f7aea,color:#e2e8f0
+    style Train_SFT fill:#2d3748,stroke:#9f7aea,color:#e2e8f0
+    style FT_Model fill:#2d3748,stroke:#9f7aea,color:#e2e8f0,stroke-width:2px
+    style PPO fill:#2d3748,stroke:#f59e0b,color:#e2e8f0
+    style Aligned fill:#2d3748,stroke:#10b981,color:#e2e8f0,stroke-width:3px
+    style BaseSetup fill:#1a202c,stroke:#14b8a6,color:#14b8a6
+    style SFT fill:#1a202c,stroke:#9f7aea,color:#9f7aea
+    style RLHF fill:#1a202c,stroke:#10b981,color:#10b981
+            </pre>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2026 Raja Haseeb. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

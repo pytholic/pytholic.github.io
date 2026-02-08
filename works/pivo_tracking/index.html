@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pivo Tracking - Raja Haseeb</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#1a202c',
+                            card: '#2d3748',
+                            text: '#e2e8f0',
+                            accent: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-dark-bg text-dark-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-gray-700">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Raja Haseeb</a>
+                <div class="flex gap-6">
+                    <a href="../../works.html" class="text-dark-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">Pivo Tracking</h1>
+            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2023-</span>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+            <p>
+                Improving the overall performance of the <a href="https://pivo.ai/" target="_blank" class="text-dark-accent hover:underline">Pivo</a> tracking algorithm. The algorithm is based on DeepSort and mainly consists of two parts i.e. feature extraction and object detection. After detecting persons in a given frame we perform feature extraction for Person ReID. This information is then fed to the deepsort algorithm.
+            </p>
+            <p>
+                Currently I am working on improving and optimizing these models. Particularly, I am focusing on model compression by using efficient mobile architectures and optimization techniques like int8 inference, model pruning and so on while maintaining high accuracy. Accuracy is evaluated on separate evaluation datasets and QA test videos. Furthermore, I am also working on extending this project to include Face Tracking System based on <a href="https://pivo.ai/" target="_blank" class="text-dark-accent hover:underline">AdaFace</a> and <a href="https://pivo.ai/" target="_blank" class="text-dark-accent hover:underline">Arcface</a> loss.
+            </p>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-dark-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Platform</dt>
+                    <dd class="text-gray-300">Unix / iOS / Android</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
+                    <dd class="text-gray-300">Python, C++, NCNN, TNN, PyTorch, DeepSort, Kubeflow, Docker, GitHub</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Project Images -->
+        <div class="space-y-6">
+            <img src="./pivotracking01.png" alt="Pivo Tracking" class="w-full rounded-lg border border-gray-700">
+            <img src="./pivotracking02.jpg" alt="Pivo Product" class="w-full rounded-lg border border-gray-700">
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2026 Raja Haseeb. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

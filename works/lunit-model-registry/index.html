@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lunit Model Registry - Raja Haseeb</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#1a202c',
+                            card: '#2d3748',
+                            text: '#e2e8f0',
+                            accent: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body class="bg-dark-bg text-dark-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-gray-700">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Raja Haseeb</a>
+                <div class="flex gap-6">
+                    <a href="../../works.html" class="text-dark-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">Lunit Model Registry</h1>
+            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2022</span>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+            <p>
+                A centralized model registry for managing the complete lifecycle of machine learning models. Versioning, metadata tracking, and artifact storage as the single source of truth for model assets.
+            </p>
+            <p>
+                Through this work, I strive to show modern best practices for software architecture and maintenance. 
+            </p>
+            <p>
+                In the initial phase, we worked on Design Documentation and SRS (Software Requirements Specification) to define the requirements and scope of the project. Then we built our first prototype with <code>MLflow</code> and <code>Pydantic</code>.
+            </p>
+            <p>
+                After stable prototyping, next step was to improve the code quality and maintainability. Hence the refactor phase with improve software design and architecture.
+            </p>
+            <p>
+                I use a set of formatting and linting rules with <code>ruff</code>. <code>Pyright</code> for type checking. <code>Pydantic</code> for data validation. For package management we employ <code>Astral UV</code>. I built extensive design, development, and user documentation with <code>MkDocs</code>. For testing we use <code>Pytest</code> and <code>Codecov</code>. For CI/CD we use <code>GitHub Actions</code>.
+            </p>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-dark-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-dark-accent mb-3">Features</dt>
+                    <dd>
+                        <ul class="list-disc list-inside space-y-2 text-gray-300 ml-2">
+                            <li><span class="font-bold">Unified Interface</span> - Simple facade API for all model operations</li>
+                            <li><span class="font-bold">Extensible Architecture</span> - Easy to add new backends and auth methods</li>
+                            <li><span class="font-bold">Stage Management</span> - Organize models by stages (DEV, STAGING, PROD)</li>
+                            <li><span class="font-bold">Version Control</span> - Track and manage model versions with aliases</li>
+                            <li><span class="font-bold">Role-Based Access</span> - Admin-only operations with audit logging</li>
+                            <li><span class="font-bold">Artifacts & Metrics</span> - Store evaluation results, configs, and metrics</li>
+                        </ul>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
+                    <dd class="text-gray-300">MLflow, Pydantic, MkDocs, Pytest, Ruff, Astral UV, GitHub Actions</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Organization</dt>
+                    <dd class="text-gray-300">LUNIT Inc.</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Project Diagram -->
+        <div class="space-y-6">
+            <pre class="mermaid">
+graph TB
+    %% Central Model Registry
+    subgraph Registry ["📦 Model Registry"]
+        Models["🤖 Models<br/>(Versions & Aliases)"]
+        Artifacts["📁 Artifacts<br/>(Weights, Configs)"]
+        Metadata["📊 Metadata<br/>(Metrics, Tags)"]
+    end
+
+    %% Projects Using the Registry
+    FMP["🔬 Foundational Model<br/>Project"]
+    CR["🔄 Continuous Release<br/>Project"]
+    PIS["🌐 Product Information<br/>Service API"]
+    IW["📈 Insight<br/>Warehouse"]
+
+    %% Connections
+    Registry --> FMP
+    Registry --> CR
+    Registry --> PIS
+    Registry --> IW
+
+    %% Styling
+    style Models fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style Artifacts fill:#2d3748,stroke:#9f7aea,color:#e2e8f0
+    style Metadata fill:#2d3748,stroke:#f59e0b,color:#e2e8f0
+    style Registry fill:#1a202c,stroke:#14b8a6,color:#14b8a6,stroke-width:3px
+    style FMP fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style CR fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style PIS fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+    style IW fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+            </pre>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2026 Raja Haseeb. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
