@@ -137,7 +137,7 @@ MIT License - feel free to use this template for your own portfolio!
 
 ## Author
 
-Raja Haseeb
+Haseeb Raja
 - GitHub: [@pytholic](https://github.com/pytholic)
 - LinkedIn: [@pytholic](https://www.linkedin.com/in/pytholic/)
 - Email: rajahaseeb147@gmail.com
