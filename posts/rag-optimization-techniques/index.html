@@ -282,6 +282,16 @@ Store in vector database</code></pre>
                 </li>
             </ul>
 
+            <h4>Step-by-step process:</h4>
+            <ol class="list-decimal ml-6 mb-4">
+                <li><strong>Chunk the knowledge base:</strong> Break down documents into smaller chunks (typically a few hundred tokens each)</li>
+                <li><strong>Create dual encodings:</strong> Generate both TF-IDF encodings and semantic embeddings for each chunk</li>
+                <li><strong>BM25 retrieval:</strong> Use BM25 algorithm to find top chunks based on exact keyword matches</li>
+                <li><strong>Vector retrieval:</strong> Use embeddings to find top chunks based on semantic similarity</li>
+                <li><strong>Rank fusion:</strong> Combine and deduplicate results from both methods using rank fusion techniques (e.g., Reciprocal Rank Fusion)</li>
+                <li><strong>Context augmentation:</strong> Add the top-K chunks to the prompt to generate the final response</li>
+            </ol>
+
             <h4>Why it's critical:</h4>
             <p>Almost every production RAG system uses hybrid search because:</p>
             <ul>
