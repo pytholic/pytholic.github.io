@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,18 +26,72 @@
     </script>
     <script>hljs.highlightAll();</script>
     <style>
-        .prose h2 { font-size: 1.875rem; font-weight: 700; margin-top: 3rem; margin-bottom: 1rem; color: #14b8a6; }
-        .prose h3 { font-size: 1.5rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.75rem; color: #e2e8f0; }
-        .prose h4 { font-size: 1.25rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #cbd5e0; }
-        .prose p { margin-bottom: 1rem; line-height: 1.75; }
-        .prose ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
-        .prose ul li { margin-bottom: 0.5rem; }
-        .prose code { background-color: #2d3748; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875rem; }
-        .prose pre { margin-bottom: 1.5rem; border-radius: 0.5rem; overflow-x: auto; }
-        .prose strong { color: #14b8a6; font-weight: 600; }
-        .prose blockquote { border-left: 4px solid #14b8a6; padding-left: 1rem; margin: 1.5rem 0; color: #a0aec0; }
+        .prose h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+            color: #14b8a6;
+        }
+
+        .prose h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+            color: #e2e8f0;
+        }
+
+        .prose h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #cbd5e0;
+        }
+
+        .prose p {
+            margin-bottom: 1rem;
+            line-height: 1.75;
+        }
+
+        .prose ul {
+            list-style-type: disc;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prose ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .prose code {
+            background-color: #2d3748;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+        }
+
+        .prose pre {
+            margin-bottom: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .prose strong {
+            color: #14b8a6;
+            font-weight: 600;
+        }
+
+        .prose blockquote {
+            border-left: 4px solid #14b8a6;
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: #a0aec0;
+        }
     </style>
 </head>
+
 <body class="bg-dark-bg text-dark-text min-h-screen">
     <!-- Navigation -->
     <nav class="bg-dark-card border-b border-gray-700">
@@ -67,11 +122,19 @@
             <h1 class="text-4xl font-bold mb-3">RAG Optimization Techniques</h1>
             <p class="text-gray-400 mb-4">February 9, 2026</p>
             <div class="flex flex-wrap gap-2">
-                <span class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">RAG</span>
-                <span class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">LLM</span>
-                <span class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">Machine Learning</span>
-                <span class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">Vector Search</span>
-                <span class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">Information Retrieval</span>
+                <span
+                    class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">RAG</span>
+                <span
+                    class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">LLM</span>
+                <span
+                    class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">Machine
+                    Learning</span>
+                <span
+                    class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">Vector
+                    Search</span>
+                <span
+                    class="bg-dark-card px-3 py-1 rounded-full text-sm border border-dark-accent text-dark-accent">Information
+                    Retrieval</span>
             </div>
         </div>
 
@@ -88,16 +151,21 @@
             <h3>🪓 Chunking Strategy</h3>
             <p>Getting chunk size right is critical. Too small = loss of context. Too large = noisy retrieval.</p>
 
-            <h4>Key Principles:</h4>
+            <h4>Key Principles</h4>
             <ul>
-                <li><strong>Chunk based on logical units</strong> (sentences, paragraphs, sections) rather than arbitrary character counts</li>
-                <li><strong>Always add overlap between chunks</strong> (10-20%) to avoid losing important context at boundaries</li>
-                <li><strong>Consider token-based chunking</strong> using your model's tokenizer—but this locks you into that tokenizer</li>
-                <li><strong>Small chunks</strong> = more diverse results but higher computational overhead (more embeddings to store and search)</li>
-                <li><strong>Recursive chunking</strong> works well: start with large units, break down progressively until you fit context limits</li>
+                <li><strong>Chunk based on logical units</strong> (sentences, paragraphs, sections) rather than
+                    arbitrary character counts</li>
+                <li><strong>Always add overlap between chunks</strong> (10-20%) to avoid losing important context at
+                    boundaries</li>
+                <li><strong>Consider token-based chunking</strong> using your model's tokenizer—but this locks you into
+                    that tokenizer</li>
+                <li><strong>Small chunks</strong> = more diverse results but higher computational overhead (more
+                    embeddings to store and search)</li>
+                <li><strong>Recursive chunking</strong> works well: start with large units, break down progressively
+                    until you fit context limits</li>
             </ul>
 
-            <h4>Chunking Options:</h4>
+            <h4>Chunking Options</h4>
             <ul>
                 <li>Word-based chunking</li>
                 <li>Sentence-based chunking</li>
@@ -106,34 +174,37 @@
                 <li>Token-based chunking (using model's tokenizer)</li>
             </ul>
 
-            <h4>Important Considerations:</h4>
+            <h4>Important Considerations</h4>
             <ul>
                 <li>Chunk size should not exceed max context length of the generator or embedding model</li>
                 <li>Small chunks provide more diverse information (can fit more chunks in context)</li>
                 <li>However, small chunks can cause loss of information</li>
-                <li>Small chunks increase computational overhead (need to generate and store more embedding vectors)</li>
-                <li>If you use token-based chunking with a specific tokenizer, changing models later requires re-indexing all documents</li>
+                <li>Small chunks increase computational overhead (need to generate and store more embedding vectors)
+                </li>
+                <li>If you use token-based chunking with a specific tokenizer, changing models later requires
+                    re-indexing all documents</li>
             </ul>
 
             <h3>🎯 Query Rewriting</h3>
             <p>User queries are often incomplete, especially in multi-turn conversations.</p>
 
-            <h4>The Problem:</h4>
+            <h4>The Problem</h4>
             <p>Example conversation:</p>
             <pre><code class="language-plaintext">User: When was the last time John Doe bought something from us?
 AI: John bought a Fruity Fedora on January 3, 2030.
 User: How about Emily Doe?</code></pre>
 
-            <p>The last query will fail retrieval—it lacks context. It should be rewritten to "When was the last time Emily Doe bought something from us?"</p>
+            <p>The last query will fail retrieval—it lacks context. It should be rewritten to "When was the last time
+                Emily Doe bought something from us?"</p>
 
-            <h4>Solution:</h4>
+            <h4>Solution</h4>
             <ul>
                 <li>Use LLMs to rewrite queries as self-contained questions</li>
                 <li>Each query should contain all necessary context, even in multi-turn conversations</li>
                 <li>The rewritten query should be semantically complete and understandable without prior context</li>
             </ul>
 
-            <h4>Important Warning:</h4>
+            <h4>Important Warning</h4>
             <ul>
                 <li>Be careful of hallucinations when using AI models for query rewriting</li>
                 <li>Validate that rewrites make logical sense</li>
@@ -169,7 +240,7 @@ User: How about Emily Doe?</code></pre>
                 </li>
             </ol>
 
-            <h4>Time-Based Reranking:</h4>
+            <h4>Time-Based Reranking</h4>
             <p>Documents can also be reranked based on time, giving higher weight to more recent items.</p>
             <p>This is critical for time-sensitive applications:</p>
             <ul>
@@ -179,7 +250,7 @@ User: How about Emily Doe?</code></pre>
                 <li>Real-time monitoring systems</li>
             </ul>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Reduces input tokens to your LLM (significant cost savings!)</li>
                 <li>Improves relevance of final result set</li>
@@ -189,7 +260,7 @@ User: How about Emily Doe?</code></pre>
             <h3>📍 Contextual Retrieval</h3>
             <p>This one's a game-changer. Chunks often lack context needed for accurate retrieval.</p>
 
-            <h4>The Problem:</h4>
+            <h4>The Problem</h4>
             <p>A chunk about "Q3 revenue increased 15%" is useless without knowing:</p>
             <ul>
                 <li>Which company?</li>
@@ -197,18 +268,21 @@ User: How about Emily Doe?</code></pre>
                 <li>Which product line or division?</li>
             </ul>
 
-            <h4>Anthropic's Solution:</h4>
+            <h4>Anthropic's Solution</h4>
             <ol class="list-decimal ml-6 mb-4">
-                <li>For each chunk, use an LLM to generate a brief context (50-100 tokens) explaining the chunk's relationship to the overall document</li>
+                <li>For each chunk, use an LLM to generate a brief context (50-100 tokens) explaining the chunk's
+                    relationship to the overall document</li>
                 <li>Prepend this context to the chunk before embedding</li>
                 <li>Now the chunk becomes self-contained and retrievable</li>
             </ol>
 
-            <h4>Example Transformation:</h4>
+            <h4>Example Transformation</h4>
             <p><strong>Before:</strong> <code>"Q3 revenue increased 15%"</code></p>
-            <p><strong>After:</strong> <code>"This chunk is from Acme Corp's 2024 annual report, discussing the cloud services division. Q3 revenue increased 15%"</code></p>
+            <p><strong>After:</strong>
+                <code>"This chunk is from Acme Corp's 2024 annual report, discussing the cloud services division. Q3 revenue increased 15%"</code>
+            </p>
 
-            <h4>Anthropic's Prompt Template:</h4>
+            <h4>Anthropic's Prompt Template</h4>
             <pre><code class="language-plaintext">&lt;document&gt;
 {{WHOLE_DOCUMENT}}
 &lt;/document&gt;
@@ -222,7 +296,7 @@ Please give a short succinct context to situate this chunk within
 the overall document for the purposes of improving search retrieval.
 Answer only with the succinct context and nothing else.</code></pre>
 
-            <h4>Additional Augmentation Strategies:</h4>
+            <h4>Additional Augmentation Strategies</h4>
             <p>You can also augment chunks with:</p>
             <ul>
                 <li><strong>Metadata:</strong> tags, keywords, timestamps</li>
@@ -233,14 +307,14 @@ Answer only with the succinct context and nothing else.</code></pre>
                 <li><strong>Chunk-specific terms:</strong> technical jargon or domain-specific terminology</li>
             </ul>
 
-            <h4>The Process:</h4>
+            <h4>The Process</h4>
             <pre><code class="language-plaintext">Document Corpus → Split into chunks →
 Generate context for each chunk →
 Prepend context to chunk →
 Embed augmented chunks →
 Store in vector database</code></pre>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Dramatically improves retrieval precision</li>
                 <li>Makes chunks self-contained and understandable</li>
@@ -249,19 +323,36 @@ Store in vector database</code></pre>
             </ul>
 
             <div class="my-8">
-                <img src="./contextual_retrieval.png" alt="Contextual Retrieval Process" class="w-full rounded-lg border border-gray-700">
-                <p class="text-sm text-gray-500 text-center mt-2">Figure: Contextual Retrieval Pipeline - Document chunks are augmented with context before embedding</p>
+                <img src="./contextual_retrieval.png" alt="Contextual Retrieval Process"
+                    class="w-full rounded-lg border border-gray-700">
+                <p class="text-sm text-gray-500 text-center mt-2">Figure: Contextual Retrieval Pipeline - Document
+                    chunks are augmented with context before embedding</p>
             </div>
+
+            <h4>Combining Contextual Retrieval with Reranking</h4>
+            <p>Contextual retrieval can be combined with reranking to further improve retrieval precision. After initial
+                candidates are retrieved with contextual retrieval, they are reranked with a better model to improve
+                precision.</p>
+            <figure class="mb-8">
+                <img src="./contextual_retrieval_rerank.webp" alt="Contextual Retrieval with Reranking"
+                    class="w-full rounded-lg border border-gray-700">
+
+                <figcaption class="mt-3 text-center text-sm text-gray-400 italic">
+                    Figure 1: Contextual Retrieval architecture with an added Reranking stage by Anthropic.
+                </figcaption>
+            </figure>
 
             <h2>Advanced Techniques</h2>
 
             <h3>🔍 Hybrid Search</h3>
-            <h4>What it is:</h4>
-            <p>Combining dense (vector-based) retrieval with sparse (keyword-based) retrieval. This is arguably the most impactful optimization missing from basic RAG implementations.</p>
+            <h4>What it is</h4>
+            <p>Combining dense (vector-based) retrieval with sparse (keyword-based) retrieval. This is arguably the most
+                impactful optimization missing from basic RAG implementations.</p>
 
-            <h4>How it works:</h4>
+            <h4>How it works</h4>
             <ul>
-                <li><strong>Dense retrieval (Vector search):</strong> Uses embedding models to find semantically similar content
+                <li><strong>Dense retrieval (Vector search):</strong> Uses embedding models to find semantically similar
+                    content
                     <ul class="list-disc ml-6 mt-1">
                         <li>Great for: conceptual queries, synonyms, paraphrasing</li>
                         <li>Weakness: misses exact keyword matches</li>
@@ -282,17 +373,23 @@ Store in vector database</code></pre>
                 </li>
             </ul>
 
-            <h4>Step-by-step process:</h4>
+            <h4>Step-by-step process</h4>
             <ol class="list-decimal ml-6 mb-4">
-                <li><strong>Chunk the knowledge base:</strong> Break down documents into smaller chunks (typically a few hundred tokens each)</li>
-                <li><strong>Create dual encodings:</strong> Generate both TF-IDF encodings and semantic embeddings for each chunk</li>
-                <li><strong>BM25 retrieval:</strong> Use BM25 algorithm to find top chunks based on exact keyword matches</li>
-                <li><strong>Vector retrieval:</strong> Use embeddings to find top chunks based on semantic similarity</li>
-                <li><strong>Rank fusion:</strong> Combine and deduplicate results from both methods using rank fusion techniques (e.g., Reciprocal Rank Fusion)</li>
-                <li><strong>Context augmentation:</strong> Add the top-K chunks to the prompt to generate the final response</li>
+                <li><strong>Chunk the knowledge base:</strong> Break down documents into smaller chunks (typically a few
+                    hundred tokens each)</li>
+                <li><strong>Create dual encodings:</strong> Generate both TF-IDF encodings and semantic embeddings for
+                    each chunk</li>
+                <li><strong>BM25 retrieval:</strong> Use BM25 algorithm to find top chunks based on exact keyword
+                    matches</li>
+                <li><strong>Vector retrieval:</strong> Use embeddings to find top chunks based on semantic similarity
+                </li>
+                <li><strong>Rank fusion:</strong> Combine and deduplicate results from both methods using rank fusion
+                    techniques (e.g., Reciprocal Rank Fusion)</li>
+                <li><strong>Context augmentation:</strong> Add the top-K chunks to the prompt to generate the final
+                    response</li>
             </ol>
 
-            <h4>Why it's critical:</h4>
+            <h4>Why it's critical</h4>
             <p>Almost every production RAG system uses hybrid search because:</p>
             <ul>
                 <li>Covers both semantic and lexical matching</li>
@@ -301,7 +398,7 @@ Store in vector database</code></pre>
                 <li>Empirically shows 15-30% improvement in retrieval accuracy</li>
             </ul>
 
-            <h4>Implementation:</h4>
+            <h4>Implementation</h4>
             <pre><code class="language-python"># Pseudocode
 vector_results = vector_search(query_embedding, top_k=20)
 bm25_results = bm25_search(query_text, top_k=20)
@@ -315,10 +412,11 @@ combined_results = merge_with_weights(
 )</code></pre>
 
             <h3>🏷️ Metadata Filtering</h3>
-            <h4>What it is:</h4>
-            <p>Pre-filtering documents by metadata attributes before performing vector search to narrow the search space.</p>
+            <h4>What it is</h4>
+            <p>Pre-filtering documents by metadata attributes before performing vector search to narrow the search
+                space.</p>
 
-            <h4>How it works:</h4>
+            <h4>How it works</h4>
             <p>Instead of searching your entire vector database, first filter by metadata:</p>
             <ul>
                 <li>Date ranges (e.g., "only documents from 2024")</li>
@@ -328,7 +426,7 @@ combined_results = merge_with_weights(
             </ul>
             <p>Then perform vector search only on the filtered subset.</p>
 
-            <h4>Example:</h4>
+            <h4>Example</h4>
             <p>Query: "What's our refund policy for enterprise customers?"</p>
             <p><strong>Without metadata filtering:</strong></p>
             <ul>
@@ -342,7 +440,7 @@ combined_results = merge_with_weights(
                 <li>Much higher precision</li>
             </ul>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Dramatically reduces search space</li>
                 <li>Improves retrieval speed</li>
@@ -350,7 +448,7 @@ combined_results = merge_with_weights(
                 <li>Lower computational costs</li>
             </ul>
 
-            <h4>When to use:</h4>
+            <h4>When to use</h4>
             <ul>
                 <li>Multi-tenant systems (filter by customer/organization)</li>
                 <li>Time-sensitive data (filter by date)</li>
@@ -359,23 +457,23 @@ combined_results = merge_with_weights(
             </ul>
 
             <h3>🌳 Parent-Child / Hierarchical Retrieval</h3>
-            <h4>What it is:</h4>
+            <h4>What it is</h4>
             <p>Embed small chunks for precision, but return larger parent chunks to the LLM for better context.</p>
 
-            <h4>The Problem:</h4>
+            <h4>The Problem</h4>
             <ul>
                 <li>Small chunks = precise retrieval but insufficient context for generation</li>
                 <li>Large chunks = good context but imprecise retrieval (noisy results)</li>
             </ul>
 
-            <h4>The Solution:</h4>
+            <h4>The Solution</h4>
             <ol class="list-decimal ml-6 mb-4">
                 <li>Create a hierarchy: large parent chunks and smaller child chunks</li>
                 <li>Embed and index the small child chunks for retrieval</li>
                 <li>When a child chunk is retrieved, return the parent chunk to the LLM</li>
             </ol>
 
-            <h4>Example Structure:</h4>
+            <h4>Example Structure</h4>
             <pre><code class="language-plaintext">Document: "Product Manual"
 ├── Parent Chunk 1: "Installation Guide" (2000 tokens)
 │   ├── Child Chunk 1.1: "Prerequisites" (200 tokens) ← embed this
@@ -385,7 +483,7 @@ combined_results = merge_with_weights(
     ├── Child Chunk 2.1: "Basic settings" (200 tokens) ← embed this
     └── Child Chunk 2.2: "Advanced settings" (200 tokens) ← embed this</code></pre>
 
-            <h4>Retrieval Flow:</h4>
+            <h4>Retrieval Flow</h4>
             <ol class="list-decimal ml-6 mb-4">
                 <li>User query: "How do I fix installation errors?"</li>
                 <li>Vector search finds Child Chunk 1.3: "Troubleshooting" (high precision)</li>
@@ -393,7 +491,7 @@ combined_results = merge_with_weights(
                 <li>LLM has both the relevant section AND surrounding context</li>
             </ol>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Best of both worlds: precise retrieval + rich context</li>
                 <li>LLM gets proper context for better generation</li>
@@ -402,18 +500,20 @@ combined_results = merge_with_weights(
             </ul>
 
             <h3>🎭 HyDE (Hypothetical Document Embeddings)</h3>
-            <h4>What it is:</h4>
-            <p>Generate a hypothetical answer first, then embed <em>that</em> for retrieval instead of the original query. This bridges the query-document semantic gap.</p>
+            <h4>What it is</h4>
+            <p>Generate a hypothetical answer first, then embed <em>that</em> for retrieval instead of the original
+                query. This bridges the query-document semantic gap.</p>
 
-            <h4>The Problem:</h4>
+            <h4>The Problem</h4>
             <p>Questions and answers use different vocabulary and structure:</p>
             <ul>
                 <li>Query: "How do I fix CUDA out of memory errors?"</li>
-                <li>Documentation: "To resolve OOM issues, reduce batch size, enable gradient accumulation, use mixed precision training..."</li>
+                <li>Documentation: "To resolve OOM issues, reduce batch size, enable gradient accumulation, use mixed
+                    precision training..."</li>
             </ul>
             <p>These have different semantic representations despite being related.</p>
 
-            <h4>How HyDE works:</h4>
+            <h4>How HyDE works</h4>
             <ol class="list-decimal ml-6 mb-4">
                 <li>User submits query: "How do I fix CUDA out of memory errors?"</li>
                 <li>Ask LLM to generate a hypothetical answer (even if it hallucinates):
@@ -426,15 +526,16 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
                 <li>The real documentation is semantically closer to this "answer" than to the original question</li>
             </ol>
 
-            <h4>Why it works:</h4>
+            <h4>Why it works</h4>
             <ul>
                 <li>Answers and documents exist in similar semantic space</li>
                 <li>Questions exist in a different semantic space</li>
                 <li>By converting query → hypothetical answer, we bridge the gap</li>
-                <li>The hypothetical answer doesn't need to be factually correct—it just needs to be semantically similar to real answers</li>
+                <li>The hypothetical answer doesn't need to be factually correct—it just needs to be semantically
+                    similar to real answers</li>
             </ul>
 
-            <h4>When to use:</h4>
+            <h4>When to use</h4>
             <ul>
                 <li>Technical documentation queries</li>
                 <li>How-to questions</li>
@@ -442,7 +543,7 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
                 <li>Domains with specialized vocabulary</li>
             </ul>
 
-            <h4>Caution:</h4>
+            <h4>Caution</h4>
             <ul>
                 <li>Adds extra LLM call (latency + cost)</li>
                 <li>Works best with high-quality instruction-following models</li>
@@ -450,10 +551,11 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
             </ul>
 
             <h3>🔀 Multi-Query Retrieval</h3>
-            <h4>What it is:</h4>
-            <p>Generate multiple variations of the user's query and retrieve documents for each variation, then merge the results.</p>
+            <h4>What it is</h4>
+            <p>Generate multiple variations of the user's query and retrieve documents for each variation, then merge
+                the results.</p>
 
-            <h4>How it works:</h4>
+            <h4>How it works</h4>
             <ol class="list-decimal ml-6 mb-4">
                 <li>Original query: "Best practices for API security"</li>
                 <li>Generate variations:
@@ -469,13 +571,13 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
                 <li>Optionally rerank the merged set</li>
             </ol>
 
-            <h4>Difference from Query Rewriting:</h4>
+            <h4>Difference from Query Rewriting</h4>
             <ul>
                 <li><strong>Query Rewriting:</strong> 1 query → 1 better query</li>
                 <li><strong>Multi-Query:</strong> 1 query → multiple query variations → merged results</li>
             </ul>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Catches documents that a single query phrasing might miss</li>
                 <li>More comprehensive coverage</li>
@@ -483,14 +585,14 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
                 <li>Handles ambiguous queries better</li>
             </ul>
 
-            <h4>Implementation Strategies:</h4>
+            <h4>Implementation Strategies</h4>
             <ul>
                 <li>Use LLM to generate variations</li>
                 <li>Use pre-defined templates for common query types</li>
                 <li>Generate variations based on synonyms and related terms</li>
             </ul>
 
-            <h4>Trade-offs:</h4>
+            <h4>Trade-offs</h4>
             <ul>
                 <li>More retrieval calls = higher latency</li>
                 <li>More documents to process and rerank</li>
@@ -498,10 +600,11 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
             </ul>
 
             <h3>✅ Self-RAG / Corrective RAG</h3>
-            <h4>What it is:</h4>
-            <p>The system evaluates whether retrieved documents are actually relevant to the query and can take corrective actions (re-retrieve, try different strategy, or fall back gracefully).</p>
+            <h4>What it is</h4>
+            <p>The system evaluates whether retrieved documents are actually relevant to the query and can take
+                corrective actions (re-retrieve, try different strategy, or fall back gracefully).</p>
 
-            <h4>The Problem:</h4>
+            <h4>The Problem</h4>
             <p>Traditional RAG blindly trusts retrieved documents:</p>
             <ul>
                 <li>Retrieved docs might be irrelevant</li>
@@ -510,7 +613,7 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
                 <li>No docs might be available</li>
             </ul>
 
-            <h4>How Self-RAG works:</h4>
+            <h4>How Self-RAG works</h4>
             <pre><code class="language-plaintext">1. Retrieve documents
 2. LLM evaluates each document:
    - Is this relevant to the query?
@@ -522,7 +625,7 @@ with torch.cuda.amp, clear cache with torch.cuda.empty_cache()..."</code></pre>
    c. Not relevant → Try different retrieval strategy or web search
    d. No docs available → Answer from parametric knowledge or admit uncertainty</code></pre>
 
-            <h4>Example Flow:</h4>
+            <h4>Example Flow</h4>
             <p>Query: "Latest features in Python 3.12"</p>
             <pre><code class="language-plaintext">Step 1: Initial retrieval returns docs about Python 3.10
 Step 2: Self-RAG detects version mismatch
@@ -531,7 +634,7 @@ Step 3: Corrective action: Trigger web search for current information
 Step 4: Verify new results match query requirements
 Step 5: Generate answer with appropriate sources</code></pre>
 
-            <h4>Corrective RAG Variant:</h4>
+            <h4>Corrective RAG Variant</h4>
             <p>Focuses specifically on correction strategies:</p>
             <ul>
                 <li>If retrieval quality is low → reformulate query and retry</li>
@@ -539,7 +642,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>If no relevant docs found → expand search scope or use external sources</li>
             </ul>
 
-            <h4>Implementation Considerations:</h4>
+            <h4>Implementation Considerations</h4>
             <ul>
                 <li>Add relevance scoring step after retrieval</li>
                 <li>Define thresholds for "good enough" relevance</li>
@@ -547,7 +650,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>Track retrieval quality metrics</li>
             </ul>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Prevents hallucination from irrelevant context</li>
                 <li>More robust and reliable RAG system</li>
@@ -555,7 +658,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>Improves user trust through transparency</li>
             </ul>
 
-            <h4>When to implement:</h4>
+            <h4>When to implement</h4>
             <ul>
                 <li>Production systems where accuracy is critical</li>
                 <li>Domains where information changes frequently</li>
@@ -564,10 +667,11 @@ Step 5: Generate answer with appropriate sources</code></pre>
             </ul>
 
             <h3>🕸️ Graph RAG</h3>
-            <h4>What it is:</h4>
-            <p>Use knowledge graphs to capture entity relationships that vector search misses. Instead of treating documents as isolated chunks, build a graph of interconnected entities and relationships.</p>
+            <h4>What it is</h4>
+            <p>Use knowledge graphs to capture entity relationships that vector search misses. Instead of treating
+                documents as isolated chunks, build a graph of interconnected entities and relationships.</p>
 
-            <h4>The Problem with Vector Search:</h4>
+            <h4>The Problem with Vector Search</h4>
             <p>Vector search finds semantically similar text, but it misses explicit relationships:</p>
             <ul>
                 <li>"John worked on Project X" (in document A)</li>
@@ -575,11 +679,13 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>Vector search might miss the connection between John and the project failure</li>
             </ul>
 
-            <h4>How Graph RAG works:</h4>
+            <h4>How Graph RAG works</h4>
             <ol class="list-decimal ml-6 mb-4">
-                <li><strong>Entity Extraction:</strong> Extract entities (people, places, organizations, concepts) from documents</li>
+                <li><strong>Entity Extraction:</strong> Extract entities (people, places, organizations, concepts) from
+                    documents</li>
                 <li><strong>Relationship Mapping:</strong> Identify relationships between entities</li>
-                <li><strong>Graph Construction:</strong> Build knowledge graph with entities as nodes and relationships as edges</li>
+                <li><strong>Graph Construction:</strong> Build knowledge graph with entities as nodes and relationships
+                    as edges</li>
                 <li><strong>Hybrid Retrieval:</strong>
                     <ul class="list-disc ml-6 mt-1">
                         <li>Use vector search for semantic similarity</li>
@@ -589,19 +695,19 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 </li>
             </ol>
 
-            <h4>Example Graph Structure:</h4>
+            <h4>Example Graph Structure</h4>
             <pre><code class="language-plaintext">[John] --works_on--> [Project X] --failed_in--> [2023]
 [Project X] --belongs_to--> [Cloud Division]
 [Cloud Division] --part_of--> [Acme Corp]</code></pre>
 
-            <h4>Query Examples:</h4>
+            <h4>Query Examples</h4>
             <p>"What projects did John work on that failed?"</p>
             <ul>
                 <li>Graph traversal: John → works_on → Project X → failed_in → 2023</li>
                 <li>Returns: "Project X failed in 2023, John worked on it"</li>
             </ul>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Captures "who did what, when, where" relationships</li>
                 <li>Handles multi-hop reasoning (John → Project → Division → Company)</li>
@@ -609,7 +715,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>Provides explainable retrieval paths</li>
             </ul>
 
-            <h4>Use Cases:</h4>
+            <h4>Use Cases</h4>
             <ul>
                 <li>Research papers (author → paper → cites → paper)</li>
                 <li>Corporate knowledge (employee → project → department → company)</li>
@@ -617,7 +723,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>Medical records (patient → condition → treatment → outcome)</li>
             </ul>
 
-            <h4>Implementation:</h4>
+            <h4>Implementation</h4>
             <ul>
                 <li>Use graph databases (Neo4j, Amazon Neptune)</li>
                 <li>Extract entities with NER models</li>
@@ -625,7 +731,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>Combine graph traversal with vector search results</li>
             </ul>
 
-            <h4>Challenges:</h4>
+            <h4>Challenges</h4>
             <ul>
                 <li>More complex to implement and maintain</li>
                 <li>Requires entity extraction and relationship mapping</li>
@@ -633,7 +739,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li>Higher computational overhead</li>
             </ul>
 
-            <h4>When to use:</h4>
+            <h4>When to use</h4>
             <ul>
                 <li>Complex domains with rich entity relationships</li>
                 <li>When "how things connect" matters as much as "what's similar"</li>
@@ -642,10 +748,11 @@ Step 5: Generate answer with appropriate sources</code></pre>
             </ul>
 
             <h3>🤖 Agentic RAG</h3>
-            <h4>What it is:</h4>
-            <p>Treat RAG as a multi-step decision-making process where an LLM agent decides <em>how</em> to retrieve information, rather than using a single fixed retrieval pipeline.</p>
+            <h4>What it is</h4>
+            <p>Treat RAG as a multi-step decision-making process where an LLM agent decides <em>how</em> to retrieve
+                information, rather than using a single fixed retrieval pipeline.</p>
 
-            <h4>The Problem:</h4>
+            <h4>The Problem</h4>
             <p>Different queries need different retrieval strategies:</p>
             <ul>
                 <li>"What were our Q3 sales?" → SQL database query</li>
@@ -655,7 +762,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
             </ul>
             <p>One-size-fits-all retrieval doesn't work for diverse queries.</p>
 
-            <h4>How Agentic RAG works:</h4>
+            <h4>How Agentic RAG works</h4>
             <ol class="list-decimal ml-6 mb-4">
                 <li><strong>Query Analysis:</strong> Agent analyzes the user's query to understand intent</li>
                 <li><strong>Strategy Selection:</strong> Agent decides which tools/retrievers to use</li>
@@ -664,7 +771,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
                 <li><strong>Adaptive Refinement:</strong> Agent can try different approaches if first attempt fails</li>
             </ol>
 
-            <h4>Example Flow:</h4>
+            <h4>Example Flow</h4>
             <p>Query: "Compare our Q3 revenue vs competitors in the cloud market"</p>
             <pre><code class="language-plaintext">Agent reasoning:
 1. "Need internal Q3 revenue" → Query SQL database
@@ -672,7 +779,7 @@ Step 5: Generate answer with appropriate sources</code></pre>
 3. "Need cloud market context" → Vector search internal reports
 4. Combine all three sources → Generate comparative analysis</code></pre>
 
-            <h4>Common Patterns:</h4>
+            <h4>Common Patterns</h4>
             <p><strong>ReAct (Reasoning + Acting):</strong></p>
             <pre><code class="language-plaintext">Thought: I need to find the user's order history
 Action: query_database(user_id=123, table="orders")
@@ -696,7 +803,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 </li>
             </ul>
 
-            <h4>Implementation:</h4>
+            <h4>Implementation</h4>
             <p>Often built with frameworks like:</p>
             <ul>
                 <li>LangGraph (state machines for multi-step retrieval)</li>
@@ -704,7 +811,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 <li>Custom agent loops with tool calling</li>
             </ul>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Handles complex, multi-faceted queries</li>
                 <li>Adapts to query requirements dynamically</li>
@@ -712,7 +819,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 <li>More robust to diverse query types</li>
             </ul>
 
-            <h4>Challenges:</h4>
+            <h4>Challenges</h4>
             <ul>
                 <li>Higher latency (multiple LLM calls)</li>
                 <li>More complex to debug</li>
@@ -720,7 +827,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 <li>Requires careful prompt engineering for agent reasoning</li>
             </ul>
 
-            <h4>When to use:</h4>
+            <h4>When to use</h4>
             <ul>
                 <li>Complex applications with diverse data sources</li>
                 <li>When queries require multi-step reasoning</li>
@@ -729,11 +836,13 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
             </ul>
 
             <h3>🎯 Fine-Tuning Embedding Models</h3>
-            <h4>What it is:</h4>
-            <p>Train domain-specific embedding models on your specialized corpus instead of using general-purpose embeddings.</p>
+            <h4>What it is</h4>
+            <p>Train domain-specific embedding models on your specialized corpus instead of using general-purpose
+                embeddings.</p>
 
-            <h4>The Problem:</h4>
-            <p>General-purpose embedding models (OpenAI, Cohere, etc.) are trained on broad internet data. They might not capture nuances in your specific domain:</p>
+            <h4>The Problem</h4>
+            <p>General-purpose embedding models (OpenAI, Cohere, etc.) are trained on broad internet data. They might
+                not capture nuances in your specific domain:</p>
             <ul>
                 <li>Medical terminology and relationships</li>
                 <li>Legal language and precedents</li>
@@ -741,7 +850,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 <li>Technical documentation conventions</li>
             </ul>
 
-            <h4>How it works:</h4>
+            <h4>How it works</h4>
             <ol class="list-decimal ml-6 mb-4">
                 <li><strong>Collect training data:</strong>
                     <ul class="list-disc ml-6 mt-1">
@@ -765,7 +874,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 </li>
             </ol>
 
-            <h4>Benefits:</h4>
+            <h4>Benefits</h4>
             <ul>
                 <li>Significantly better retrieval accuracy in specialized domains</li>
                 <li>Captures domain-specific semantic relationships</li>
@@ -773,7 +882,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 <li>Can optimize for your specific retrieval patterns</li>
             </ul>
 
-            <h4>Trade-offs:</h4>
+            <h4>Trade-offs</h4>
             <ul>
                 <li>Expensive: requires labeled data and training resources</li>
                 <li>Maintenance: need to retrain as domain evolves</li>
@@ -781,7 +890,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 <li>May lose some general knowledge from base model</li>
             </ul>
 
-            <h4>When to use:</h4>
+            <h4>When to use</h4>
             <ul>
                 <li>Highly specialized domains (medical, legal, scientific)</li>
                 <li>When retrieval accuracy is critical and worth the investment</li>
@@ -789,7 +898,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                 <li>When you have sufficient training data (thousands of examples)</li>
             </ul>
 
-            <h4>Data Generation Strategy:</h4>
+            <h4>Data Generation Strategy</h4>
             <p>Use LLMs to generate synthetic training data:</p>
             <pre><code class="language-plaintext">For each document chunk:
 1. Generate 3-5 queries that this chunk should answer
@@ -797,21 +906,21 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
 3. Use as positive and negative training pairs</code></pre>
 
             <h2>Quick Reference</h2>
-            <h4>Start Here (Highest ROI):</h4>
+            <h4>Start Here (Highest ROI)</h4>
             <ol class="list-decimal ml-6 mb-4">
                 <li>Hybrid Search (dense + sparse retrieval)</li>
                 <li>Contextual Retrieval (augment chunks with context)</li>
                 <li>Reranking (two-stage retrieval)</li>
             </ol>
 
-            <h4>Next Level:</h4>
+            <h4>Next Level</h4>
             <ol class="list-decimal ml-6 mb-4" start="4">
                 <li>Query Rewriting (handle multi-turn conversations)</li>
                 <li>Metadata Filtering (narrow search space)</li>
                 <li>Parent-Child Retrieval (precision + context)</li>
             </ol>
 
-            <h4>Advanced (When Needed):</h4>
+            <h4>Advanced (When Needed)</h4>
             <ol class="list-decimal ml-6 mb-4" start="7">
                 <li>HyDE (bridge query-document gap)</li>
                 <li>Multi-Query Retrieval (comprehensive coverage)</li>
@@ -824,7 +933,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
             <h2>Measuring Success</h2>
             <p>Always measure retrieval quality before optimizing generation:</p>
 
-            <h4>Key Metrics:</h4>
+            <h4>Key Metrics</h4>
             <ul>
                 <li><strong>Recall@K:</strong> What % of relevant documents are in top K results?</li>
                 <li><strong>Precision@K:</strong> What % of top K results are actually relevant?</li>
@@ -836,7 +945,10 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
 
             <h2>Resources</h2>
             <ul>
-                <li><strong>Anthropic's Contextual Retrieval:</strong> <a href="https://www.anthropic.com/engineering/contextual-retrieval" target="_blank" class="text-dark-accent hover:underline">https://www.anthropic.com/engineering/contextual-retrieval</a></li>
+                <li><strong>Anthropic's Contextual Retrieval:</strong> <a
+                        href="https://www.anthropic.com/engineering/contextual-retrieval" target="_blank"
+                        class="text-dark-accent hover:underline">https://www.anthropic.com/engineering/contextual-retrieval</a>
+                </li>
                 <li><strong>Chip Huyen's AI Engineering:</strong> Comprehensive coverage of RAG systems</li>
                 <li><strong>Microsoft's Graph RAG Paper:</strong> Deep dive into knowledge graph integration</li>
                 <li><strong>HyDE Paper:</strong> "Precise Zero-Shot Dense Retrieval without Relevance Labels"</li>
@@ -853,7 +965,7 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
                     <p class="text-sm text-gray-400 mb-2">Cited as:</p>
                     <blockquote class="border-l-4 border-dark-accent pl-4 text-gray-300">
                         <p>Haseeb, Raja. (Feb 2026). "RAG Optimization Techniques". Personal Blog.</p>
-                        <p class="mt-2">https://rajahaseeb.com/posts/rag-optimization-techniques/</p>
+                        <p class="mt-2">https://pytholic.github.io/posts/rag-optimization-techniques/</p>
                     </blockquote>
                 </div>
 
@@ -878,7 +990,9 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
         <div class="max-w-4xl mx-auto px-6 py-6">
             <div class="text-center text-gray-500">
                 <p class="mb-2">&copy; 2026 Haseeb Raja. All rights reserved.</p>
-                <p class="text-sm">This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" class="text-dark-accent hover:underline">CC BY-NC-SA 4.0</a></p>
+                <p class="text-sm">This work is licensed under <a
+                        href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
+                        class="text-dark-accent hover:underline">CC BY-NC-SA 4.0</a></p>
             </div>
         </div>
     </footer>
@@ -891,4 +1005,5 @@ Answer: You placed 3 orders in the last 30 days...</code></pre>
         });
     </script>
 </body>
+
 </html>
