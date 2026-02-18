@@ -51,15 +51,269 @@
         <section class="mb-12">
             <h2 class="text-2xl font-bold mb-6">NLP / LLM</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <!-- Placeholder for RAG/LangChain Projects -->
-                <a href="#"
+
+                <!-- LegoLLM -->
+                <a href="works/legollm/"
                     class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
-                    <div class="w-full h-48 bg-gray-700 flex items-center justify-center">
-                        <span class="text-gray-500 text-lg">Coming Soon</span>
+                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                        <svg viewBox="0 0 300 120" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Stacked blocks representing modular layers -->
+                            <!-- Bottom layer - Tokenization -->
+                            <rect x="30" y="88" width="240" height="24" rx="3" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="150" y="104" text-anchor="middle" fill="#14b8a6" font-size="10"
+                                font-family="system-ui" font-weight="bold">Tokenization</text>
+                            <!-- Embeddings -->
+                            <rect x="30" y="62" width="115" height="24" rx="3" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="87" y="78" text-anchor="middle" fill="#e2e8f0" font-size="9"
+                                font-family="system-ui">Embeddings</text>
+                            <rect x="155" y="62" width="115" height="24" rx="3" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="212" y="78" text-anchor="middle" fill="#e2e8f0" font-size="9"
+                                font-family="system-ui">Attention</text>
+                            <!-- Transformer -->
+                            <rect x="30" y="36" width="240" height="24" rx="3" fill="#2d3748" stroke="#f59e0b"
+                                stroke-width="1.5" />
+                            <text x="150" y="52" text-anchor="middle" fill="#f59e0b" font-size="10"
+                                font-family="system-ui" font-weight="bold">GPT-2 · LLaMA 3 · Qwen 3</text>
+                            <!-- Top layer - Training + Generation -->
+                            <rect x="30" y="10" width="115" height="24" rx="3" fill="#2d3748" stroke="#9f7aea"
+                                stroke-width="1.5" />
+                            <text x="87" y="26" text-anchor="middle" fill="#9f7aea" font-size="9"
+                                font-family="system-ui">Training + SFT</text>
+                            <rect x="155" y="10" width="115" height="24" rx="3" fill="#14b8a6" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="212" y="26" text-anchor="middle" fill="#1a202c" font-size="9" font-weight="bold"
+                                font-family="system-ui">Generation</text>
+                        </svg>
                     </div>
                     <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">RAG / LangChain Projects</h3>
-                        <p class="text-gray-400 text-sm">New projects coming soon...</p>
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 class="font-bold text-lg">LegoLLM</h3>
+                            <span class="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded-full">Ongoing</span>
+                        </div>
+                        <p class="text-gray-400 text-sm">Complete LLM framework from first principles — tokenization,
+                            attention, training, generation, alignment as modular Lego pieces.</p>
+                    </div>
+                </a>
+
+                <!-- LangGraph Research Assistant -->
+                <a href="works/langgraph-research-assistant/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <img src="works/langgraph-research-assistant/thumb.png" alt="LangGraph Research Assistant"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">LangGraph Research Assistant</h3>
+                        <p class="text-gray-400 text-sm">Multi-agent research system with parallel interviews,
+                            map-reduce synthesis, and human-in-the-loop approval.</p>
+                    </div>
+                </a>
+
+                <!-- Task mAIstro -->
+                <a href="works/langgraph-task-maistro/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <img src="works/langgraph-task-maistro/thumb.png" alt="Task mAIstro"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Task mAIstro</h3>
+                        <p class="text-gray-400 text-sm">AI task manager with persistent memory (profile, todos,
+                            instructions) deployed via Docker Compose with Postgres and Redis.</p>
+                    </div>
+                </a>
+
+                <!-- RAG from Scratch -->
+                <a href="works/rag-from-scratch/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <img src="works/rag-from-scratch/rag-pipeline.png" alt="RAG Pipeline Architecture"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">RAG from Scratch</h3>
+                        <p class="text-gray-400 text-sm">Minimal RAG pipeline built from scratch with NumPy — no
+                            framework abstractions.</p>
+                    </div>
+                </a>
+
+                <!-- Semantic Search with LangChain -->
+                <a href="works/langchain-semantic-search/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                        <svg viewBox="0 0 280 100" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="0" y="35" width="50" height="30" rx="4" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="25" y="54" text-anchor="middle" fill="#e2e8f0" font-size="9"
+                                font-family="system-ui">PDF</text>
+                            <path d="M50 50 L70 50" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ss)" />
+                            <rect x="70" y="35" width="70" height="30" rx="4" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="105" y="48" text-anchor="middle" fill="#e2e8f0" font-size="8"
+                                font-family="system-ui">LangChain</text>
+                            <text x="105" y="58" text-anchor="middle" fill="#14b8a6" font-size="7"
+                                font-family="system-ui">Split + Embed</text>
+                            <path d="M140 50 L160 50" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ss)" />
+                            <rect x="160" y="35" width="60" height="30" rx="4" fill="#2d3748" stroke="#9f7aea"
+                                stroke-width="1.5" />
+                            <text x="190" y="54" text-anchor="middle" fill="#e2e8f0" font-size="9"
+                                font-family="system-ui">ChromaDB</text>
+                            <path d="M220 50 L240 50" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ss)" />
+                            <rect x="240" y="35" width="40" height="30" rx="4" fill="#14b8a6" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="260" y="54" text-anchor="middle" fill="#1a202c" font-size="8" font-weight="bold"
+                                font-family="system-ui">Results</text>
+                            <text x="140" y="15" text-anchor="middle" fill="#6b7280" font-size="8"
+                                font-family="system-ui">Query → Semantic Match → Passages</text>
+                            <defs>
+                                <marker id="arrow-ss" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
+                                    markerHeight="6" orient="auto">
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#14b8a6" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Semantic Search with LangChain</h3>
+                        <p class="text-gray-400 text-sm">Natural language querying over PDFs using LangChain, ChromaDB,
+                            and HuggingFace embeddings.</p>
+                    </div>
+                </a>
+
+                <!-- RAG: Agent vs Chain -->
+                <a href="works/rag-langchain-agent-chain/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                        <svg viewBox="0 0 260 110" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Agent path -->
+                            <text x="130" y="12" text-anchor="middle" fill="#6b7280" font-size="8"
+                                font-family="system-ui">Agent vs Chain Patterns</text>
+                            <rect x="90" y="22" width="80" height="24" rx="4" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="130" y="38" text-anchor="middle" fill="#e2e8f0" font-size="9"
+                                font-family="system-ui">User Query</text>
+                            <!-- Agent branch -->
+                            <path d="M110 46 L60 62" stroke="#f59e0b" stroke-width="1.2"
+                                marker-end="url(#arrow-ac-y)" />
+                            <rect x="10" y="56" width="100" height="22" rx="4" fill="#2d3748" stroke="#f59e0b"
+                                stroke-width="1.5" />
+                            <text x="60" y="71" text-anchor="middle" fill="#f59e0b" font-size="8"
+                                font-family="system-ui">Agent (decides)</text>
+                            <path d="M60 78 L60 90" stroke="#f59e0b" stroke-width="1.2" marker-end="url(#arrow-ac-y)" />
+                            <text x="60" y="102" text-anchor="middle" fill="#6b7280" font-size="7"
+                                font-family="system-ui">retrieve? → generate</text>
+                            <!-- Chain branch -->
+                            <path d="M150 46 L200 62" stroke="#14b8a6" stroke-width="1.2" marker-end="url(#arrow-ac)" />
+                            <rect x="150" y="56" width="100" height="22" rx="4" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="200" y="71" text-anchor="middle" fill="#14b8a6" font-size="8"
+                                font-family="system-ui">Chain (always)</text>
+                            <path d="M200 78 L200 90" stroke="#14b8a6" stroke-width="1.2" marker-end="url(#arrow-ac)" />
+                            <text x="200" y="102" text-anchor="middle" fill="#6b7280" font-size="7"
+                                font-family="system-ui">retrieve → generate</text>
+                            <defs>
+                                <marker id="arrow-ac" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
+                                    markerHeight="6" orient="auto">
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#14b8a6" />
+                                </marker>
+                                <marker id="arrow-ac-y" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
+                                    markerHeight="6" orient="auto">
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">LangChain RAG Patterns: Agent vs. Chain</h3>
+                        <p class="text-gray-400 text-sm">Comparing LangChain Agent and Chain RAG patterns with
+                            multi-provider support.</p>
+                    </div>
+                </a>
+
+                <!-- LangChain Email Agent -->
+                <a href="works/langchain-email-agent/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                        <svg viewBox="0 0 280 100" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
+                            <text x="140" y="12" text-anchor="middle" fill="#6b7280" font-size="8"
+                                font-family="system-ui">LangGraph + Human-in-the-Loop</text>
+                            <rect x="0" y="30" width="55" height="28" rx="4" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="27" y="48" text-anchor="middle" fill="#e2e8f0" font-size="8"
+                                font-family="system-ui">Auth</text>
+                            <path d="M55 44 L75 44" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ea)" />
+                            <rect x="75" y="30" width="65" height="28" rx="4" fill="#2d3748" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="107" y="42" text-anchor="middle" fill="#e2e8f0" font-size="8"
+                                font-family="system-ui">LangGraph</text>
+                            <text x="107" y="52" text-anchor="middle" fill="#14b8a6" font-size="7"
+                                font-family="system-ui">Agent</text>
+                            <path d="M140 44 L160 44" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ea)" />
+                            <rect x="160" y="30" width="55" height="28" rx="4" fill="#2d3748" stroke="#f59e0b"
+                                stroke-width="1.5" />
+                            <text x="187" y="42" text-anchor="middle" fill="#f59e0b" font-size="7"
+                                font-family="system-ui">Human</text>
+                            <text x="187" y="52" text-anchor="middle" fill="#f59e0b" font-size="7"
+                                font-family="system-ui">Approval</text>
+                            <path d="M215 44 L235 44" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ea)" />
+                            <rect x="235" y="30" width="45" height="28" rx="4" fill="#14b8a6" stroke="#14b8a6"
+                                stroke-width="1.5" />
+                            <text x="257" y="48" text-anchor="middle" fill="#1a202c" font-size="8" font-weight="bold"
+                                font-family="system-ui">Send</text>
+                            <!-- Tools below -->
+                            <text x="107" y="78" text-anchor="middle" fill="#6b7280" font-size="7"
+                                font-family="system-ui">authenticate · check_inbox · send_email</text>
+                            <defs>
+                                <marker id="arrow-ea" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
+                                    markerHeight="6" orient="auto">
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#14b8a6" />
+                                </marker>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">LangChain Email Agent</h3>
+                        <p class="text-gray-400 text-sm">AI email agent with auth-based tool access and
+                            human-in-the-loop approval via LangGraph.</p>
+                    </div>
+                </a>
+
+
+                <!-- SmolLM Fine-tuning -->
+                <a href="works/llm-smollm/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <div class="w-full h-48 flex items-center justify-center p-2 overflow-hidden">
+                        <pre class="mermaid" style="font-size: 10px;">
+                    graph LR
+                        A[SmolLM] --> B[LoRA Fine-Tuning]
+                        B --> C[AI-as-a-Judge Eval]
+                        </pre>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">SmolLM Fine-tuning</h3>
+                        <p class="text-gray-400 text-sm">Fine-tuning HuggingFace's SmolLM model on a toy instruction
+                            dataset with LoRA and AI-as-a-judge evaluation.</p>
+                    </div>
+                </a>
+
+                <!-- Gemini Long Context -->
+                <a href="works/gemini-long-context/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <img src="works/gemini-long-context/gemini_long_context.png" alt="Gemini Long Context"
+                        class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">Gemini Long Context</h3>
+                        <p class="text-gray-400 text-sm">Endangered language translation and codebase security analysis
+                            using Gemini 1.5 Pro's long-context window.</p>
+                    </div>
+                </a>
+
+                <!-- LoRA Insights: PEFT Recipes -->
+                <a href="works/lora-insights/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <img src="https://raw.githubusercontent.com/pytholic/llm-peft-recipes/main/LoRA/resources/lora_insights/image2.png"
+                        alt="LoRA Insights" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">LoRA Insights: PEFT Recipes</h3>
+                        <p class="text-gray-400 text-sm">Reproducing and extending LoRA/QLoRA experiments across Llama
+                            3.2 and Qwen 2.5 on H100 GPU.</p>
                     </div>
                 </a>
 
@@ -155,6 +409,23 @@
         <section class="mb-12">
             <h2 class="text-2xl font-bold mb-6">AI Engineering / MLOps</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <!-- LLM Inference Benchmarks -->
+                <a href="works/llm-inference/"
+                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                        <div class="text-center">
+                            <span class="text-5xl font-bold text-dark-accent">112</span>
+                            <span class="text-lg text-gray-400 ml-1">tok/s</span>
+                            <p class="text-gray-500 text-xs mt-2">Phi-3.5 Mini &middot; Q4 &middot; GPU</p>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-2">LLM Inference Benchmarks</h3>
+                        <p class="text-gray-400 text-sm">Benchmarking llama.cpp, ExLlamaV2, and Ollama for production
+                            medical report generation at Lunit.</p>
+                    </div>
+                </a>
+
                 <!-- Lunit Model Registry -->
                 <a href="works/lunit-model-registry/"
                     class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">

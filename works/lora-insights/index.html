@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoRA Insights - Haseeb Raja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#1a202c',
+                            card: '#2d3748',
+                            text: '#e2e8f0',
+                            accent: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark-bg text-dark-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-gray-700">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Haseeb Raja</a>
+                <div class="flex gap-6">
+                    <a href="../../works.html" class="text-dark-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">LoRA Insights: PEFT Recipes</h1>
+            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2024</span>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+            <p>
+                Reproducing and extending Sebastian Raschka's LoRA experiments across multiple models to find
+                practical fine-tuning recipes. Ran hundreds of experiments on an H100 GPU comparing LoRA and QLoRA
+                configurations, evaluating with EleutherAI's lm-evaluation-harness on tasks like TruthfulQA,
+                arithmetic, and MMLU.
+            </p>
+
+            <h3 class="text-xl font-bold text-dark-text">Models Tested</h3>
+            <ul class="list-disc list-inside space-y-1">
+                <li>Llama 3.2 3B</li>
+                <li>Llama 3.2 1B</li>
+                <li>Qwen 2.5 3B</li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-dark-text">Key Takeaways</h3>
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong>No magic LoRA config</strong> — significant experimentation is needed per model and use case</li>
+                <li><strong>Non-linear scaling</strong> — results do not improve linearly with increasing rank and alpha</li>
+                <li><strong>QLoRA memory savings</strong> — substantial reduction (~5.98 GB → ~2.05 GB model footprint) with only slight performance degradation</li>
+                <li><strong>All-layer LoRA helps, but not always</strong> — Llama 3.2 3B performed better with default target modules</li>
+                <li><strong>Recipes don't transfer</strong> — each model responds differently to the same config</li>
+                <li><strong>1 epoch is enough</strong> — training beyond 1 epoch degraded performance in all tested cases</li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-dark-text">Evaluation</h3>
+            <p>
+                Models were evaluated using <strong>EleutherAI's lm-evaluation-harness</strong> on 6 tasks:
+                <strong>truthfulqa_mc1</strong>, <strong>truthfulqa_mc2</strong>, <strong>arithmetic_2ds</strong>,
+                <strong>arithmetic_4ds</strong>, <strong>blimp_causative</strong>, and <strong>mmlu_global_facts</strong>.
+                Base model scores were compared against each fine-tuned variant to measure improvement or regression.
+            </p>
+
+            <h3 class="text-xl font-bold text-dark-text">Experiment Setup</h3>
+            <ul class="list-disc list-inside space-y-1">
+                <li><strong>Optimizer:</strong> AdamW</li>
+                <li><strong>Alpha:</strong> 2× rank (following Raschka's recommendation)</li>
+                <li><strong>Batch size:</strong> 32–64 depending on config</li>
+                <li><strong>Max sequence length:</strong> 512</li>
+                <li><strong>Hardware:</strong> H100 GPU on Ori Cloud (~$3.24/hr, ~$70 total experiment cost)</li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-dark-text">Memory Requirements</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="border-b border-gray-600">
+                            <th class="text-left py-2 pr-4 text-dark-accent">Config</th>
+                            <th class="text-left py-2 pr-4 text-dark-accent">Model Footprint</th>
+                            <th class="text-left py-2 text-dark-accent">Training Memory</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 pr-4">LoRA (bfloat16)</td>
+                            <td class="py-2 pr-4">5.98 GB</td>
+                            <td class="py-2">52.86 GiB</td>
+                        </tr>
+                        <tr class="border-b border-gray-700">
+                            <td class="py-2 pr-4">QLoRA (nf4)</td>
+                            <td class="py-2 pr-4">2.05 GB</td>
+                            <td class="py-2">44.20 GiB</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-bold text-dark-text">Per-Model Observations</h3>
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong>Llama 3.2 3B:</strong> Best overall performer. Default LoRA target modules outperformed all-layer config. QLoRA close to LoRA quality.</li>
+                <li><strong>Qwen 2.5 3B:</strong> Benefited from all-layer LoRA. Showed larger variance across configs, making it harder to tune reliably.</li>
+                <li><strong>Llama 3.2 1B:</strong> Smaller model showed limited headroom. Fine-tuning gains were modest and inconsistent across tasks.</li>
+            </ul>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-dark-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Repository</dt>
+                    <dd>
+                        <a href="https://github.com/pytholic/llm-peft-recipes/tree/main/LoRA" target="_blank"
+                            class="text-gray-300 hover:text-dark-accent inline-flex items-center gap-2">
+                            GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Platform</dt>
+                    <dd class="text-gray-300">H100 GPU (Ori Cloud)</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
+                    <dd class="text-gray-300">PyTorch, TRL, PEFT, bitsandbytes, lm-evaluation-harness</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Dataset</dt>
+                    <dd class="text-gray-300">Alpaca Cleaned</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Results Images -->
+        <div class="space-y-8">
+            <h3 class="text-xl font-bold">Benchmark Results</h3>
+
+            <div>
+                <p class="text-dark-accent text-sm font-bold mb-2">Base Model Comparisons</p>
+                <img src="https://raw.githubusercontent.com/pytholic/llm-peft-recipes/main/LoRA/resources/lora_insights/image1.png"
+                    alt="Base Model Comparisons" class="w-full rounded-lg border border-gray-700">
+            </div>
+
+            <div>
+                <p class="text-dark-accent text-sm font-bold mb-2">Llama 3.2 3B — LoRA vs QLoRA</p>
+                <img src="https://raw.githubusercontent.com/pytholic/llm-peft-recipes/main/LoRA/resources/lora_insights/image2.png"
+                    alt="Llama 3.2 3B Results" class="w-full rounded-lg border border-gray-700">
+            </div>
+
+            <div>
+                <p class="text-dark-accent text-sm font-bold mb-2">Qwen 2.5 3B</p>
+                <img src="https://raw.githubusercontent.com/pytholic/llm-peft-recipes/main/LoRA/resources/lora_insights/image3.png"
+                    alt="Qwen 2.5 3B Results" class="w-full rounded-lg border border-gray-700">
+            </div>
+
+            <div>
+                <p class="text-dark-accent text-sm font-bold mb-2">Llama 3.2 1B</p>
+                <img src="https://raw.githubusercontent.com/pytholic/llm-peft-recipes/main/LoRA/resources/lora_insights/image4.png"
+                    alt="Llama 3.2 1B Results" class="w-full rounded-lg border border-gray-700">
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

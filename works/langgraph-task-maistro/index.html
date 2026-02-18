@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task mAIstro - Haseeb Raja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#1a202c',
+                            card: '#2d3748',
+                            text: '#e2e8f0',
+                            accent: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+
+<body class="bg-dark-bg text-dark-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-gray-700">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Haseeb Raja</a>
+                <div class="flex gap-6">
+                    <a href="../../works.html" class="text-dark-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">Task mAIstro</h1>
+            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2025</span>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+            <p>
+                A <strong>personalized AI task management assistant</strong> built with LangGraph. It maintains a
+                <strong>persistent memory</strong> of your profile, to-do list, and custom preferences — deployed as a
+                <strong>production service</strong> backed by Postgres and Redis via Docker Compose.
+            </p>
+
+            <h3 class="text-xl font-bold text-dark-text">How It Works</h3>
+            <p>The agent runs a continuous conversation loop. On every message it decides what (if anything) to
+                remember,
+                then responds naturally.</p>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-dark-accent">Memory Namespaces (per user)</h4>
+                <ul class="list-disc list-inside space-y-1">
+                    <li><strong>Profile</strong> — name, location, job, connections, interests</li>
+                    <li><strong>ToDo list</strong> — tasks with deadlines, estimated time, solutions, and status</li>
+                    <li><strong>Instructions</strong> — user-defined preferences for how the to-do list should be
+                        managed</li>
+                </ul>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-dark-accent">On Each Turn</h4>
+                <ol class="list-decimal list-inside space-y-1">
+                    <li>The <code class="text-dark-accent">task_mAIstro</code> node loads all three memory namespaces
+                        and calls gpt-4o-mini</li>
+                    <li>The model decides whether to call the <strong>UpdateMemory</strong> tool (user, todo, or
+                        instructions)</li>
+                    <li>A conditional edge routes to the appropriate update node</li>
+                    <li><strong>Trustcall</strong> performs structured, patch-based extraction — updates existing
+                        records rather than overwriting</li>
+                    <li>After the update, control returns for a natural-language reply</li>
+                </ol>
+            </div>
+
+            <h3 class="text-xl font-bold text-dark-text">Deployment Architecture</h3>
+            <p>Three containers orchestrated via Docker Compose:</p>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left">
+                    <thead class="border-b border-gray-700">
+                        <tr>
+                            <th class="py-2 pr-4 text-dark-accent font-bold">Container</th>
+                            <th class="py-2 text-dark-accent font-bold">Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-300">
+                        <tr class="border-b border-gray-700/50">
+                            <td class="py-2 pr-4 font-mono text-sm">langgraph-api</td>
+                            <td class="py-2">Serves the graph over HTTP via LangGraph Server</td>
+                        </tr>
+                        <tr class="border-b border-gray-700/50">
+                            <td class="py-2 pr-4 font-mono text-sm">langgraph-postgres</td>
+                            <td class="py-2">Persists threads, checkpoints, store items, and assistants</td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 pr-4 font-mono text-sm">langgraph-redis</td>
+                            <td class="py-2">Token streaming via pub/sub during graph execution</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="text-xl font-bold text-dark-text">Key Features</h3>
+            <ul class="list-disc list-inside space-y-1">
+                <li><strong>Persistent long-term memory</strong> — profile, todos, and instructions stored in Postgres
+                    via LangGraph Store</li>
+                <li><strong>Trustcall extraction</strong> — structured patch-based updates instead of full overwrites
+                </li>
+                <li><strong>Versioned assistants</strong> — create separate personal/work configurations from the same
+                    graph</li>
+                <li><strong>Double texting</strong> — handles concurrent messages with reject, enqueue, interrupt, or
+                    rollback strategies</li>
+                <li><strong>Multiple access methods</strong> — LangSmith Studio, REST API, LangGraph SDK, Remote Graph
+                </li>
+            </ul>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-dark-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Repository</dt>
+                    <dd>
+                        <a href="https://github.com/pytholic/langgraph-task-maistro" target="_blank"
+                            class="text-gray-300 hover:text-dark-accent inline-flex items-center gap-2">
+                            GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
+                    <dd class="text-gray-300">LangGraph, LangChain, OpenAI (gpt-4o-mini), Trustcall, Docker Compose,
+                        Postgres, Redis, LangSmith</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Platform</dt>
+                    <dd class="text-gray-300">Docker Compose (LangGraph Server + Postgres + Redis)</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Graph Flows -->
+        <!-- Container: No fixed height, use max-width to control the size -->
+        <div class="w-full mb-12 flex justify-center">
+            <div class="mermaid w-full max-w-2xl">
+                flowchart LR
+                START([START]) --> task_mAIstro
+
+                task_mAIstro -->|no tool call| END([END])
+                task_mAIstro -->|update_type=user| update_profile
+                task_mAIstro -->|update_type=todo| update_todos
+                task_mAIstro -->|update_type=instructions| update_instructions
+
+                update_profile --> task_mAIstro
+                update_todos --> task_mAIstro
+                update_instructions --> task_mAIstro
+            </div>
+        </div>
+        <div class="w-full mb-12 flex justify-center">
+            <div class="mermaid w-full max-w-2xl">
+                flowchart TD
+                %% Boundary for Docker Compose
+                subgraph DockerCompose [docker-compose env]
+                direction TB
+
+                %% Internal Services
+                Server[LangGraph Server<br /><b>API :8123</b>]
+
+                subgraph Infrastructure [Data & Messaging Layer]
+                direction LR
+                Postgres[(Postgres<br /><i>state + store</i>)]
+                Redis[(Redis<br /><i>stream pub/sub</i>)]
+                end
+                end
+
+                %% Internal Connections
+                Server <--> Postgres
+                    Server <--> Redis
+
+                        %% External Interface
+                        Clients([SDK Client / Remote Graph<br />LangSmith Studio / REST API])
+
+                        %% External Connection
+                        Server <== " HTTP / REST "==> Clients
+
+                            %% Styling
+                            classDef docker fill:transparent,stroke:#2496ed,stroke-width:2px,stroke-dasharray: 5 5
+                            classDef server fill:#f8fafc,stroke:#1e293b,stroke-width:2px,color:#1e293b
+                            classDef db fill:#f1f5f9,stroke:#475569,stroke-width:1px,color:#334155
+                            classDef ext fill:#3b82f6,stroke:#1d4ed8,stroke-width:2px,color:#fff
+
+                            class DockerCompose docker
+                            class Server server
+                            class Postgres,Redis db
+                            class Clients ext
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

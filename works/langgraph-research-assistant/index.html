@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LangGraph Research Assistant - Haseeb Raja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#1a202c',
+                            card: '#2d3748',
+                            text: '#e2e8f0',
+                            accent: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+
+<body class="bg-dark-bg text-dark-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-gray-700">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Haseeb Raja</a>
+                <div class="flex gap-6">
+                    <a href="../../works.html" class="text-dark-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">LangGraph Research Assistant</h1>
+            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2025</span>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+            <p>
+                A <strong>multi-agent research system</strong> built with LangGraph that automates deep-dive research
+                on any topic. It generates a panel of AI analyst personas, conducts <strong>parallel expert
+                    interviews</strong> grounded in web and Wikipedia search, and synthesizes findings into a
+                structured report — with a <strong>human-in-the-loop checkpoint</strong> to guide the process.
+            </p>
+
+            <h3 class="text-xl font-bold text-dark-text">How It Works</h3>
+            <p>The graph runs in two phases separated by a human approval step:</p>
+
+            <div class="space-y-4">
+                <div>
+                    <h4 class="font-bold text-dark-accent">Phase 1 — Analyst Generation</h4>
+                    <ul class="list-disc list-inside space-y-1 mt-2">
+                        <li>Given a topic, the graph generates <strong>AI analyst personas</strong>, each focused on a
+                            distinct sub-theme</li>
+                        <li>The graph <strong>pauses for human feedback</strong> — approve or request changes</li>
+                        <li>If feedback is provided, analysts are <strong>regenerated incorporating the
+                                feedback</strong> until approved</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-dark-accent">Phase 2 — Parallel Interviews & Report</h4>
+                    <ul class="list-disc list-inside space-y-1 mt-2">
+                        <li>Each analyst conducts an independent interview with an AI expert</li>
+                        <li>Each turn triggers <strong>parallel Tavily web + Wikipedia searches</strong> to ground
+                            answers in real sources</li>
+                        <li>All interviews run <strong>simultaneously via map-reduce</strong> (LangGraph <code
+                                class="text-dark-accent">Send()</code> API)</li>
+                        <li>After interviews complete, <strong>report sections are written in parallel</strong>, then
+                            combined into a final report with introduction, body, and conclusion</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold text-dark-text">Key Patterns</h3>
+            <ul class="list-disc list-inside space-y-1">
+                <li><strong>Map-reduce parallelism</strong> — all analyst interviews run concurrently via <code
+                        class="text-dark-accent">Send()</code></li>
+                <li><strong>Human-in-the-loop</strong> — <code class="text-dark-accent">interrupt_before</code> pauses
+                    for analyst approval</li>
+                <li><strong>Parallel tool execution</strong> — web + Wikipedia searches run simultaneously per interview
+                    turn</li>
+                <li><strong>Structured output</strong> — Pydantic models enforce analyst persona schema</li>
+                <li><strong>Sub-graph composition</strong> — interview graph compiled as a node inside the research
+                    graph</li>
+            </ul>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-dark-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Repository</dt>
+                    <dd>
+                        <a href="https://github.com/pytholic/langgraph-research-assistant" target="_blank"
+                            class="text-gray-300 hover:text-dark-accent inline-flex items-center gap-2">
+                            GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
+                    <dd class="text-gray-300">LangGraph, LangChain, OpenAI (gpt-4o-mini), Tavily, Wikipedia, Pydantic,
+                        LangSmith</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Platform</dt>
+                    <dd class="text-gray-300">LangGraph Studio (dev server)</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Graph Flow -->
+        <div class="w-full mb-12 flex justify-center">
+            <div class="mermaid w-full max-w-3xl">
+                flowchart LR
+                %% Node Definitions
+                START([START])
+                END([END])
+
+                A[create_analysts]
+                B{human_feedback}
+                C[[conduct_interview <br />xN Parallel]]
+
+                subgraph WritingTasks [Parallel Writing Phase]
+                direction TB
+                W1[write_report]
+                W2[write_introduction]
+                W3[write_conclusion]
+                end
+
+                D[finalize_report]
+
+                %% Connections
+                START --> A
+                A --> B
+
+                %% Feedback Loop
+                B -- feedback --> A
+
+                %% Approval Path
+                B -- approve --> C
+
+                %% Branching to Parallel Writing
+                C --> W1
+                C --> W2
+                C --> W3
+
+                %% Re-converging
+                W1 --> D
+                W2 --> D
+                W3 --> D
+
+                D --> END
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
