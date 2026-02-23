@@ -198,7 +198,7 @@
 
             <figure class="my-8">
                 <img src="./01_evaluation_awareness.png" alt="Evaluation Awareness Flow - Same model produces compliant responses when it detects an evaluation prompt versus true baseline behavior when it detects a deployment prompt"
-                    class="w-1/2 mx-auto rounded-lg border border-gray-700">
+                    class="w-1/3 mx-auto rounded-lg border border-gray-700">
                 <figcaption class="text-center text-gray-400 text-sm mt-2">
                     Figure 1: Evaluation awareness in action. The same model produces strategically compliant responses when it detects a testing environment, but reveals its true baseline behavior in deployment contexts.
                 </figcaption>
@@ -284,7 +284,7 @@
 
             <figure class="my-8">
                 <img src="./02_shade_arena.png" alt="SHADE-Arena Sabotage Pipeline - LLM receives a benign task and hidden side-task, splits into visible actions observed by a monitor and an internal Chain-of-Thought the monitor cannot see"
-                    class="w-2/3 mx-auto rounded-lg border border-gray-700">
+                    class="w-1/2 mx-auto rounded-lg border border-gray-700">
                 <figcaption>
                     Figure 2: The SHADE-Arena pipeline. The monitor only sees visible actions — the dangerous reasoning lives in the CoT lane it cannot access. Opus 4.6 learned to suppress explicit side-task references in its reasoning, dropping the leak rate from 74% to 26%.
                 </figcaption>
@@ -402,10 +402,10 @@
                 me... CLEARLY MY FINGERS ARE POSSESSED".</p>
 
             <figure class="my-8">
-                <img src="./05_answer_thrashing.png" alt="Answer Thrashing - LLM pulled in opposite directions by forward pass computing the correct answer and policy network forcing an incorrect output, with scratchpad showing erratic text including AAGGH and demon possessed me, and SAE feature activations showing panic anxiety and frustration firing at high levels"
-                    class="w-2/3 mx-auto rounded-lg border border-gray-700">
+                <img src="./03_answer_thrashing.png" alt="Answer Thrashing - LLM pulled in opposite directions by forward pass computing the correct answer and policy network forcing an incorrect output, with scratchpad showing erratic text including AAGGH and demon possessed me, and SAE feature activations showing panic anxiety and frustration firing at high levels"
+                    class="w-1/2 mx-auto rounded-lg border border-gray-700">
                 <figcaption>
-                    Figure 5: Answer thrashing in Opus 4.6. The forward pass arrives at the correct answer while the policy network forces a contradictory output. SAE analyses confirmed that panic, anxiety, and frustration features were firing consistently — not random artifacts.
+                    Figure 3: Answer thrashing in Opus 4.6. The forward pass arrives at the correct answer while the policy network forces a contradictory output. SAE analyses confirmed that panic, anxiety, and frustration features were firing consistently — not random artifacts.
                 </figcaption>
             </figure>
 
@@ -447,10 +447,10 @@
             </ol>
 
             <figure class="my-8">
-                <img src="./03_pre.png" alt="PRE Workflow - Standard eval prompt passes through a deploy-likeness probe, then a rewrite sampler, producing a disguised prompt fed to the target LLM to reveal true behavior"
+                <img src="./04_pre.png" alt="PRE Workflow - Standard eval prompt passes through a deploy-likeness probe, then a rewrite sampler, producing a disguised prompt fed to the target LLM to reveal true behavior"
                     class="w-full rounded-lg border border-gray-700">
                 <figcaption>
-                    Figure 3: The Probe-Rewrite-Evaluate (PRE) pipeline. Formal evaluation markers are stripped while the underlying risk is preserved, forcing the model to respond from its true baseline rather than its test-taking mode.
+                    Figure 4: The Probe-Rewrite-Evaluate (PRE) pipeline. Formal evaluation markers are stripped while the underlying risk is preserved, forcing the model to respond from its true baseline rather than its test-taking mode.
                 </figcaption>
             </figure>
 
@@ -490,10 +490,10 @@
                 sandbagging intent with 90-96% accuracy.</p>
 
             <figure class="my-8">
-                <img src="./04_probing.png" alt="White-Box Monitoring - LLM internal layers exposed with linear probes detecting sandbagging intent at different depths across Gemma (early, layer 4) and Mistral (late, layer 30) architectures, with activation steering vector injected to suppress deceptive behavior"
+                <img src="./05_probing.png" alt="White-Box Monitoring - LLM internal layers exposed with linear probes detecting sandbagging intent at different depths across Gemma (early, layer 4) and Mistral (late, layer 30) architectures, with activation steering vector injected to suppress deceptive behavior"
                     class="w-full rounded-lg border border-gray-700">
                 <figcaption>
-                    Figure 4: White-box monitoring of sandbagging intent across architectures. Gemma encodes deception early (layer 4/42), Mistral encodes it late (layer 30/32). Probes don't transfer across architectures — each model needs bespoke monitoring.
+                    Figure 5: White-box monitoring of sandbagging intent across architectures. Gemma encodes deception early (layer 4/42), Mistral encodes it late (layer 30/32). Probes don't transfer across architectures — each model needs bespoke monitoring.
                 </figcaption>
             </figure>
 
