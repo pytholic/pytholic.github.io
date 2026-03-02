@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Walkthrough - Haseeb Raja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#1a202c',
+                            card: '#2d3748',
+                            text: '#e2e8f0',
+                            accent: '#14b8a6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dark-bg text-dark-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-dark-card border-b border-gray-700">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Haseeb Raja</a>
+                <div class="flex gap-6">
+                    <a href="../../works.html" class="text-dark-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">MCP Walkthrough: From Basics to Full Chatbot</h1>
+            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2026</span>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+            <p>
+                An <strong>MCP-powered research assistant</strong> demonstrating the Model Context Protocol (MCP) using FastMCP and OpenAI. This project acts as a step-by-step walkthrough, progressing from basic tool calling to a multi-server chatbot with resources, prompts, and Claude Desktop integration.
+            </p>
+
+            <h3 class="text-xl font-bold text-dark-text">Progression</h3>
+            <ul class="list-disc list-inside space-y-2">
+                <li><strong>Basic Tool Calling:</strong> OpenAI tool calling without MCP to understand the baseline.</li>
+                <li><strong>Single Server Chatbot:</strong> Replaces manual definitions with an MCP client that automatically discovers tools from the server.</li>
+                <li><strong>Multi-Server System:</strong> Connects to multiple MCP servers, automatically routing tool calls.</li>
+                <li><strong>Full-Featured Chatbot:</strong> Integrates MCP resources (like dynamic topics) and prompts alongside tools.</li>
+            </ul>
+
+            <h3 class="text-xl font-bold text-dark-text">Features & Integrations</h3>
+            <ul class="list-disc list-inside space-y-1">
+                <li><strong>Tools:</strong> Search arXiv papers and extract details.</li>
+                <li><strong>Resources & Prompts:</strong> List available folders, read dynamic resources, and generate structured research prompts.</li>
+                <li><strong>Claude Desktop:</strong> Integrated as a local and remote research server within Claude Desktop.</li>
+                <li><strong>Deployment:</strong> Features both <code>stdio</code> and <code>Streamable HTTP</code> transports, with remote deployment on Render.com.</li>
+            </ul>
+
+            <div class="mt-8 space-y-6" style="display: flex; justify-content: center; align-items: center;">
+                <img src="./communication_lifecycle.png" alt="MCP Communication Lifecycle" class="w-1/2 h-1/2 rounded-lg shadow-lg border border-gray-700 bg-white p-2">
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <img src="./tools_resources_prompts.png" alt="MCP Tools, Resources, and Prompts" class="w-2/3 rounded-lg shadow-lg border border-gray-700 bg-white p-2">
+            </div>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-dark-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Repository</dt>
+                    <dd>
+                        <a href="https://github.com/pytholic/mcp-walkthrough" target="_blank"
+                            class="text-gray-300 hover:text-dark-accent inline-flex items-center gap-2">
+                            GitHub
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Platform</dt>
+                    <dd class="text-gray-300">Python CLI, Render.com</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
+                    <dd class="text-gray-300">FastMCP, Model Context Protocol, OpenAI, Python, Claude Desktop</dd>
+                </div>
+            </dl>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-700 mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
