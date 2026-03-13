@@ -48,6 +48,22 @@
     display: block;
 }
 
+/* Active nav indicator (scoped to nav links, not the site name) */
+nav .flex.gap-6 a.text-theme-accent {
+    position: relative;
+}
+
+nav .flex.gap-6 a.text-theme-accent::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
+}
+
 /* Smooth transitions */
 body,
 nav,
