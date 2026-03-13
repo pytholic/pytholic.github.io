@@ -11,29 +11,46 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: {
-                            bg: '#1a202c',
-                            card: '#2d3748',
-                            text: '#e2e8f0',
-                            accent: '#14b8a6'
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            text: 'var(--color-text)',
+                            secondary: 'var(--color-text-secondary)',
+                            muted: 'var(--color-text-muted)',
+                            faint: 'var(--color-text-faint)',
+                            accent: 'var(--color-accent)',
+                            'accent-hover': 'var(--color-accent-hover)',
+                            border: 'var(--color-border)',
+                            'border-light': 'var(--color-border-light)',
+                            surface: 'var(--color-surface)',
                         }
                     }
                 }
             }
         }
     </script>
+    <link rel="stylesheet" href="../../theme.css">
+    <script src="../../theme.js"></script>
 </head>
 
-<body class="bg-dark-bg text-dark-text min-h-screen">
+<body class="bg-theme-bg text-theme-text min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-dark-card border-b border-gray-700">
+    <nav class="bg-theme-card border-b border-theme-border">
         <div class="max-w-4xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Haseeb Raja</a>
-                <div class="flex gap-6">
-                    <a href="../../works.html" class="text-dark-accent">Works</a>
-                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
-                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                <a href="../../index.html" class="text-xl font-bold text-theme-accent">Haseeb Raja</a>
+                <div class="flex gap-6 items-center">
+                    <a href="../../works.html" class="text-theme-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-theme-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-theme-accent transition-colors">Uses</a>
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-theme-surface transition-colors" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -42,7 +59,7 @@
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-12">
         <!-- Back Button -->
-        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-theme-accent hover:underline mb-8">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
@@ -52,25 +69,25 @@
         <!-- Project Title -->
         <div class="mb-8">
             <h1 class="text-4xl font-bold mb-3">LLM Inference Framework Benchmarks</h1>
-            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2025</span>
+            <span class="inline-block bg-theme-accent text-theme-bg px-3 py-1 rounded-full text-sm">2025</span>
             <span class="inline-block bg-gray-600 text-white px-3 py-1 rounded-full text-sm ml-2">Lunit</span>
         </div>
 
         <!-- Project Description -->
-        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+        <div class="space-y-6 text-theme-secondary leading-relaxed mb-12">
             <p>
                 A systematic evaluation of open-source LLM inference frameworks to select the best option for
                 Lunit's Report Generation project. Benchmarked llama.cpp, ExLlamaV2, and Ollama across multiple
                 models (Phi-3.5 Mini, Llama-3.1-8B) and quantization levels (INT4, INT8, FP16) on both CPU and GPU.
             </p>
 
-            <h3 class="text-xl font-bold text-dark-text">Goal</h3>
+            <h3 class="text-xl font-bold text-theme-text">Goal</h3>
             <p>
                 Pick an inference framework that balances speed, memory efficiency, and deployment flexibility for
                 production medical report generation.
             </p>
 
-            <h3 class="text-xl font-bold text-dark-text">What Was Measured</h3>
+            <h3 class="text-xl font-bold text-theme-text">What Was Measured</h3>
             <ul class="list-disc list-inside space-y-1">
                 <li>Time to First Token (TTFT)</li>
                 <li>Tokens per second and per-token latency (TPOT)</li>
@@ -79,11 +96,11 @@
                 <li>Docker vs local deployment overhead</li>
             </ul>
 
-            <h3 class="text-xl font-bold text-dark-text">Frameworks Tested</h3>
+            <h3 class="text-xl font-bold text-theme-text">Frameworks Tested</h3>
 
             <div class="space-y-4">
-                <div class="bg-dark-card rounded-lg p-4">
-                    <h4 class="font-bold text-dark-accent mb-2">llama.cpp / llama-cpp-python</h4>
+                <div class="bg-theme-card rounded-lg p-4">
+                    <h4 class="font-bold text-theme-accent mb-2">llama.cpp / llama-cpp-python</h4>
                     <p>
                         Tested via native CLI, Python bindings, llama-server, and Docker. Covered GGUF model
                         conversion, quantization (Q4_0, Q8_0, FP16), and GPU offloading with CUDA.
@@ -92,8 +109,8 @@
                     </p>
                 </div>
 
-                <div class="bg-dark-card rounded-lg p-4">
-                    <h4 class="font-bold text-dark-accent mb-2">ExLlamaV2</h4>
+                <div class="bg-theme-card rounded-lg p-4">
+                    <h4 class="font-bold text-theme-accent mb-2">ExLlamaV2</h4>
                     <p>
                         GPU-only framework with its own quantization format (EXL2). Achieved the highest throughput
                         — 208 tokens/s on Q4 with Phi-3.5 on an NVIDIA L4. Best raw speed but limited to GPU
@@ -101,8 +118,8 @@
                     </p>
                 </div>
 
-                <div class="bg-dark-card rounded-lg p-4">
-                    <h4 class="font-bold text-dark-accent mb-2">Ollama</h4>
+                <div class="bg-theme-card rounded-lg p-4">
+                    <h4 class="font-bold text-theme-accent mb-2">Ollama</h4>
                     <p>
                         Built on llama.cpp with a higher-level API and Docker-first workflow. Simplest setup and
                         model management via Modelfiles, but less fine-grained control over inference parameters.
@@ -110,7 +127,7 @@
                 </div>
             </div>
 
-            <h3 class="text-xl font-bold text-dark-text">Key Findings</h3>
+            <h3 class="text-xl font-bold text-theme-text">Key Findings</h3>
             <ul class="list-disc list-inside space-y-1">
                 <li>llama.cpp offered the best balance of speed, memory, and deployment flexibility</li>
                 <li>INT4 quantization cuts model size by ~3x with only modest quality trade-offs</li>
@@ -121,13 +138,13 @@
         </div>
 
         <!-- Project Info -->
-        <div class="bg-dark-card rounded-lg p-6 mb-12">
+        <div class="bg-theme-card rounded-lg p-6 mb-12">
             <dl class="space-y-4">
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Repository</dt>
+                    <dt class="font-bold text-theme-accent mb-1">Repository</dt>
                     <dd>
                         <a href="https://github.com/pytholic/llm-inference-tests" target="_blank"
-                            class="text-gray-300 hover:text-dark-accent inline-flex items-center gap-2">
+                            class="text-theme-secondary hover:text-theme-accent inline-flex items-center gap-2">
                             GitHub
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -138,20 +155,20 @@
                     </dd>
                 </div>
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Context</dt>
-                    <dd class="text-gray-300">Lunit — Report Generation project</dd>
+                    <dt class="font-bold text-theme-accent mb-1">Context</dt>
+                    <dd class="text-theme-secondary">Lunit — Report Generation project</dd>
                 </div>
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Models</dt>
-                    <dd class="text-gray-300">Phi-3.5 Mini Instruct, Llama-3.1-8B Instruct</dd>
+                    <dt class="font-bold text-theme-accent mb-1">Models</dt>
+                    <dd class="text-theme-secondary">Phi-3.5 Mini Instruct, Llama-3.1-8B Instruct</dd>
                 </div>
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Hardware</dt>
-                    <dd class="text-gray-300">Intel Xeon Gold 6240 (CPU), NVIDIA 2080 Ti / L4 (GPU)</dd>
+                    <dt class="font-bold text-theme-accent mb-1">Hardware</dt>
+                    <dd class="text-theme-secondary">Intel Xeon Gold 6240 (CPU), NVIDIA 2080 Ti / L4 (GPU)</dd>
                 </div>
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
-                    <dd class="text-gray-300">llama.cpp, llama-cpp-python, ExLlamaV2, Ollama, CUDA, Docker</dd>
+                    <dt class="font-bold text-theme-accent mb-1">Stack</dt>
+                    <dd class="text-theme-secondary">llama.cpp, llama-cpp-python, ExLlamaV2, Ollama, CUDA, Docker</dd>
                 </div>
             </dl>
         </div>
@@ -162,54 +179,54 @@
             <!-- CPU Results: Phi-3.5 -->
             <div>
                 <h3 class="text-xl font-bold mb-2">CPU Results — Phi-3.5 Mini Instruct</h3>
-                <p class="text-gray-400 text-sm mb-4">llama-cpp-python &middot; Intel Xeon Gold 6240 &middot; 18 threads
+                <p class="text-theme-muted text-sm mb-4">llama-cpp-python &middot; Intel Xeon Gold 6240 &middot; 18 threads
                 </p>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-gray-300 border border-gray-700">
-                        <thead class="bg-dark-card text-dark-accent">
+                    <table class="w-full text-sm text-theme-secondary border border-theme-border">
+                        <thead class="bg-theme-card text-theme-accent">
                             <tr>
-                                <th class="px-4 py-2 text-left border border-gray-700">Metric</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q4_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q8_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">FP16</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Metric</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q4_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q8_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">FP16</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TTFT</td>
-                                <td class="px-4 py-2 border border-gray-700">6.18 &plusmn; 0.98 s</td>
-                                <td class="px-4 py-2 border border-gray-700">6.18 &plusmn; 0.47 s</td>
-                                <td class="px-4 py-2 border border-gray-700">5.84 &plusmn; 1.19 s</td>
+                                <td class="px-4 py-2 border border-theme-border">TTFT</td>
+                                <td class="px-4 py-2 border border-theme-border">6.18 &plusmn; 0.98 s</td>
+                                <td class="px-4 py-2 border border-theme-border">6.18 &plusmn; 0.47 s</td>
+                                <td class="px-4 py-2 border border-theme-border">5.84 &plusmn; 1.19 s</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Generation Time</td>
-                                <td class="px-4 py-2 border border-gray-700">23.47 &plusmn; 0.37 s</td>
-                                <td class="px-4 py-2 border border-gray-700">50.14 &plusmn; 0.42 s</td>
-                                <td class="px-4 py-2 border border-gray-700">69.97 &plusmn; 0.27 s</td>
+                                <td class="px-4 py-2 border border-theme-border">Generation Time</td>
+                                <td class="px-4 py-2 border border-theme-border">23.47 &plusmn; 0.37 s</td>
+                                <td class="px-4 py-2 border border-theme-border">50.14 &plusmn; 0.42 s</td>
+                                <td class="px-4 py-2 border border-theme-border">69.97 &plusmn; 0.27 s</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Tokens/s</td>
-                                <td class="px-4 py-2 border border-gray-700">21.82</td>
-                                <td class="px-4 py-2 border border-gray-700">10.21</td>
-                                <td class="px-4 py-2 border border-gray-700">7.32</td>
+                                <td class="px-4 py-2 border border-theme-border">Tokens/s</td>
+                                <td class="px-4 py-2 border border-theme-border">21.82</td>
+                                <td class="px-4 py-2 border border-theme-border">10.21</td>
+                                <td class="px-4 py-2 border border-theme-border">7.32</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TPOT</td>
-                                <td class="px-4 py-2 border border-gray-700">45.84 ms</td>
-                                <td class="px-4 py-2 border border-gray-700">97.93 ms</td>
-                                <td class="px-4 py-2 border border-gray-700">136.67 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">TPOT</td>
+                                <td class="px-4 py-2 border border-theme-border">45.84 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">97.93 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">136.67 ms</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Peak Memory</td>
-                                <td class="px-4 py-2 border border-gray-700">3,035 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">4,859 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">8,275 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">Peak Memory</td>
+                                <td class="px-4 py-2 border border-theme-border">3,035 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">4,859 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">8,275 MB</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Model Size</td>
-                                <td class="px-4 py-2 border border-gray-700">2.1 GB</td>
-                                <td class="px-4 py-2 border border-gray-700">3.8 GB</td>
-                                <td class="px-4 py-2 border border-gray-700">7.2 GB</td>
+                                <td class="px-4 py-2 border border-theme-border">Model Size</td>
+                                <td class="px-4 py-2 border border-theme-border">2.1 GB</td>
+                                <td class="px-4 py-2 border border-theme-border">3.8 GB</td>
+                                <td class="px-4 py-2 border border-theme-border">7.2 GB</td>
                             </tr>
                         </tbody>
                     </table>
@@ -219,54 +236,54 @@
             <!-- CPU Results: Llama-3.1 -->
             <div>
                 <h3 class="text-xl font-bold mb-2">CPU Results — Llama-3.1-8B Instruct</h3>
-                <p class="text-gray-400 text-sm mb-4">llama-cpp-python &middot; Intel Xeon Gold 6240 &middot; 18 threads
+                <p class="text-theme-muted text-sm mb-4">llama-cpp-python &middot; Intel Xeon Gold 6240 &middot; 18 threads
                 </p>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-gray-300 border border-gray-700">
-                        <thead class="bg-dark-card text-dark-accent">
+                    <table class="w-full text-sm text-theme-secondary border border-theme-border">
+                        <thead class="bg-theme-card text-theme-accent">
                             <tr>
-                                <th class="px-4 py-2 text-left border border-gray-700">Metric</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q4_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q8_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">FP16</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Metric</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q4_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q8_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">FP16</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TTFT</td>
-                                <td class="px-4 py-2 border border-gray-700">9.80 &plusmn; 4.32 s</td>
-                                <td class="px-4 py-2 border border-gray-700">8.84 &plusmn; 0.67 s</td>
-                                <td class="px-4 py-2 border border-gray-700">10.12 &plusmn; 3.07 s</td>
+                                <td class="px-4 py-2 border border-theme-border">TTFT</td>
+                                <td class="px-4 py-2 border border-theme-border">9.80 &plusmn; 4.32 s</td>
+                                <td class="px-4 py-2 border border-theme-border">8.84 &plusmn; 0.67 s</td>
+                                <td class="px-4 py-2 border border-theme-border">10.12 &plusmn; 3.07 s</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Generation Time</td>
-                                <td class="px-4 py-2 border border-gray-700">26.69 &plusmn; 3.08 s</td>
-                                <td class="px-4 py-2 border border-gray-700">74.26 &plusmn; 0.26 s</td>
-                                <td class="px-4 py-2 border border-gray-700">114.13 &plusmn; 1.77 s</td>
+                                <td class="px-4 py-2 border border-theme-border">Generation Time</td>
+                                <td class="px-4 py-2 border border-theme-border">26.69 &plusmn; 3.08 s</td>
+                                <td class="px-4 py-2 border border-theme-border">74.26 &plusmn; 0.26 s</td>
+                                <td class="px-4 py-2 border border-theme-border">114.13 &plusmn; 1.77 s</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Tokens/s</td>
-                                <td class="px-4 py-2 border border-gray-700">15.13</td>
-                                <td class="px-4 py-2 border border-gray-700">6.05</td>
-                                <td class="px-4 py-2 border border-gray-700">3.78</td>
+                                <td class="px-4 py-2 border border-theme-border">Tokens/s</td>
+                                <td class="px-4 py-2 border border-theme-border">15.13</td>
+                                <td class="px-4 py-2 border border-theme-border">6.05</td>
+                                <td class="px-4 py-2 border border-theme-border">3.78</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TPOT</td>
-                                <td class="px-4 py-2 border border-gray-700">66.90 ms</td>
-                                <td class="px-4 py-2 border border-gray-700">165.39 ms</td>
-                                <td class="px-4 py-2 border border-gray-700">264.79 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">TPOT</td>
+                                <td class="px-4 py-2 border border-theme-border">66.90 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">165.39 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">264.79 ms</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Peak Memory</td>
-                                <td class="px-4 py-2 border border-gray-700">4,925 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">8,657 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">15,836 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">Peak Memory</td>
+                                <td class="px-4 py-2 border border-theme-border">4,925 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">8,657 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">15,836 MB</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Model Size</td>
-                                <td class="px-4 py-2 border border-gray-700">4.4 GB</td>
-                                <td class="px-4 py-2 border border-gray-700">8.0 GB</td>
-                                <td class="px-4 py-2 border border-gray-700">15 GB</td>
+                                <td class="px-4 py-2 border border-theme-border">Model Size</td>
+                                <td class="px-4 py-2 border border-theme-border">4.4 GB</td>
+                                <td class="px-4 py-2 border border-theme-border">8.0 GB</td>
+                                <td class="px-4 py-2 border border-theme-border">15 GB</td>
                             </tr>
                         </tbody>
                     </table>
@@ -276,47 +293,47 @@
             <!-- GPU Results: Phi-3.5 -->
             <div>
                 <h3 class="text-xl font-bold mb-2">GPU Results — Phi-3.5 Mini Instruct</h3>
-                <p class="text-gray-400 text-sm mb-4">llama-cpp-python + CUDA &middot; NVIDIA 2080 Ti (11 GB)</p>
+                <p class="text-theme-muted text-sm mb-4">llama-cpp-python + CUDA &middot; NVIDIA 2080 Ti (11 GB)</p>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-gray-300 border border-gray-700">
-                        <thead class="bg-dark-card text-dark-accent">
+                    <table class="w-full text-sm text-theme-secondary border border-theme-border">
+                        <thead class="bg-theme-card text-theme-accent">
                             <tr>
-                                <th class="px-4 py-2 text-left border border-gray-700">Metric</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q4_K_S</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q8_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">FP16</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Metric</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q4_K_S</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q8_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">FP16</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TTFT</td>
-                                <td class="px-4 py-2 border border-gray-700">0.39 s</td>
-                                <td class="px-4 py-2 border border-gray-700">0.37 s</td>
-                                <td class="px-4 py-2 border border-gray-700">0.33 s</td>
+                                <td class="px-4 py-2 border border-theme-border">TTFT</td>
+                                <td class="px-4 py-2 border border-theme-border">0.39 s</td>
+                                <td class="px-4 py-2 border border-theme-border">0.37 s</td>
+                                <td class="px-4 py-2 border border-theme-border">0.33 s</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Generation Time</td>
-                                <td class="px-4 py-2 border border-gray-700">4.86 s</td>
-                                <td class="px-4 py-2 border border-gray-700">6.29 s</td>
-                                <td class="px-4 py-2 border border-gray-700">9.28 s</td>
+                                <td class="px-4 py-2 border border-theme-border">Generation Time</td>
+                                <td class="px-4 py-2 border border-theme-border">4.86 s</td>
+                                <td class="px-4 py-2 border border-theme-border">6.29 s</td>
+                                <td class="px-4 py-2 border border-theme-border">9.28 s</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Tokens/s</td>
-                                <td class="px-4 py-2 border border-gray-700 font-bold text-dark-accent">112.16</td>
-                                <td class="px-4 py-2 border border-gray-700">85.50</td>
-                                <td class="px-4 py-2 border border-gray-700">57.00</td>
+                                <td class="px-4 py-2 border border-theme-border">Tokens/s</td>
+                                <td class="px-4 py-2 border border-theme-border font-bold text-theme-accent">112.16</td>
+                                <td class="px-4 py-2 border border-theme-border">85.50</td>
+                                <td class="px-4 py-2 border border-theme-border">57.00</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TPOT</td>
-                                <td class="px-4 py-2 border border-gray-700">8.92 ms</td>
-                                <td class="px-4 py-2 border border-gray-700">11.70 ms</td>
-                                <td class="px-4 py-2 border border-gray-700">17.50 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">TPOT</td>
+                                <td class="px-4 py-2 border border-theme-border">8.92 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">11.70 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">17.50 ms</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">GPU Memory</td>
-                                <td class="px-4 py-2 border border-gray-700">3,193 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">4,933 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">8,247 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">GPU Memory</td>
+                                <td class="px-4 py-2 border border-theme-border">3,193 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">4,933 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">8,247 MB</td>
                             </tr>
                         </tbody>
                     </table>
@@ -326,47 +343,47 @@
             <!-- GPU Results: Llama-3.1 -->
             <div>
                 <h3 class="text-xl font-bold mb-2">GPU Results — Llama-3.1-8B Instruct</h3>
-                <p class="text-gray-400 text-sm mb-4">llama-cpp-python + CUDA &middot; NVIDIA 2080 Ti (11 GB)</p>
+                <p class="text-theme-muted text-sm mb-4">llama-cpp-python + CUDA &middot; NVIDIA 2080 Ti (11 GB)</p>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-gray-300 border border-gray-700">
-                        <thead class="bg-dark-card text-dark-accent">
+                    <table class="w-full text-sm text-theme-secondary border border-theme-border">
+                        <thead class="bg-theme-card text-theme-accent">
                             <tr>
-                                <th class="px-4 py-2 text-left border border-gray-700">Metric</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q4_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q8_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">FP16</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Metric</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q4_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q8_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">FP16</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TTFT</td>
-                                <td class="px-4 py-2 border border-gray-700">0.48 s</td>
-                                <td class="px-4 py-2 border border-gray-700">0.49 s</td>
-                                <td class="px-4 py-2 border border-gray-700 text-gray-500">OOM</td>
+                                <td class="px-4 py-2 border border-theme-border">TTFT</td>
+                                <td class="px-4 py-2 border border-theme-border">0.48 s</td>
+                                <td class="px-4 py-2 border border-theme-border">0.49 s</td>
+                                <td class="px-4 py-2 border border-theme-border text-theme-faint">OOM</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Generation Time</td>
-                                <td class="px-4 py-2 border border-gray-700">5.18 s</td>
-                                <td class="px-4 py-2 border border-gray-700">6.21 s</td>
-                                <td class="px-4 py-2 border border-gray-700 text-gray-500">OOM</td>
+                                <td class="px-4 py-2 border border-theme-border">Generation Time</td>
+                                <td class="px-4 py-2 border border-theme-border">5.18 s</td>
+                                <td class="px-4 py-2 border border-theme-border">6.21 s</td>
+                                <td class="px-4 py-2 border border-theme-border text-theme-faint">OOM</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Tokens/s</td>
-                                <td class="px-4 py-2 border border-gray-700">82.49</td>
-                                <td class="px-4 py-2 border border-gray-700">56.42</td>
-                                <td class="px-4 py-2 border border-gray-700 text-gray-500">OOM</td>
+                                <td class="px-4 py-2 border border-theme-border">Tokens/s</td>
+                                <td class="px-4 py-2 border border-theme-border">82.49</td>
+                                <td class="px-4 py-2 border border-theme-border">56.42</td>
+                                <td class="px-4 py-2 border border-theme-border text-theme-faint">OOM</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">TPOT</td>
-                                <td class="px-4 py-2 border border-gray-700">12.12 ms</td>
-                                <td class="px-4 py-2 border border-gray-700">17.72 ms</td>
-                                <td class="px-4 py-2 border border-gray-700 text-gray-500">OOM</td>
+                                <td class="px-4 py-2 border border-theme-border">TPOT</td>
+                                <td class="px-4 py-2 border border-theme-border">12.12 ms</td>
+                                <td class="px-4 py-2 border border-theme-border">17.72 ms</td>
+                                <td class="px-4 py-2 border border-theme-border text-theme-faint">OOM</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">GPU Memory</td>
-                                <td class="px-4 py-2 border border-gray-700">4,895 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">8,309 MB</td>
-                                <td class="px-4 py-2 border border-gray-700 text-gray-500">&gt; 11 GB</td>
+                                <td class="px-4 py-2 border border-theme-border">GPU Memory</td>
+                                <td class="px-4 py-2 border border-theme-border">4,895 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">8,309 MB</td>
+                                <td class="px-4 py-2 border border-theme-border text-theme-faint">&gt; 11 GB</td>
                             </tr>
                         </tbody>
                     </table>
@@ -376,26 +393,26 @@
             <!-- ExLlamaV2 Results -->
             <div>
                 <h3 class="text-xl font-bold mb-2">ExLlamaV2 — Phi-3.5 Mini Instruct</h3>
-                <p class="text-gray-400 text-sm mb-4">NVIDIA L4 (24 GB)</p>
+                <p class="text-theme-muted text-sm mb-4">NVIDIA L4 (24 GB)</p>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-gray-300 border border-gray-700">
-                        <thead class="bg-dark-card text-dark-accent">
+                    <table class="w-full text-sm text-theme-secondary border border-theme-border">
+                        <thead class="bg-theme-card text-theme-accent">
                             <tr>
-                                <th class="px-4 py-2 text-left border border-gray-700">Metric</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q4_0</th>
-                                <th class="px-4 py-2 text-left border border-gray-700">Q8_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Metric</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q4_0</th>
+                                <th class="px-4 py-2 text-left border border-theme-border">Q8_0</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">Tokens/s</td>
-                                <td class="px-4 py-2 border border-gray-700 font-bold text-dark-accent">208.10</td>
-                                <td class="px-4 py-2 border border-gray-700">148.35</td>
+                                <td class="px-4 py-2 border border-theme-border">Tokens/s</td>
+                                <td class="px-4 py-2 border border-theme-border font-bold text-theme-accent">208.10</td>
+                                <td class="px-4 py-2 border border-theme-border">148.35</td>
                             </tr>
                             <tr>
-                                <td class="px-4 py-2 border border-gray-700">GPU Memory</td>
-                                <td class="px-4 py-2 border border-gray-700">4,600 MB</td>
-                                <td class="px-4 py-2 border border-gray-700">6,350 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">GPU Memory</td>
+                                <td class="px-4 py-2 border border-theme-border">4,600 MB</td>
+                                <td class="px-4 py-2 border border-theme-border">6,350 MB</td>
                             </tr>
                         </tbody>
                     </table>
@@ -406,29 +423,29 @@
             <div>
                 <h3 class="text-xl font-bold mb-4">Memory Footprint — Phi-3.5 Mini (CPU)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-dark-card rounded-lg p-4 text-center border border-gray-700">
-                        <p class="text-dark-accent text-sm font-bold mb-3">INT4</p>
-                        <div class="relative w-full bg-gray-800 rounded-full h-4 mb-2">
-                            <div class="bg-dark-accent h-4 rounded-full" style="width: 37%"></div>
+                    <div class="bg-theme-card rounded-lg p-4 text-center border border-theme-border">
+                        <p class="text-theme-accent text-sm font-bold mb-3">INT4</p>
+                        <div class="relative w-full bg-theme-surface rounded-full h-4 mb-2">
+                            <div class="bg-theme-accent h-4 rounded-full" style="width: 37%"></div>
                         </div>
-                        <p class="text-2xl font-bold">3.0 <span class="text-sm text-gray-400">GB peak</span></p>
-                        <p class="text-gray-500 text-xs mt-1">Model: 2.1 GB</p>
+                        <p class="text-2xl font-bold">3.0 <span class="text-sm text-theme-muted">GB peak</span></p>
+                        <p class="text-theme-faint text-xs mt-1">Model: 2.1 GB</p>
                     </div>
-                    <div class="bg-dark-card rounded-lg p-4 text-center border border-gray-700">
-                        <p class="text-dark-accent text-sm font-bold mb-3">INT8</p>
-                        <div class="relative w-full bg-gray-800 rounded-full h-4 mb-2">
-                            <div class="bg-dark-accent h-4 rounded-full" style="width: 59%"></div>
+                    <div class="bg-theme-card rounded-lg p-4 text-center border border-theme-border">
+                        <p class="text-theme-accent text-sm font-bold mb-3">INT8</p>
+                        <div class="relative w-full bg-theme-surface rounded-full h-4 mb-2">
+                            <div class="bg-theme-accent h-4 rounded-full" style="width: 59%"></div>
                         </div>
-                        <p class="text-2xl font-bold">4.9 <span class="text-sm text-gray-400">GB peak</span></p>
-                        <p class="text-gray-500 text-xs mt-1">Model: 3.8 GB</p>
+                        <p class="text-2xl font-bold">4.9 <span class="text-sm text-theme-muted">GB peak</span></p>
+                        <p class="text-theme-faint text-xs mt-1">Model: 3.8 GB</p>
                     </div>
-                    <div class="bg-dark-card rounded-lg p-4 text-center border border-gray-700">
-                        <p class="text-dark-accent text-sm font-bold mb-3">FP16</p>
-                        <div class="relative w-full bg-gray-800 rounded-full h-4 mb-2">
-                            <div class="bg-dark-accent h-4 rounded-full" style="width: 100%"></div>
+                    <div class="bg-theme-card rounded-lg p-4 text-center border border-theme-border">
+                        <p class="text-theme-accent text-sm font-bold mb-3">FP16</p>
+                        <div class="relative w-full bg-theme-surface rounded-full h-4 mb-2">
+                            <div class="bg-theme-accent h-4 rounded-full" style="width: 100%"></div>
                         </div>
-                        <p class="text-2xl font-bold">8.3 <span class="text-sm text-gray-400">GB peak</span></p>
-                        <p class="text-gray-500 text-xs mt-1">Model: 7.2 GB</p>
+                        <p class="text-2xl font-bold">8.3 <span class="text-sm text-theme-muted">GB peak</span></p>
+                        <p class="text-theme-faint text-xs mt-1">Model: 7.2 GB</p>
                     </div>
                 </div>
             </div>
@@ -437,8 +454,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-700 mt-12">
-        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+    <footer class="border-t border-theme-border mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-theme-faint">
             <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
         </div>
     </footer>

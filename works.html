@@ -11,33 +11,50 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: {
-                            bg: '#1a202c',
-                            card: '#2d3748',
-                            text: '#e2e8f0',
-                            accent: '#14b8a6'
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            text: 'var(--color-text)',
+                            secondary: 'var(--color-text-secondary)',
+                            muted: 'var(--color-text-muted)',
+                            faint: 'var(--color-text-faint)',
+                            accent: 'var(--color-accent)',
+                            'accent-hover': 'var(--color-accent-hover)',
+                            border: 'var(--color-border)',
+                            'border-light': 'var(--color-border-light)',
+                            surface: 'var(--color-surface)',
                         }
                     }
                 }
             }
         }
     </script>
+    <link rel="stylesheet" href="theme.css">
+    <script src="theme.js"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true, theme: 'dark' });
     </script>
 </head>
 
-<body class="bg-dark-bg text-dark-text min-h-screen">
+<body class="bg-theme-bg text-theme-text min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-dark-card border-b border-gray-700">
+    <nav class="bg-theme-card border-b border-theme-border">
         <div class="max-w-4xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="index.html" class="text-xl font-bold text-dark-accent">Haseeb Raja</a>
-                <div class="flex gap-6">
-                    <a href="works.html" class="text-dark-accent">Works</a>
-                    <a href="posts.html" class="hover:text-dark-accent transition-colors">Blog</a>
-                    <a href="uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                <a href="index.html" class="text-xl font-bold text-theme-accent">Haseeb Raja</a>
+                <div class="flex gap-6 items-center">
+                    <a href="works.html" class="text-theme-accent">Works</a>
+                    <a href="posts.html" class="hover:text-theme-accent transition-colors">Blog</a>
+                    <a href="uses.html" class="hover:text-theme-accent transition-colors">Uses</a>
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-theme-surface transition-colors" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -54,32 +71,32 @@
 
                 <!-- MCP Walkthrough -->
                 <a href="works/mcp-walkthrough/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/mcp-walkthrough/architecture.png" alt="MCP Walkthrough"
-                        class="w-full h-48 object-cover border-b border-gray-700 bg-white">
+                        class="w-full h-48 object-cover border-b border-theme-border bg-white">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">MCP Walkthrough</h3>
-                        <p class="text-gray-400 text-sm">An MCP-powered research assistant — from basic tool calling to a multi-server chatbot with resources, prompts, and Claude Desktop integration.</p>
+                        <p class="text-theme-muted text-sm">An MCP-powered research assistant — from basic tool calling to a multi-server chatbot with resources, prompts, and Claude Desktop integration.</p>
                     </div>
                 </a>
 
                 <!-- LegoLLM -->
                 <a href="works/legollm/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
-                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
+                    <div class="w-full h-48 bg-theme-surface flex items-center justify-center p-6">
                         <svg viewBox="0 0 300 120" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
                             <!-- Stacked blocks representing modular layers -->
                             <!-- Bottom layer - Tokenization -->
-                            <rect x="30" y="88" width="240" height="24" rx="3" fill="#2d3748" stroke="#14b8a6"
+                            <rect x="30" y="88" width="240" height="24" rx="3" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
-                            <text x="150" y="104" text-anchor="middle" fill="#14b8a6" font-size="10"
+                            <text x="150" y="104" text-anchor="middle" fill="#d1d5db" font-size="10"
                                 font-family="system-ui" font-weight="bold">Tokenization</text>
                             <!-- Embeddings -->
-                            <rect x="30" y="62" width="115" height="24" rx="3" fill="#2d3748" stroke="#14b8a6"
+                            <rect x="30" y="62" width="115" height="24" rx="3" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
                             <text x="87" y="78" text-anchor="middle" fill="#e2e8f0" font-size="9"
                                 font-family="system-ui">Embeddings</text>
-                            <rect x="155" y="62" width="115" height="24" rx="3" fill="#2d3748" stroke="#14b8a6"
+                            <rect x="155" y="62" width="115" height="24" rx="3" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
                             <text x="212" y="78" text-anchor="middle" fill="#e2e8f0" font-size="9"
                                 font-family="system-ui">Attention</text>
@@ -93,9 +110,9 @@
                                 stroke-width="1.5" />
                             <text x="87" y="26" text-anchor="middle" fill="#9f7aea" font-size="9"
                                 font-family="system-ui">Training + SFT</text>
-                            <rect x="155" y="10" width="115" height="24" rx="3" fill="#14b8a6" stroke="#14b8a6"
+                            <rect x="155" y="10" width="115" height="24" rx="3" fill="#6b7280" stroke="#9ca3af"
                                 stroke-width="1.5" />
-                            <text x="212" y="26" text-anchor="middle" fill="#1a202c" font-size="9" font-weight="bold"
+                            <text x="212" y="26" text-anchor="middle" fill="#1f2937" font-size="9" font-weight="bold"
                                 font-family="system-ui">Generation</text>
                         </svg>
                     </div>
@@ -104,99 +121,99 @@
                             <h3 class="font-bold text-lg">LegoLLM</h3>
                             <span class="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded-full">Ongoing</span>
                         </div>
-                        <p class="text-gray-400 text-sm">Complete LLM framework from first principles — tokenization,
+                        <p class="text-theme-muted text-sm">Complete LLM framework from first principles — tokenization,
                             attention, training, generation, alignment as modular Lego pieces.</p>
                     </div>
                 </a>
 
                 <!-- LangGraph Research Assistant -->
                 <a href="works/langgraph-research-assistant/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/langgraph-research-assistant/thumb.png" alt="LangGraph Research Assistant"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">LangGraph Research Assistant</h3>
-                        <p class="text-gray-400 text-sm">Multi-agent research system with parallel interviews,
+                        <p class="text-theme-muted text-sm">Multi-agent research system with parallel interviews,
                             map-reduce synthesis, and human-in-the-loop approval.</p>
                     </div>
                 </a>
 
                 <!-- Task mAIstro -->
                 <a href="works/langgraph-task-maistro/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/langgraph-task-maistro/thumb.png" alt="Task mAIstro"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Task mAIstro</h3>
-                        <p class="text-gray-400 text-sm">AI task manager with persistent memory (profile, todos,
+                        <p class="text-theme-muted text-sm">AI task manager with persistent memory (profile, todos,
                             instructions) deployed via Docker Compose with Postgres and Redis.</p>
                     </div>
                 </a>
 
                 <!-- RAG from Scratch -->
                 <a href="works/rag-from-scratch/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/rag-from-scratch/rag-pipeline.png" alt="RAG Pipeline Architecture"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">RAG from Scratch</h3>
-                        <p class="text-gray-400 text-sm">Minimal RAG pipeline built from scratch with NumPy — no
+                        <p class="text-theme-muted text-sm">Minimal RAG pipeline built from scratch with NumPy — no
                             framework abstractions.</p>
                     </div>
                 </a>
 
                 <!-- Semantic Search with LangChain -->
                 <a href="works/langchain-semantic-search/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
-                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
+                    <div class="w-full h-48 bg-theme-surface flex items-center justify-center p-6">
                         <svg viewBox="0 0 280 100" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="0" y="35" width="50" height="30" rx="4" fill="#2d3748" stroke="#14b8a6"
+                            <rect x="0" y="35" width="50" height="30" rx="4" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
                             <text x="25" y="54" text-anchor="middle" fill="#e2e8f0" font-size="9"
                                 font-family="system-ui">PDF</text>
-                            <path d="M50 50 L70 50" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ss)" />
-                            <rect x="70" y="35" width="70" height="30" rx="4" fill="#2d3748" stroke="#14b8a6"
+                            <path d="M50 50 L70 50" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow-ss)" />
+                            <rect x="70" y="35" width="70" height="30" rx="4" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
                             <text x="105" y="48" text-anchor="middle" fill="#e2e8f0" font-size="8"
                                 font-family="system-ui">LangChain</text>
-                            <text x="105" y="58" text-anchor="middle" fill="#14b8a6" font-size="7"
+                            <text x="105" y="58" text-anchor="middle" fill="#d1d5db" font-size="7"
                                 font-family="system-ui">Split + Embed</text>
-                            <path d="M140 50 L160 50" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ss)" />
+                            <path d="M140 50 L160 50" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow-ss)" />
                             <rect x="160" y="35" width="60" height="30" rx="4" fill="#2d3748" stroke="#9f7aea"
                                 stroke-width="1.5" />
                             <text x="190" y="54" text-anchor="middle" fill="#e2e8f0" font-size="9"
                                 font-family="system-ui">ChromaDB</text>
-                            <path d="M220 50 L240 50" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ss)" />
-                            <rect x="240" y="35" width="40" height="30" rx="4" fill="#14b8a6" stroke="#14b8a6"
+                            <path d="M220 50 L240 50" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow-ss)" />
+                            <rect x="240" y="35" width="40" height="30" rx="4" fill="#6b7280" stroke="#9ca3af"
                                 stroke-width="1.5" />
-                            <text x="260" y="54" text-anchor="middle" fill="#1a202c" font-size="8" font-weight="bold"
+                            <text x="260" y="54" text-anchor="middle" fill="#1f2937" font-size="8" font-weight="bold"
                                 font-family="system-ui">Results</text>
                             <text x="140" y="15" text-anchor="middle" fill="#6b7280" font-size="8"
                                 font-family="system-ui">Query → Semantic Match → Passages</text>
                             <defs>
                                 <marker id="arrow-ss" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
                                     markerHeight="6" orient="auto">
-                                    <path d="M0,0 L6,3 L0,6 Z" fill="#14b8a6" />
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#9ca3af" />
                                 </marker>
                             </defs>
                         </svg>
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Semantic Search with LangChain</h3>
-                        <p class="text-gray-400 text-sm">Natural language querying over PDFs using LangChain, ChromaDB,
+                        <p class="text-theme-muted text-sm">Natural language querying over PDFs using LangChain, ChromaDB,
                             and HuggingFace embeddings.</p>
                     </div>
                 </a>
 
                 <!-- RAG: Agent vs Chain -->
                 <a href="works/rag-langchain-agent-chain/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
-                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
+                    <div class="w-full h-48 bg-theme-surface flex items-center justify-center p-6">
                         <svg viewBox="0 0 260 110" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
                             <!-- Agent path -->
                             <text x="130" y="12" text-anchor="middle" fill="#6b7280" font-size="8"
                                 font-family="system-ui">Agent vs Chain Patterns</text>
-                            <rect x="90" y="22" width="80" height="24" rx="4" fill="#2d3748" stroke="#14b8a6"
+                            <rect x="90" y="22" width="80" height="24" rx="4" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
                             <text x="130" y="38" text-anchor="middle" fill="#e2e8f0" font-size="9"
                                 font-family="system-ui">User Query</text>
@@ -211,18 +228,18 @@
                             <text x="60" y="102" text-anchor="middle" fill="#6b7280" font-size="7"
                                 font-family="system-ui">retrieve? → generate</text>
                             <!-- Chain branch -->
-                            <path d="M150 46 L200 62" stroke="#14b8a6" stroke-width="1.2" marker-end="url(#arrow-ac)" />
-                            <rect x="150" y="56" width="100" height="22" rx="4" fill="#2d3748" stroke="#14b8a6"
+                            <path d="M150 46 L200 62" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#arrow-ac)" />
+                            <rect x="150" y="56" width="100" height="22" rx="4" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
-                            <text x="200" y="71" text-anchor="middle" fill="#14b8a6" font-size="8"
+                            <text x="200" y="71" text-anchor="middle" fill="#d1d5db" font-size="8"
                                 font-family="system-ui">Chain (always)</text>
-                            <path d="M200 78 L200 90" stroke="#14b8a6" stroke-width="1.2" marker-end="url(#arrow-ac)" />
+                            <path d="M200 78 L200 90" stroke="#9ca3af" stroke-width="1.2" marker-end="url(#arrow-ac)" />
                             <text x="200" y="102" text-anchor="middle" fill="#6b7280" font-size="7"
                                 font-family="system-ui">retrieve → generate</text>
                             <defs>
                                 <marker id="arrow-ac" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
                                     markerHeight="6" orient="auto">
-                                    <path d="M0,0 L6,3 L0,6 Z" fill="#14b8a6" />
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#9ca3af" />
                                 </marker>
                                 <marker id="arrow-ac-y" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
                                     markerHeight="6" orient="auto">
@@ -233,40 +250,40 @@
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">LangChain RAG Patterns: Agent vs. Chain</h3>
-                        <p class="text-gray-400 text-sm">Comparing LangChain Agent and Chain RAG patterns with
+                        <p class="text-theme-muted text-sm">Comparing LangChain Agent and Chain RAG patterns with
                             multi-provider support.</p>
                     </div>
                 </a>
 
                 <!-- LangChain Email Agent -->
                 <a href="works/langchain-email-agent/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
-                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
+                    <div class="w-full h-48 bg-theme-surface flex items-center justify-center p-6">
                         <svg viewBox="0 0 280 100" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
                             <text x="140" y="12" text-anchor="middle" fill="#6b7280" font-size="8"
                                 font-family="system-ui">LangGraph + Human-in-the-Loop</text>
-                            <rect x="0" y="30" width="55" height="28" rx="4" fill="#2d3748" stroke="#14b8a6"
+                            <rect x="0" y="30" width="55" height="28" rx="4" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
                             <text x="27" y="48" text-anchor="middle" fill="#e2e8f0" font-size="8"
                                 font-family="system-ui">Auth</text>
-                            <path d="M55 44 L75 44" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ea)" />
-                            <rect x="75" y="30" width="65" height="28" rx="4" fill="#2d3748" stroke="#14b8a6"
+                            <path d="M55 44 L75 44" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow-ea)" />
+                            <rect x="75" y="30" width="65" height="28" rx="4" fill="#2d3748" stroke="#9ca3af"
                                 stroke-width="1.5" />
                             <text x="107" y="42" text-anchor="middle" fill="#e2e8f0" font-size="8"
                                 font-family="system-ui">LangGraph</text>
-                            <text x="107" y="52" text-anchor="middle" fill="#14b8a6" font-size="7"
+                            <text x="107" y="52" text-anchor="middle" fill="#d1d5db" font-size="7"
                                 font-family="system-ui">Agent</text>
-                            <path d="M140 44 L160 44" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ea)" />
+                            <path d="M140 44 L160 44" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow-ea)" />
                             <rect x="160" y="30" width="55" height="28" rx="4" fill="#2d3748" stroke="#f59e0b"
                                 stroke-width="1.5" />
                             <text x="187" y="42" text-anchor="middle" fill="#f59e0b" font-size="7"
                                 font-family="system-ui">Human</text>
                             <text x="187" y="52" text-anchor="middle" fill="#f59e0b" font-size="7"
                                 font-family="system-ui">Approval</text>
-                            <path d="M215 44 L235 44" stroke="#14b8a6" stroke-width="1.5" marker-end="url(#arrow-ea)" />
-                            <rect x="235" y="30" width="45" height="28" rx="4" fill="#14b8a6" stroke="#14b8a6"
+                            <path d="M215 44 L235 44" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow-ea)" />
+                            <rect x="235" y="30" width="45" height="28" rx="4" fill="#6b7280" stroke="#9ca3af"
                                 stroke-width="1.5" />
-                            <text x="257" y="48" text-anchor="middle" fill="#1a202c" font-size="8" font-weight="bold"
+                            <text x="257" y="48" text-anchor="middle" fill="#1f2937" font-size="8" font-weight="bold"
                                 font-family="system-ui">Send</text>
                             <!-- Tools below -->
                             <text x="107" y="78" text-anchor="middle" fill="#6b7280" font-size="7"
@@ -274,14 +291,14 @@
                             <defs>
                                 <marker id="arrow-ea" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
                                     markerHeight="6" orient="auto">
-                                    <path d="M0,0 L6,3 L0,6 Z" fill="#14b8a6" />
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#9ca3af" />
                                 </marker>
                             </defs>
                         </svg>
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">LangChain Email Agent</h3>
-                        <p class="text-gray-400 text-sm">AI email agent with auth-based tool access and
+                        <p class="text-theme-muted text-sm">AI email agent with auth-based tool access and
                             human-in-the-loop approval via LangGraph.</p>
                     </div>
                 </a>
@@ -289,7 +306,7 @@
 
                 <!-- SmolLM Fine-tuning -->
                 <a href="works/llm-smollm/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <div class="w-full h-48 flex items-center justify-center p-2 overflow-hidden">
                         <pre class="mermaid" style="font-size: 10px;">
                     graph LR
@@ -299,49 +316,49 @@
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">SmolLM Fine-tuning</h3>
-                        <p class="text-gray-400 text-sm">Fine-tuning HuggingFace's SmolLM model on a toy instruction
+                        <p class="text-theme-muted text-sm">Fine-tuning HuggingFace's SmolLM model on a toy instruction
                             dataset with LoRA and AI-as-a-judge evaluation.</p>
                     </div>
                 </a>
 
                 <!-- Gemini Long Context -->
                 <a href="works/gemini-long-context/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/gemini-long-context/gemini_long_context.png" alt="Gemini Long Context"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Gemini Long Context</h3>
-                        <p class="text-gray-400 text-sm">Endangered language translation and codebase security analysis
+                        <p class="text-theme-muted text-sm">Endangered language translation and codebase security analysis
                             using Gemini 1.5 Pro's long-context window.</p>
                     </div>
                 </a>
 
                 <!-- LoRA Insights: PEFT Recipes -->
                 <a href="works/lora-insights/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="https://raw.githubusercontent.com/pytholic/llm-peft-recipes/main/LoRA/resources/lora_insights/image2.png"
                         alt="LoRA Insights" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">LoRA Insights: PEFT Recipes</h3>
-                        <p class="text-gray-400 text-sm">Reproducing and extending LoRA/QLoRA experiments across Llama
+                        <p class="text-theme-muted text-sm">Reproducing and extending LoRA/QLoRA experiments across Llama
                             3.2 and Qwen 2.5 on H100 GPU.</p>
                     </div>
                 </a>
 
                 <!-- PEFT-FLANT5 -->
                 <a href="works/peft-flant5/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/peft-flant5/02.png" alt="PEFT-FLANT5" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">PEFT-FLANT5</h3>
-                        <p class="text-gray-400 text-sm">Parameter Efficient Fine-Tuning of FLAN-T5 model for Dialogue
+                        <p class="text-theme-muted text-sm">Parameter Efficient Fine-Tuning of FLAN-T5 model for Dialogue
                             Summarization.</p>
                     </div>
                 </a>
 
                 <!-- PEFT-FLANT5-Detoxification -->
                 <a href="works/peft-flant5-detoxification/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <div class="w-full h-48 flex items-center justify-center p-2 overflow-hidden">
                         <pre class="mermaid" style="font-size: 10px;">
                     graph LR
@@ -352,27 +369,27 @@
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">PEFT-FLANT5-Detoxification</h3>
-                        <p class="text-gray-400 text-sm">Fine-Tune FLAN-T5 with Reinforcement Learning (PPO) and PEFT to
+                        <p class="text-theme-muted text-sm">Fine-Tune FLAN-T5 with Reinforcement Learning (PPO) and PEFT to
                             Generate Less-Toxic Summaries</p>
                     </div>
                 </a>
                 <!-- Captcha-OCR -->
                 <a href="works/captchaocr/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/captchaocr/captchaocr_eyecatch.png" alt="Captcha-OCR"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Captcha-OCR</h3>
-                        <p class="text-gray-400 text-sm">OCR in captchas with Keras</p>
+                        <p class="text-theme-muted text-sm">OCR in captchas with Keras</p>
                     </div>
                 </a>
             </div>
 
             <!-- NLP/LLM Links -->
-            <ul class="space-y-3 text-gray-300">
+            <ul class="space-y-3 text-theme-secondary">
                 <li>
                     <a href="https://github.com/pytholic/coursera_courses/blob/main/dl_specialization/sequence%20models/week%204/W4A1/C5_W4_A1_Transformer_Subclass_v1.ipynb"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Building Transformer Network from scratch
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -382,7 +399,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/RNN-character-level-language-modeling" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         Character-level language modeling with LSTMs
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -392,7 +409,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/RNN-Sentiment-Analysis" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         Sentiment analysis using RNNs/LSTMs
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -402,7 +419,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Machine-Learning-Projects/tree/main/RNN%20for%20sentiment%20analysis%20and%20passenger%20prediction"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         RNN for sentiment analysis and passenger prediction
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -414,7 +431,7 @@
         </section>
 
         <!-- Divider -->
-        <hr class="border-gray-700 my-12">
+        <hr class="border-theme-border my-12">
 
         <!-- AI Engineering Section -->
         <section class="mb-12">
@@ -422,24 +439,24 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <!-- LLM Inference Benchmarks -->
                 <a href="works/llm-inference/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
-                    <div class="w-full h-48 bg-gray-800 flex items-center justify-center p-6">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
+                    <div class="w-full h-48 bg-theme-surface flex items-center justify-center p-6">
                         <div class="text-center">
-                            <span class="text-5xl font-bold text-dark-accent">112</span>
-                            <span class="text-lg text-gray-400 ml-1">tok/s</span>
-                            <p class="text-gray-500 text-xs mt-2">Phi-3.5 Mini &middot; Q4 &middot; GPU</p>
+                            <span class="text-5xl font-bold text-theme-accent">112</span>
+                            <span class="text-lg text-theme-muted ml-1">tok/s</span>
+                            <p class="text-theme-faint text-xs mt-2">Phi-3.5 Mini &middot; Q4 &middot; GPU</p>
                         </div>
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">LLM Inference Benchmarks</h3>
-                        <p class="text-gray-400 text-sm">Benchmarking llama.cpp, ExLlamaV2, and Ollama for production
+                        <p class="text-theme-muted text-sm">Benchmarking llama.cpp, ExLlamaV2, and Ollama for production
                             medical report generation at Lunit.</p>
                     </div>
                 </a>
 
                 <!-- Lunit Model Registry -->
                 <a href="works/lunit-model-registry/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <div class="w-full h-48 flex items-center justify-center p-4 overflow-hidden">
                         <pre class="mermaid" style="font-size: 8px;">
                     graph TB
@@ -448,25 +465,25 @@
                             A["📁 Artifacts"]
                             Meta["📊 Metadata"]
                         end
-                        style Registry fill:#1a202c,stroke:#14b8a6,color:#14b8a6,stroke-width:2px
-                        style M fill:#2d3748,stroke:#14b8a6,color:#e2e8f0
+                        style Registry fill:#1a202c,stroke:#9ca3af,color:#d1d5db,stroke-width:2px
+                        style M fill:#2d3748,stroke:#9ca3af,color:#e2e8f0
                         style A fill:#2d3748,stroke:#9f7aea,color:#e2e8f0
                         style Meta fill:#2d3748,stroke:#f59e0b,color:#e2e8f0
                         </pre>
                     </div>
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Lunit Model Registry</h3>
-                        <p class="text-gray-400 text-sm">A centralized model registry for managing the complete
+                        <p class="text-theme-muted text-sm">A centralized model registry for managing the complete
                             lifecycle of machine learning models.</p>
                     </div>
                 </a>
                 <!-- MLOps Orbit -->
                 <a href="works/mlops_orbit/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/mlops_orbit/mlops_orbit01.png" alt="MLOps Orbit" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">MLOps Orbit</h3>
-                        <p class="text-gray-400 text-sm">This project marks the beginning of MLOps journey. Instead of
+                        <p class="text-theme-muted text-sm">This project marks the beginning of MLOps journey. Instead of
                             focusing on piece of production-grade machine learning, I focus on building full end-to-end
                             pipeline from data collection to deployment.</p>
                     </div>
@@ -474,11 +491,11 @@
 
                 <!-- ClearML -->
                 <a href="works/clearml/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/clearml/clearml_eyecatch.png" alt="ClearML" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Exploring ClearML</h3>
-                        <p class="text-gray-400 text-sm">A project to demonstrate the MLOps capabilities of ClearML
+                        <p class="text-theme-muted text-sm">A project to demonstrate the MLOps capabilities of ClearML
                             framework</p>
                     </div>
                 </a>
@@ -486,7 +503,7 @@
         </section>
 
         <!-- Divider -->
-        <hr class="border-gray-700 my-12">
+        <hr class="border-theme-border my-12">
 
         <!-- Computer Vision Section -->
         <section class="mb-12">
@@ -494,183 +511,183 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <!-- Pivo Tracking -->
                 <a href="works/pivo_tracking/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/pivo_tracking/pivotracking_eyecatch.webp" alt="Pivo Tracking"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Pivo Tracking</h3>
-                        <p class="text-gray-400 text-sm">Improving and optimizing the performance of Pivo Tracking
+                        <p class="text-theme-muted text-sm">Improving and optimizing the performance of Pivo Tracking
                             algorithm.</p>
                     </div>
                 </a>
 
                 <!-- SCMS -->
                 <a href="works/scms/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/scms/scms_eyecatch.jpeg" alt="SCMS" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">SCMS</h3>
-                        <p class="text-gray-400 text-sm">A smart in-cabin monitoring system</p>
+                        <p class="text-theme-muted text-sm">A smart in-cabin monitoring system</p>
                     </div>
                 </a>
 
                 <!-- 3D Artery Segmentation -->
                 <a href="works/arteryseg/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/arteryseg/arteryseg_eyecatch.jpeg" alt="3D Artery Segmentation"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">3D Artery Segmentation</h3>
-                        <p class="text-gray-400 text-sm">Facial and temporal artery segmentation in CT volumes</p>
+                        <p class="text-theme-muted text-sm">Facial and temporal artery segmentation in CT volumes</p>
                     </div>
                 </a>
 
                 <!-- Alzheimer Disease Classification -->
                 <a href="works/alzheimers/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/alzheimers/alz_eyecatch.png" alt="Alzheimer Disease Classification"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Alzheimer Disease Classification</h3>
-                        <p class="text-gray-400 text-sm">Alzheimer's disease classification with deep learning</p>
+                        <p class="text-theme-muted text-sm">Alzheimer's disease classification with deep learning</p>
                     </div>
                 </a>
 
                 <!-- Facial Part Segmentation -->
                 <a href="works/partseg/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/partseg/1.png" alt="Facial Part Segmentation" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Facial Part Segmentation</h3>
-                        <p class="text-gray-400 text-sm">Facial part segmentation in 3D point clouds</p>
+                        <p class="text-theme-muted text-sm">Facial part segmentation in 3D point clouds</p>
                     </div>
                 </a>
 
                 <!-- Point Cloud Converter -->
                 <a href="works/pcd-converter/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/pcd-converter/pcdconverter_eyecatch.png" alt="Point Cloud Converter"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Point Cloud Converter</h3>
-                        <p class="text-gray-400 text-sm">A web app to upload and convert point cloud to different
+                        <p class="text-theme-muted text-sm">A web app to upload and convert point cloud to different
                             formats.</p>
                     </div>
                 </a>
 
                 <!-- Visual SLAM -->
                 <a href="works/visualslam/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/visualslam/visualslam_eyecatch.png" alt="Visual SLAM"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Visual SLAM</h3>
-                        <p class="text-gray-400 text-sm">A Visual SLAM solution for UAV mapping</p>
+                        <p class="text-theme-muted text-sm">A Visual SLAM solution for UAV mapping</p>
                     </div>
                 </a>
 
                 <!-- Facial Landmark Detection -->
                 <a href="works/landmark/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/landmark/landmark_eyecatch.png" alt="Facial Landmark Detection"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Facial Landmark Detection</h3>
-                        <p class="text-gray-400 text-sm">Facial landmark detection in patients heightmap images</p>
+                        <p class="text-theme-muted text-sm">Facial landmark detection in patients heightmap images</p>
                     </div>
                 </a>
 
                 <!-- CT Lung Segmentation -->
                 <a href="works/lungseg/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/lungseg/lungseg_eyecatch.jpg" alt="CT Lung Segmentation"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">CT Lung Segmentation</h3>
-                        <p class="text-gray-400 text-sm">Lung segmentation in CT volumes</p>
+                        <p class="text-theme-muted text-sm">Lung segmentation in CT volumes</p>
                     </div>
                 </a>
 
                 <!-- Patient Pose Detection -->
                 <a href="works/patientpose/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/patientpose/patientpose_eyecatch.png" alt="Patient Pose Detection"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Patient Pose Detection</h3>
-                        <p class="text-gray-400 text-sm">Patient pose detection with deep learning</p>
+                        <p class="text-theme-muted text-sm">Patient pose detection with deep learning</p>
                     </div>
                 </a>
 
                 <!-- Patient Pose App -->
                 <a href="works/poseapp/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/poseapp/poseapp.jpeg" alt="Patient Pose App" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Patient Pose App</h3>
-                        <p class="text-gray-400 text-sm">A GUI application to predict patient pose</p>
+                        <p class="text-theme-muted text-sm">A GUI application to predict patient pose</p>
                     </div>
                 </a>
 
                 <!-- ML-API -->
                 <a href="works/mlapi/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/mlapi/mlapi_eyecatch.png" alt="ML-API" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">ML-API</h3>
-                        <p class="text-gray-400 text-sm">Machine Learning prediction API</p>
+                        <p class="text-theme-muted text-sm">Machine Learning prediction API</p>
                     </div>
                 </a>
 
                 <!-- Vision Transformer -->
                 <a href="works/vit/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/vit/vit_eyecatch.png" alt="Vision Transformer" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Vision Transformer</h3>
-                        <p class="text-gray-400 text-sm">Building vision transformer from scratch</p>
+                        <p class="text-theme-muted text-sm">Building vision transformer from scratch</p>
                     </div>
                 </a>
 
                 <!-- Super Image Resolution -->
                 <a href="works/sir/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/sir/sir_eyecatch.png" alt="Super Image Resolution" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Super Image Resolution</h3>
-                        <p class="text-gray-400 text-sm">Implementation of Residual Dense Network for SIR</p>
+                        <p class="text-theme-muted text-sm">Implementation of Residual Dense Network for SIR</p>
                     </div>
                 </a>
 
                 <!-- Image Classification Web App -->
                 <a href="works/streamlitgradio/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/streamlitgradio/animal10_eyecatch.jpg" alt="Image Classification Web App"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Image Classification Web App</h3>
-                        <p class="text-gray-400 text-sm">An image classification web app with streamlit and gradio</p>
+                        <p class="text-theme-muted text-sm">An image classification web app with streamlit and gradio</p>
                     </div>
                 </a>
 
                 <!-- Wisconsin Breast Cancer -->
                 <a href="works/wisconsin/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/wisconsin/wisconsin_eyecatch.jpg" alt="Wisconsin Breast Cancer"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Wisconsin Breast Cancer (Diagnostic)</h3>
-                        <p class="text-gray-400 text-sm">Tumor diagnosis on Breast Cancer Wisconsin dataset</p>
+                        <p class="text-theme-muted text-sm">Tumor diagnosis on Breast Cancer Wisconsin dataset</p>
                     </div>
                 </a>
 
             </div>
 
             <!-- CV Links (from Miscellaneous) -->
-            <ul class="space-y-3 text-gray-300">
+            <ul class="space-y-3 text-theme-secondary">
                 <li>
                     <a href="https://github.com/pytholic/PGGAN-SSIM/tree/main/CN" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         Tensorflow implementation of "Progressive Growing of GAN (PGGAN)" with SSIM
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -680,7 +697,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Siamese-Person-ReID" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         Person Reidentification with Siamese Network
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -690,7 +707,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/vit-classification-huggingface" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         ViT Classification with Huggingface transformers
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -700,7 +717,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Survey-Paper" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         A survey of deep learning techniques for small medical dataset
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -710,7 +727,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/capsulenet" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         A flexible and easy-to-follow Pytorch implementation of Hinton's Capsule Network.
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -720,7 +737,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Machine-Learning-Projects/tree/main/Global%20Wheat%20Detection"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Global Wheat Detection Challenge - Kaggle
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -730,7 +747,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Machine-Learning-Projects/tree/main/Deep%20learning%20based%20image%20dehazing%20networks"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Deep learning-based image dehazing network
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -740,7 +757,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Machine-Learning-Projects/tree/main/Deep%20learning-based%20video%20frame%20interpolation"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Deep learning-based video frame interpolation
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -750,7 +767,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Machine-Learning-Projects/tree/main/Implementation%20and%20Verification%20of%20deep%20learning%20based%20image%20deblurring%20networks"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Deep learning-based image deblurring network
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -760,7 +777,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Machine-Learning-Projects/tree/main/Image%20classification%20using%20Bag%20of%20Words"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Image classification with Bag of Words
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -770,7 +787,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Machine-Learning-Projects/tree/main/VAE%20MNIST"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         VAE MNIST
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -780,7 +797,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/CTBoneSegmentation" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         CT Bone Segmentation
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -790,7 +807,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Open3d-Global_ICP-Registration" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         Point cloud registration with Open3D
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -800,7 +817,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Yolov5iOS_BreastDetection" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         An iOS application to detect patient breast region
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -812,7 +829,7 @@
         </section>
 
         <!-- Divider -->
-        <hr class="border-gray-700 my-12">
+        <hr class="border-theme-border my-12">
 
         <!-- Open Source Section -->
         <section class="mb-12">
@@ -820,39 +837,39 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Tandem Docker -->
                 <a href="works/tandem_docker/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/tandem_docker/docker.png" alt="Tandem Docker" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Tandem Docker</h3>
-                        <p class="text-gray-400 text-sm">Added docker support for TANDEM</p>
+                        <p class="text-theme-muted text-sm">Added docker support for TANDEM</p>
                     </div>
                 </a>
 
                 <!-- Droid SLAM Docker -->
                 <a href="works/droid_docker/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/droid_docker/docker.png" alt="Droid SLAM Docker" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Droid SLAM Docker</h3>
-                        <p class="text-gray-400 text-sm">Added docker support for Droid SLAM</p>
+                        <p class="text-theme-muted text-sm">Added docker support for Droid SLAM</p>
                     </div>
                 </a>
 
                 <!-- Droid SLAM Visualizer -->
                 <a href="works/droid_visualization/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/droid_visualization/droid_visualization.png" alt="Droid SLAM Visualizer"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Droid SLAM Visualizer</h3>
-                        <p class="text-gray-400 text-sm">Added results visualization support for Droid SLAM</p>
+                        <p class="text-theme-muted text-sm">Added results visualization support for Droid SLAM</p>
                     </div>
                 </a>
             </div>
         </section>
 
         <!-- Divider -->
-        <hr class="border-gray-700 my-12">
+        <hr class="border-theme-border my-12">
 
         <!-- Other Section -->
         <section class="mb-12">
@@ -860,42 +877,42 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <!-- Text Recognition App -->
                 <a href="works/textrecog/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/textrecog/textrecog_eyecatch.png" alt="Text Recognition App"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Text Recognition App</h3>
-                        <p class="text-gray-400 text-sm">A text recognition app created in Flutter</p>
+                        <p class="text-theme-muted text-sm">A text recognition app created in Flutter</p>
                     </div>
                 </a>
 
                 <!-- Notes App -->
                 <a href="works/notes/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/notes/notes_eyecatch.png" alt="Notes App" class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Notes App</h3>
-                        <p class="text-gray-400 text-sm">A notes app created with Flutter</p>
+                        <p class="text-theme-muted text-sm">A notes app created with Flutter</p>
                     </div>
                 </a>
 
                 <!-- Word Masters -->
                 <a href="works/wordmasters/"
-                    class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
                     <img src="works/wordmasters/wordmasters_eyecatch.png" alt="Word Masters"
                         class="w-full h-48 object-cover">
                     <div class="p-4">
                         <h3 class="font-bold text-lg mb-2">Word Masters</h3>
-                        <p class="text-gray-400 text-sm">A word guessing web game</p>
+                        <p class="text-theme-muted text-sm">A word guessing web game</p>
                     </div>
                 </a>
             </div>
 
             <!-- Other Links -->
-            <ul class="space-y-3 text-gray-300">
+            <ul class="space-y-3 text-theme-secondary">
                 <li>
                     <a href="https://github.com/pytholic/FlutterShoppingListApp" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         A cross-platform shopping list app created with Dart, Flutter and Firebase
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -905,7 +922,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/FlutterTodoList" target="_blank"
-                        class="hover:text-dark-accent inline-flex items-center gap-2">
+                        class="hover:text-theme-accent inline-flex items-center gap-2">
                         A cross-platform todo list app created with Dart, Flutter and Firebase
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -915,7 +932,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Complete-Intro-to-Web-Dev/tree/main/CSS-HTML-Capstone"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         A simple web interface design using HTML and CSS
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -925,7 +942,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/ZTM-Complete-Python-Developer-2023/blob/main/Scripting/PasswordChecker/checkmypass.py"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Python password checker API
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -935,7 +952,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/ZTM-Complete-Python-Developer-2023/blob/main/DataScraping/scrape.py"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         Scraping hacker news website
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -945,7 +962,7 @@
                 </li>
                 <li>
                     <a href="https://github.com/pytholic/Miscellaneous-Projects/tree/main/Amazon%20house%20price%20prediction"
-                        target="_blank" class="hover:text-dark-accent inline-flex items-center gap-2">
+                        target="_blank" class="hover:text-theme-accent inline-flex items-center gap-2">
                         House price prediction
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -958,8 +975,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-700 mt-12">
-        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+    <footer class="border-t border-theme-border mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-theme-faint">
             <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
         </div>
     </footer>

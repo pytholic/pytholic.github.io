@@ -11,29 +11,46 @@
             theme: {
                 extend: {
                     colors: {
-                        dark: {
-                            bg: '#1a202c',
-                            card: '#2d3748',
-                            text: '#e2e8f0',
-                            accent: '#14b8a6'
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            text: 'var(--color-text)',
+                            secondary: 'var(--color-text-secondary)',
+                            muted: 'var(--color-text-muted)',
+                            faint: 'var(--color-text-faint)',
+                            accent: 'var(--color-accent)',
+                            'accent-hover': 'var(--color-accent-hover)',
+                            border: 'var(--color-border)',
+                            'border-light': 'var(--color-border-light)',
+                            surface: 'var(--color-surface)',
                         }
                     }
                 }
             }
         }
     </script>
+    <link rel="stylesheet" href="../../theme.css">
+    <script src="../../theme.js"></script>
 </head>
 
-<body class="bg-dark-bg text-dark-text min-h-screen">
+<body class="bg-theme-bg text-theme-text min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-dark-card border-b border-gray-700">
+    <nav class="bg-theme-card border-b border-theme-border">
         <div class="max-w-4xl mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <a href="../../index.html" class="text-xl font-bold text-dark-accent">Haseeb Raja</a>
-                <div class="flex gap-6">
-                    <a href="../../works.html" class="text-dark-accent">Works</a>
-                    <a href="../../posts.html" class="hover:text-dark-accent transition-colors">Posts</a>
-                    <a href="../../uses.html" class="hover:text-dark-accent transition-colors">Uses</a>
+                <a href="../../index.html" class="text-xl font-bold text-theme-accent">Haseeb Raja</a>
+                <div class="flex gap-6 items-center">
+                    <a href="../../works.html" class="text-theme-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-theme-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-theme-accent transition-colors">Uses</a>
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-theme-surface transition-colors" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -42,7 +59,7 @@
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-12">
         <!-- Back Button -->
-        <a href="../../works.html" class="inline-flex items-center gap-2 text-dark-accent hover:underline mb-8">
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-theme-accent hover:underline mb-8">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
             </svg>
@@ -56,11 +73,11 @@
                 <span
                     class="inline-block bg-yellow-600 text-white px-3 py-1 rounded-full text-xs font-bold">ONGOING</span>
             </div>
-            <span class="inline-block bg-dark-accent text-white px-3 py-1 rounded-full text-sm">2025</span>
+            <span class="inline-block bg-theme-accent text-theme-bg px-3 py-1 rounded-full text-sm">2025</span>
         </div>
 
         <!-- Project Description -->
-        <div class="space-y-6 text-gray-300 leading-relaxed mb-12">
+        <div class="space-y-6 text-theme-secondary leading-relaxed mb-12">
             <p>
                 A complete LLM development framework built from first principles. Every component —
                 tokenization, embeddings, attention, training, generation, alignment — is implemented from scratch
@@ -74,23 +91,23 @@
             </p>
 
             <!-- Roadmap -->
-            <h3 class="text-xl font-bold text-dark-text">Roadmap</h3>
+            <h3 class="text-xl font-bold text-theme-text">Roadmap</h3>
             <div class="space-y-3">
                 <div class="flex items-center gap-3">
                     <span
-                        class="inline-block w-5 h-5 rounded-full bg-dark-accent flex-shrink-0 flex items-center justify-center text-xs text-white font-bold">✓</span>
+                        class="inline-block w-5 h-5 rounded-full bg-theme-accent flex-shrink-0 flex items-center justify-center text-xs text-white font-bold">✓</span>
                     <div>
-                        <strong class="text-dark-text">Phase 1 — Core Foundation</strong>
-                        <p class="text-sm text-gray-400">Tokenization (BPE from scratch), embeddings, multi-head causal
+                        <strong class="text-theme-text">Phase 1 — Core Foundation</strong>
+                        <p class="text-sm text-theme-muted">Tokenization (BPE from scratch), embeddings, multi-head causal
                             attention, GPT-2 architecture, DataLoader, Trainer, generation strategies</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
                     <span
-                        class="inline-block w-5 h-5 rounded-full bg-dark-accent flex-shrink-0 flex items-center justify-center text-xs text-white font-bold">✓</span>
+                        class="inline-block w-5 h-5 rounded-full bg-theme-accent flex-shrink-0 flex items-center justify-center text-xs text-white font-bold">✓</span>
                     <div>
-                        <strong class="text-dark-text">Phase 2 — Pretrained Weights</strong>
-                        <p class="text-sm text-gray-400">Small-scale pretraining, loading HuggingFace GPT-2 weights
+                        <strong class="text-theme-text">Phase 2 — Pretrained Weights</strong>
+                        <p class="text-sm text-theme-muted">Small-scale pretraining, loading HuggingFace GPT-2 weights
                             (safetensors), Conv1D→Linear mapping, fused QKV splitting</p>
                     </div>
                 </div>
@@ -98,8 +115,8 @@
                     <span
                         class="inline-block w-5 h-5 rounded-full bg-yellow-600 flex-shrink-0 flex items-center justify-center text-xs text-white font-bold">→</span>
                     <div>
-                        <strong class="text-dark-text">Phase 3 — Instruction Fine-tuning</strong>
-                        <p class="text-sm text-gray-400">SFT, Alpaca-style chat formatting, dynamic padding, loss
+                        <strong class="text-theme-text">Phase 3 — Instruction Fine-tuning</strong>
+                        <p class="text-sm text-theme-muted">SFT, Alpaca-style chat formatting, dynamic padding, loss
                             masking, LoRA</p>
                     </div>
                 </div>
@@ -107,22 +124,22 @@
                     <span
                         class="inline-block w-5 h-5 rounded-full bg-gray-600 flex-shrink-0 flex items-center justify-center text-xs text-white font-bold">4</span>
                     <div>
-                        <strong class="text-dark-text">Phase 4 — Modern Architectures</strong>
-                        <p class="text-sm text-gray-400">LLaMA 3 (RoPE, RMSNorm, SwiGLU, GQA), KV Cache, Qwen 3</p>
+                        <strong class="text-theme-text">Phase 4 — Modern Architectures</strong>
+                        <p class="text-sm text-theme-muted">LLaMA 3 (RoPE, RMSNorm, SwiGLU, GQA), KV Cache, Qwen 3</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-3">
                     <span
                         class="inline-block w-5 h-5 rounded-full bg-gray-600 flex-shrink-0 flex items-center justify-center text-xs text-white font-bold">5</span>
                     <div>
-                        <strong class="text-dark-text">Phase 5 — Alignment</strong>
-                        <p class="text-sm text-gray-400">DPO, PPO/RLHF, Mixture of Experts</p>
+                        <strong class="text-theme-text">Phase 5 — Alignment</strong>
+                        <p class="text-sm text-theme-muted">DPO, PPO/RLHF, Mixture of Experts</p>
                     </div>
                 </div>
             </div>
 
             <!-- Architecture -->
-            <h3 class="text-xl font-bold text-dark-text">Architecture Highlights</h3>
+            <h3 class="text-xl font-bold text-theme-text">Architecture Highlights</h3>
             <ul class="list-disc list-inside space-y-2">
                 <li><strong>Self-contained model files</strong> — each architecture (GPT-2, LLaMA 3, Qwen 3) is readable
                     as a single file with everything inline</li>
@@ -142,13 +159,13 @@
         </div>
 
         <!-- Project Info -->
-        <div class="bg-dark-card rounded-lg p-6 mb-12">
+        <div class="bg-theme-card rounded-lg p-6 mb-12">
             <dl class="space-y-4">
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Repository</dt>
+                    <dt class="font-bold text-theme-accent mb-1">Repository</dt>
                     <dd>
                         <a href="https://github.com/pytholic/LegoLLM" target="_blank"
-                            class="text-gray-300 hover:text-dark-accent inline-flex items-center gap-2">
+                            class="text-theme-secondary hover:text-theme-accent inline-flex items-center gap-2">
                             GitHub
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -159,17 +176,17 @@
                     </dd>
                 </div>
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Stack</dt>
-                    <dd class="text-gray-300">PyTorch, NumPy, tiktoken, safetensors, Rich, pytest, MkDocs, Ruff, GitHub
+                    <dt class="font-bold text-theme-accent mb-1">Stack</dt>
+                    <dd class="text-theme-secondary">PyTorch, NumPy, tiktoken, safetensors, Rich, pytest, MkDocs, Ruff, GitHub
                         Actions</dd>
                 </div>
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Models</dt>
-                    <dd class="text-gray-300">GPT-2 (all 4 sizes) · LLaMA 3 (planned) · Qwen 3 (planned)</dd>
+                    <dt class="font-bold text-theme-accent mb-1">Models</dt>
+                    <dd class="text-theme-secondary">GPT-2 (all 4 sizes) · LLaMA 3 (planned) · Qwen 3 (planned)</dd>
                 </div>
                 <div>
-                    <dt class="font-bold text-dark-accent mb-1">Tests</dt>
-                    <dd class="text-gray-300">218 unit tests + integration tests</dd>
+                    <dt class="font-bold text-theme-accent mb-1">Tests</dt>
+                    <dd class="text-theme-secondary">218 unit tests + integration tests</dd>
                 </div>
             </dl>
         </div>
@@ -177,31 +194,31 @@
         <!-- Module Structure -->
         <div class="space-y-4 mb-12">
             <h3 class="text-xl font-bold">Module Structure</h3>
-            <div class="bg-dark-card rounded-lg p-6 font-mono text-sm text-gray-300 overflow-x-auto">
+            <div class="bg-theme-card rounded-lg p-6 font-mono text-sm text-theme-secondary overflow-x-auto">
                 <pre class="whitespace-pre">legollm/
-├── architectures/       <span class="text-dark-accent"># GPT-2, LLaMA 3, Qwen 3</span>
+├── architectures/       <span class="text-theme-accent"># GPT-2, LLaMA 3, Qwen 3</span>
 ├── components/
-│   ├── attention/       <span class="text-dark-accent"># Multi-head, Grouped-query</span>
-│   ├── blocks/          <span class="text-dark-accent"># Transformer block</span>
+│   ├── attention/       <span class="text-theme-accent"># Multi-head, Grouped-query</span>
+│   ├── blocks/          <span class="text-theme-accent"># Transformer block</span>
 │   ├── embeddings/
 │   ├── feedforward/
 │   └── normalization/
 ├── core/
-│   ├── interfaces.py    <span class="text-dark-accent"># Protocol contracts</span>
-│   └── tokenization/    <span class="text-dark-accent"># NaiveBPE, RegexBPE</span>
-├── data/                <span class="text-dark-accent"># Memmap DataLoader</span>
-├── training/            <span class="text-dark-accent"># Trainer (cosine LR, AdamW)</span>
-├── generation/          <span class="text-dark-accent"># Greedy, top-k, top-p</span>
-├── optimization/        <span class="text-dark-accent"># KV Cache</span>
-├── peft/                <span class="text-dark-accent"># LoRA (upcoming)</span>
-└── finetuning/          <span class="text-dark-accent"># SFT, chat formatting</span></pre>
+│   ├── interfaces.py    <span class="text-theme-accent"># Protocol contracts</span>
+│   └── tokenization/    <span class="text-theme-accent"># NaiveBPE, RegexBPE</span>
+├── data/                <span class="text-theme-accent"># Memmap DataLoader</span>
+├── training/            <span class="text-theme-accent"># Trainer (cosine LR, AdamW)</span>
+├── generation/          <span class="text-theme-accent"># Greedy, top-k, top-p</span>
+├── optimization/        <span class="text-theme-accent"># KV Cache</span>
+├── peft/                <span class="text-theme-accent"># LoRA (upcoming)</span>
+└── finetuning/          <span class="text-theme-accent"># SFT, chat formatting</span></pre>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-gray-700 mt-12">
-        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-gray-500">
+    <footer class="border-t border-theme-border mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-theme-faint">
             <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
         </div>
     </footer>
