@@ -29,6 +29,9 @@
             }
         }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="theme.css">
     <script src="theme.js"></script>
 </head>
@@ -62,8 +65,32 @@
 
         <!-- Blog Posts -->
         <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">Blog</h2>
+            <h2 class="text-2xl font-bold mb-6">Posts</h2>
             <div class="space-y-4">
+                <!-- The Bitter Lesson Keeps Winning -->
+                <a href="posts/the-bitter-lesson/index.html"
+                    class="block bg-theme-card rounded-lg p-6 hover:ring-2 hover:ring-theme-accent transition-all">
+                    <div class="flex justify-between items-start gap-4">
+                        <div>
+                            <h3 class="text-lg font-bold mb-1">The Bitter Lesson Keeps Winning</h3>
+                            <p class="text-theme-muted text-sm">Rich Sutton's 2019 lesson keeps asserting itself inside
+                                the modern LLM stack -- from pre-training laws to RL duration scaling.</p>
+                        </div>
+                        <span class="text-theme-faint text-sm whitespace-nowrap">Mar 2026</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mt-3">
+                        <span
+                            class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">AI</span>
+                        <span
+                            class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">LLM</span>
+                        <span
+                            class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">Scaling
+                            Laws</span>
+                        <span
+                            class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">RL</span>
+                    </div>
+                </a>
+
                 <!-- AI Evaluation Gaming -->
                 <a href="posts/beyond-black-box-testing/index.html"
                     class="block bg-theme-card rounded-lg p-6 hover:ring-2 hover:ring-theme-accent transition-all">

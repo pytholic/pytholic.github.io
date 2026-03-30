@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Bitter Lesson Keeps Winning - Haseeb Raja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/stackoverflow-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            text: 'var(--color-text)',
+                            secondary: 'var(--color-text-secondary)',
+                            muted: 'var(--color-text-muted)',
+                            faint: 'var(--color-text-faint)',
+                            accent: 'var(--color-accent)',
+                            'accent-hover': 'var(--color-accent-hover)',
+                            border: 'var(--color-border)',
+                            'border-light': 'var(--color-border-light)',
+                            surface: 'var(--color-surface)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="../../theme.css">
+    <script src="../../theme.js"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- All typography styles now in theme.css -->
+</head>
+
+<body class="bg-theme-bg text-theme-text min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-theme-card border-b border-theme-border">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-theme-accent">Haseeb Raja</a>
+                <div class="flex gap-6 items-center">
+                    <a href="../../works.html" class="hover:text-theme-accent transition-colors">Works</a>
+                    <a href="../../posts.html" class="text-theme-accent">Posts</a>
+                    <a href="../../uses.html" class="hover:text-theme-accent transition-colors">Uses</a>
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-theme-surface transition-colors" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-12">
+
+        <!-- Back link -->
+        <a href="../../posts.html" class="inline-flex items-center gap-2 text-theme-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Posts
+        </a>
+
+        <div class="mb-8">
+            <!-- Header -->
+            <h1 class="text-4xl font-bold mb-3">The Bitter Lesson Keeps Winning</h1>
+            <p class="text-theme-muted mb-4">March 30, 2026</p>
+
+            <div class="flex flex-wrap gap-2">
+                <span
+                    class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">AI</span>
+                <span
+                    class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">LLM</span>
+                <span
+                    class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">Scaling Laws</span>
+                <span
+                    class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">RL</span>
+            </div>
+        </div>
+
+        <article class="prose prose-invert max-w-none text-theme-secondary">
+
+            <p>Rich Sutton's 2019 essay — <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html"
+                    target="_blank" class="text-theme-accent hover:underline">The Bitter Lesson</a> — is only about
+                1,200 words. It has aged better than most AI textbooks. The core claim: every time researchers encode
+                what they already know into a system, compute-driven general methods eventually render that effort
+                obsolete. The researchers feel productive, but they're building ceilings. The methods that win long-term
+                are the ones designed to <em>discover</em>, not contain.</p>
+
+            <blockquote>
+                "We want AI agents that can discover like we can, not which contain what we have discovered."
+                <br><span class="text-sm">— Rich Sutton</span>
+            </blockquote>
+
+            <p>What's striking is that this lesson keeps repeating — not just once across the history of AI, but
+                continuously, inside the modern LLM stack itself. Each new scaling axis that has emerged over the last
+                few years is a fresh instance of the same principle playing out.</p>
+
+            <hr>
+
+            <h2>The Core Insight</h2>
+
+            <p>The pattern Sutton documents across 70 years of AI research is consistent. Researchers build
+                chess engines with hand-crafted evaluation functions; they get outperformed by engines that search
+                deeper. They build speech systems with phonological rules; they get outperformed by systems trained on
+                raw audio. They build vision pipelines with hand-engineered features; they get outperformed by
+                convolutional networks trained end-to-end.</p>
+
+            <p>The failure mode isn't incompetence — it's that encoding existing knowledge
+                <strong>feels productive</strong>. It produces near-term gains. It satisfies the instinct to
+                be clever. But every encoded assumption is a constraint on what the optimizer can discover. The moment
+                compute scales up enough, the unconstrained learner catches and surpasses the carefully crafted
+                system.
+            </p>
+
+            <figure class="w-2/3 mx-auto">
+                <img src="01_bitter_lesson_framework.png"
+                    alt="Two paths: encoding knowledge (hits ceiling) vs. meta-methods that discover (scales with compute)" />
+                <figcaption>Figure 1: The two paths. Encoding what we know produces short-term gains but imposes a hard
+                    ceiling. Meta-methods — general search and learning — have no such ceiling; they scale with
+                    compute.</figcaption>
+            </figure>
+
+            <p>This is not an anti-knowledge argument. Sutton is not saying domain knowledge is useless. He's saying
+                it shouldn't be baked in as a structural constraint. The right place for knowledge is in shaping the
+                problem setup — the reward signal, the data distribution, the evaluation criteria — not in
+                pre-specifying the solution.</p>
+
+            <hr>
+
+            <h2>Five Axes Where This Plays Out in Modern LLMs</h2>
+
+            <p>The modern LLM stack can be read as a series of places where the Bitter Lesson keeps asserting itself.
+                At each stage, there was a temptation to encode structure — and in each case, the winning approach was
+                to let the optimizer do more of the work.</p>
+
+            <figure class="w-2/3 mx-auto">
+                <img src="02_scaling_axes.png"
+                    alt="Five scaling axes in modern LLMs: pre-training, domain pre-training, RLHF/RLVR, inference-time scaling, and RL duration" />
+                <figcaption>Figure 2: The five axes where scaling plays out in modern LLMs. Each row is an instance of
+                    the same principle — more compute plus a general method beats encoded structure.</figcaption>
+            </figure>
+
+            <h3>1. Pre-training Scaling Laws</h3>
+
+            <p>The most direct instance. More compute on more diverse data produces better base models — not because
+                anyone encoded language rules, syntax trees, or world models, but because gradient descent over a large
+                enough corpus discovers structure on its own. The Chinchilla paper formalized the relationship, but the
+                principle had been visible since GPT-2. These laws still hold at the frontier. The only practical
+                constraint is the cost of running experiments at scale large enough to map the curve.</p>
+
+            <h3>2. Continuous Pre-training</h3>
+
+            <p>Domain-adaptive pre-training follows the same logic, just with a narrower data distribution. Rather than
+                a researcher encoding medical ontologies or legal taxonomies directly into model weights, you run more
+                compute on domain data and let the optimizer extract the structure. The result consistently outperforms
+                approaches that inject symbolic domain knowledge as architectural constraints. Same principle, smaller
+                scope.</p>
+
+            <h3>3. RLHF and RLVR</h3>
+
+            <p>Post-training initially looked like the stage where human knowledge would be injected most directly —
+                preferences, reward models, carefully curated feedback. <strong>RLVR</strong> (reinforcement learning
+                from verifiable rewards — math correctness, code execution, formal proofs) is the purer version: the
+                signal comes from ground truth, not human taste. There's no need to encode what a correct answer looks
+                like; correctness is verified mechanically. The more the reward signal can be grounded in
+                verifiability, the less human judgment becomes a bottleneck — and the more the system can scale without
+                hitting the ceiling of annotator capacity.</p>
+
+            <h3>4. Inference-Time Scaling</h3>
+
+            <p>The reasoning models of 2024–2025 — o1, R1, DeepSeek — are perhaps the clearest recent demonstration.
+                Rather than encoding reasoning strategies, you give the model more compute at test time and let it
+                search: chain-of-thought, tree search, self-reflection. The Bitter Lesson playing out in inference
+                rather than training. And the results have been consistent: more search compute produces better answers
+                on hard reasoning tasks, without the researcher specifying how the reasoning should proceed.</p>
+
+            <h3>5. RL Post-training Duration</h3>
+
+            <p>This is the newest axis, and arguably the most underappreciated one. The conventional view treated RL
+                post-training as a discrete pipeline step — run it, evaluate, ship. What the past year has revealed is
+                that <strong>RL training duration is itself a scaling dimension</strong>. The model doesn't saturate
+                at some natural endpoint; performance continues climbing as long as the RL job keeps running on
+                challenging tasks.</p>
+
+            <hr>
+
+            <h2>RL Duration: The Emerging Frontier</h2>
+
+            <p>The clearest evidence for RL duration scaling comes from Ai2's OLMo work. OLMo 3 32B was released in
+                November 2025. Rather than declaring the RL phase complete, Ai2 simply left the same job running — 224
+                GPUs, continuing on the same objective. Over the next three weeks, performance on hard evaluations
+                (AIME, competitive coding) kept climbing steadily. That extended run became OLMo 3.1 Think 32B, at
+                roughly 125,000 H100 GPU hours. At that point the model still showed no signs of saturation.</p>
+
+            <figure class="w-2/3 mx-auto">
+                <img src="03_rl_post_training_scale.png"
+                    alt="RL post-training performance curve showing OLMo continuing to improve past the conventional release point, with the performance still climbing at 125K H100 GPU hours" />
+                <figcaption>Figure 3: RL duration as a scaling axis. The conventional assumption treats RL as a fixed
+                    pipeline step. The actual trajectory keeps climbing well past release. OLMo 3.1 Think showed no
+                    saturation at ~125K H100 GPU hours.</figcaption>
+            </figure>
+
+            <p>Other labs tell the same story at different scales and from different angles.</p>
+
+            <p><strong>Qwen3 / Qwen3.5</strong> used a four-stage RL pipeline spanning reasoning quality, thinking
+                versus non-thinking mode fusion, and general instruction following across over 20 task domains. Qwen3.5
+                then scaled further by expanding RL coverage across virtually every environment and task they could
+                construct, deliberately prioritizing difficulty and generalizability over benchmark optimization. The
+                emphasis on hard and diverse tasks reflects an understanding that the optimizer needs breadth to avoid
+                overfitting to narrow reward signals.</p>
+
+            <p><strong>Kimi K2 / Kimi Linear</strong> scaled RL with a focus on long-horizon reasoning — tasks that
+                require maintaining coherent chains of reasoning across many steps, not just producing correct answers
+                to individual questions. This is a harder target for the reward signal to specify, which makes it a
+                cleaner test of whether general RL can discover structure that hand-crafted approaches struggle to
+                encode.</p>
+
+            <p><strong>Hybrid architectures</strong> — OLMo Hybrid, Qwen3.5's design, Kimi Linear — are also worth
+                noting here. More expressive model classes give the optimizer a larger hypothesis space to work in.
+                Rather than constraining the learner's representational capacity, you build a richer architecture and
+                let RL find what fits. That's the Bitter Lesson at the architectural level.</p>
+
+            <hr>
+
+            <h2>Where the Compute Goes Next</h2>
+
+            <p>The consistent picture across all five axes is that each time a new place to put compute has been
+                identified — pre-training, domain adaptation, post-training, inference — the question has quickly
+                become: how long does scaling hold? And the answer has repeatedly been: longer than expected, and
+                longer than the previous axis suggested it would.</p>
+
+            <p>RL duration feels like we're still early on that curve. The OLMo result suggests frontier-class
+                reasoning capability may not require frontier-class model size — it may require sustained RL training on
+                the right task distribution. That's a different and arguably more accessible scaling lever than raw
+                pre-training compute.</p>
+
+            <p>The broader point is that we're not running out of places to put compute. We're discovering new axes.
+                Each axis is, in Sutton's framing, another instance of general methods winning over encoded structure.
+                The optimizer keeps finding things we wouldn't have thought to specify. The practical constraint may not
+                be diminishing returns — it may simply be the cost and infrastructure required to run experiments at
+                these scales. The scaling curves haven't bent; we just can't always afford to extend them.</p>
+
+            <h2>Key Takeaways</h2>
+
+            <ul>
+                <li><strong>The Bitter Lesson is recursive.</strong> It doesn't just apply to the history of AI — it
+                    applies within each new paradigm, including the current one. Each component of the LLM stack has
+                    been an instance of compute + general methods outperforming encoded knowledge.</li>
+                <li><strong>RL post-training is not a fixed step.</strong> Duration is a scaling axis. Models trained
+                    on hard, diverse tasks continue improving well past what conventional pipelines allow.</li>
+                <li><strong>Hybrid architectures are the architecture-level version of the same lesson.</strong> Give
+                    the optimizer a more expressive model class, and it discovers better solutions than constrained
+                    designs permit.</li>
+                <li><strong>The right place for knowledge is in problem setup, not solution structure.</strong> Reward
+                    signals, data curation, task difficulty — these shape what the optimizer learns without capping what
+                    it can discover.</li>
+                <li><strong>We're not running out of axes.</strong> Each time a scaling limit looked near, a new
+                    dimension appeared. RL duration is likely not the last one.</li>
+            </ul>
+
+            <p>Sutton's framing is sometimes read as pessimistic — a rebuke to the researchers who wasted effort. It's
+                more useful read as a navigational heuristic: when designing a system, ask whether you're encoding a
+                ceiling or building a ladder. The compute will keep scaling. The question is always where to direct it
+                to maximize what the optimizer can discover.</p>
+
+            <hr class="border-theme-border my-12">
+
+            <!-- References Section -->
+            <div class="post-references bg-theme-card rounded-lg p-6 mt-8">
+                <h2 class="text-2xl font-bold mb-4 text-theme-accent">References</h2>
+                <ol class="list-decimal ml-6 text-sm text-theme-muted space-y-2">
+                    <li><a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" target="_blank"
+                            class="text-theme-accent hover:underline">The Bitter Lesson</a> — Rich Sutton, 2019</li>
+                    <li><a href="https://arxiv.org/abs/2203.15556" target="_blank"
+                            class="text-theme-accent hover:underline">Training Compute-Optimal Large Language Models
+                            (Chinchilla)</a> — Hoffmann et al., 2022</li>
+                    <li><a href="https://allenai.org/olmo" target="_blank"
+                            class="text-theme-accent hover:underline">OLMo: Open Language Model</a> — Ai2</li>
+                    <li><a href="https://qwenlm.github.io/blog/qwen3/" target="_blank"
+                            class="text-theme-accent hover:underline">Qwen3 Technical Blog</a> — Qwen Team, 2025</li>
+                    <li><a href="https://moonshotai.github.io/Kimi-K2/" target="_blank"
+                            class="text-theme-accent hover:underline">Kimi K2: Open Agentic Intelligence</a> — Moonshot
+                        AI, 2025</li>
+                    <li><a href="https://arxiv.org/abs/2501.12599" target="_blank"
+                            class="text-theme-accent hover:underline">DeepSeek-R1: Incentivizing Reasoning Capability in
+                            LLMs via Reinforcement Learning</a> — DeepSeek, 2025</li>
+                </ol>
+            </div>
+
+            <hr class="border-theme-border my-12">
+
+            <!-- Citation Section -->
+            <div class="post-citation bg-theme-card rounded-lg p-6 mt-12">
+                <h2 class="text-2xl font-bold mb-4 text-theme-accent">Citation</h2>
+                <p class="mb-4">If you found this post helpful and would like to cite it:</p>
+
+                <div class="bg-theme-bg rounded p-4 mb-4">
+                    <p class="text-sm text-theme-muted mb-2">Cited as:</p>
+                    <blockquote class="border-l-4 border-theme-accent pl-4 text-theme-secondary">
+                        <p>Haseeb, Raja. (Mar 2026). "The Bitter Lesson Keeps Winning". Personal Blog.</p>
+                        <p class="mt-2">https://pytholic.github.io/posts/the-bitter-lesson/</p>
+                    </blockquote>
+                </div>
+
+                <div class="bg-theme-bg rounded p-4">
+                    <p class="text-sm text-theme-muted mb-2">Or in BibTeX format:</p>
+                    <pre class="text-sm citation-bibtex"><code>@article{pytholic2026bitterlesson,
+    title   = "The Bitter Lesson Keeps Winning",
+    author  = "Haseeb, Raja",
+    journal = "pytholic.github.io",
+    year    = "2026",
+    month   = "Mar",
+    url     = "https://pytholic.github.io/posts/the-bitter-lesson/"
+}</code></pre>
+                </div>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-theme-border mt-12">
+        <div class="max-w-5xl mx-auto px-6 py-6">
+            <div class="text-center text-theme-faint">
+                <p class="mb-2">&copy; 2026 Haseeb Raja. All rights reserved.</p>
+                <p class="text-sm">This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+                        target="_blank" class="text-theme-accent hover:underline">CC BY-NC-SA 4.0</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+</body>
+
+</html>
