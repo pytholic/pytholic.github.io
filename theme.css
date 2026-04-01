@@ -162,10 +162,11 @@ body {
 }
 
 .prose figcaption {
-    font-family: var(--font-ui);
+    font-family: var(--font-reading);
+    font-style: italic;
     text-align: center;
-    font-size: 0.8125rem;
-    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    color: var(--color-text-faint);
     margin-top: 0.75rem;
     line-height: 1.4;
 }
@@ -198,11 +199,19 @@ nav, footer, .tags, [class*="tag"] {
 
 /* Text selection highlight */
 ::selection {
-    background: var(--color-border);
+    background: rgba(200, 140, 60, 0.22);
     color: var(--color-text);
 }
 ::-moz-selection {
-    background: var(--color-border);
+    background: rgba(200, 140, 60, 0.22);
+    color: var(--color-text);
+}
+[data-theme="dark"] ::selection {
+    background: rgba(160, 158, 150, 0.35);
+    color: var(--color-text);
+}
+[data-theme="dark"] ::-moz-selection {
+    background: rgba(160, 158, 150, 0.35);
     color: var(--color-text);
 }
 
@@ -339,8 +348,10 @@ main a.bg-theme-card > div > span.text-sm {
 }
 
 .citation-bibtex code,
-.citation-bibtex code * {
-    color: var(--color-text) !important;
+.citation-bibtex code *,
+.prose .citation-bibtex code.hljs,
+.prose .citation-bibtex code.hljs * {
+    color: var(--color-text-muted) !important;
     font-family: var(--font-mono);
     font-size: 0.9rem;
     line-height: 1.55;
@@ -380,6 +391,15 @@ main a.bg-theme-card > div > span.text-sm {
 }
 
 /* Toggle icon visibility */
+[data-theme="dark"] .prose figcaption {
+    color: #95948e;
+}
+
+[data-theme="dark"] .prose .citation-bibtex code.hljs,
+[data-theme="dark"] .prose .citation-bibtex code.hljs * {
+    color: var(--color-text-secondary) !important;
+}
+
 [data-theme="dark"] .icon-sun {
     display: block;
 }
