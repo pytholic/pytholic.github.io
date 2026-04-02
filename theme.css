@@ -182,14 +182,15 @@ body {
     height: auto;
 }
 
-.prose a:not([class]) {
-    color: var(--color-accent);
-    text-decoration: underline;
-    text-underline-offset: 2px;
+.prose a {
+    color: #8a6a4a;
+    text-decoration: none;
 }
 
-.prose a:not([class]):hover {
-    opacity: 0.8;
+.prose a:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: currentColor;
 }
 
 /* UI elements stay sans-serif */
@@ -391,6 +392,10 @@ main a.bg-theme-card > div > span.text-sm {
 }
 
 /* Toggle icon visibility */
+[data-theme="dark"] .prose a {
+    color: #c49a6c;
+}
+
 [data-theme="dark"] .prose figcaption {
     color: #95948e;
 }
