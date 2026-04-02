@@ -303,6 +303,34 @@ main a.bg-theme-card > div > span.text-sm {
     font-weight: 700;
 }
 
+/* ============================================
+   POST HEADER: vertical rule accent style
+   ============================================ */
+
+.post-header-ruled {
+    border-left: 3px solid var(--color-text);
+    padding-left: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* Lead paragraph — larger opening sentence */
+.prose .lead {
+    font-size: 1.25rem;
+    line-height: 1.85rem;
+    font-weight: 350;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 768px) {
+    .post-header-ruled {
+        padding-left: 1rem;
+    }
+    .prose .lead {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+    }
+}
+
 /* Reference section styling on posts */
 .post-references {
     border: 1px solid var(--color-border);
