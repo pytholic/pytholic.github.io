@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a Personal LLM-Powered Knowledge Base - Haseeb Raja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            text: 'var(--color-text)',
+                            secondary: 'var(--color-text-secondary)',
+                            muted: 'var(--color-text-muted)',
+                            faint: 'var(--color-text-faint)',
+                            accent: 'var(--color-accent)',
+                            'accent-hover': 'var(--color-accent-hover)',
+                            border: 'var(--color-border)',
+                            'border-light': 'var(--color-border-light)',
+                            surface: 'var(--color-surface)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../theme.css">
+    <script src="../../theme.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+
+<body class="bg-theme-bg text-theme-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-theme-card border-b border-theme-border">
+        <div class="max-w-5xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-theme-accent">Haseeb Raja</a>
+                <div class="flex gap-6 items-center">
+                    <a href="../../works.html" class="hover:text-theme-accent transition-colors">Works</a>
+                    <a href="../../posts.html" class="text-theme-accent">Posts</a>
+                    <a href="../../uses.html" class="hover:text-theme-accent transition-colors">Uses</a>
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-theme-surface transition-colors" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../posts.html" class="inline-flex items-center gap-2 text-theme-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Posts
+        </a>
+
+        <!-- Post Header -->
+        <div class="mb-8">
+            <div class="post-header-ruled">
+                <h1 class="text-4xl font-bold mb-3">Build a Personal LLM-Powered Knowledge Base</h1>
+                <p class="text-theme-muted">April 13, 2026</p>
+            </div>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">Agentic AI</span>
+                <span class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">LLM</span>
+                <span class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">Knowledge Management</span>
+                <span class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">Claude</span>
+                <span class="bg-theme-card px-3 py-1 rounded-full text-sm border border-theme-accent text-theme-accent">Obsidian</span>
+            </div>
+        </div>
+
+        <!-- Post Content -->
+        <article class="prose prose-invert max-w-none text-theme-secondary">
+            <p class="lead">
+                Drop raw sources in, get structured knowledge out. This post walks through a pattern for
+                building a personal LLM-powered wiki &mdash; where the LLM acts as a librarian, not a chatbot &mdash;
+                and a concrete implementation I built for tracking the Agentic AI space.
+            </p>
+
+            <hr class="border-theme-border my-8">
+
+            <h2>The Problem</h2>
+
+            <p>Fast-moving fields generate more material than any manual system can absorb. I follow Agentic AI &mdash;
+                new papers, frameworks, design patterns, and production case studies drop almost daily. I read them,
+                think &ldquo;that&rsquo;s interesting,&rdquo; and within a week the specifics are gone. Bookmarks pile
+                up. Notes go stale. The knowledge evaporates.</p>
+
+            <p>The usual fixes &mdash; tagging systems, Zettelkasten, elaborate folder hierarchies &mdash; all require
+                sustained manual effort. They work until they don&rsquo;t, which is usually around the time the field
+                accelerates and you need them most.</p>
+
+            <p>Andrej Karpathy recently shared a <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">pattern</a>
+                that reframes the problem entirely: instead of organizing knowledge yourself, let an LLM do it.
+                Drop raw sources in, let the model compile structured, interlinked knowledge out. Treat the LLM as
+                a librarian maintaining a wiki, not a chatbot answering one-off questions.</p>
+
+            <h2>The General Pattern</h2>
+
+            <p>Before getting into my specific implementation, here&rsquo;s the core architecture. It works for any
+                domain &mdash; you just change the instructions.</p>
+
+            <p>The system has three zones:</p>
+
+            <ul>
+                <li><strong>Inbox</strong> &mdash; The human drops raw sources here: PDFs, clipped articles,
+                    links, screenshots. This is a dump zone. No organization required.</li>
+                <li><strong>Wiki</strong> &mdash; The LLM owns this entirely. It reads raw sources, routes
+                    information to topic folders, creates and updates articles, maintains indexes, and builds a web
+                    of cross-links. The human never edits these files.</li>
+                <li><strong>Output</strong> &mdash; Query results, reports, comparisons. Shared space between human
+                    and the agent.</li>
+            </ul>
+
+            <p>The agent&rsquo;s behavior is defined by a standing instruction file &mdash; a <code>CLAUDE.md</code>
+                (or equivalent for your agent of choice). This file gives the LLM a persistent identity across sessions:
+                what it owns, how to structure articles, what commands it responds to, and what quality bar to maintain.</p>
+
+            <p>Topic folders emerge and grow organically as content is ingested. The LLM decides when to create new
+                topics, when to split a topic that&rsquo;s gotten too broad, and when to merge overlapping areas.
+                There&rsquo;s no fixed taxonomy &mdash; the structure serves the knowledge, not the other way around.</p>
+
+            <p>This pattern generalizes to anything: legal research, competitive intelligence, a technology radar,
+                a reading list, a course study guide. The domain-specific part is entirely contained in that
+                instruction file.</p>
+
+            <h2>My Example Implementation &mdash; Agentic AI KB</h2>
+
+            <p>I applied this pattern to the domain I care about most right now: Agentic AI. The implementation
+                is a local markdown vault that works with any LLM coding agent &mdash; Claude Code, Codex, OpenCode,
+                or anything else that can read and write files.</p>
+
+            <p>I use <a href="https://obsidian.md" target="_blank">Obsidian</a> as the viewer because it renders
+                markdown beautifully and its <code>[[wiki links]]</code> become clickable connections between
+                articles. But Obsidian is optional &mdash; any editor works. The LLM doesn&rsquo;t care what you
+                view the files with.</p>
+
+            <figure class="my-8">
+                <img src="./agentic-ai-kb.png" alt="Architecture diagram of the Agentic AI Knowledge Base showing the flow from raw sources through LLM compilation to structured wiki output"
+                    class="w-full mx-auto rounded-lg border border-theme-border">
+                <figcaption>
+                    The knowledge base architecture. Raw sources flow in from the left, the LLM compiles them into a structured wiki in the middle, and query results come out on the right.
+                </figcaption>
+            </figure>
+
+            <p>Here&rsquo;s what the vault looks like on disk:</p>
+
+            <pre><code class="language-plaintext">vault/
+├── raw/            ← Drop sources here (PDFs, clipped articles, links)
+│   └── assets/     ← Images from clipped articles land here
+├── wiki/           ← LLM-compiled and maintained (don't edit manually)
+├── output/         ← Query results and reports
+├── _compile-log.md ← Processing history
+└── CLAUDE.md       ← Agent instructions and commands</code></pre>
+
+            <p>The topic folders under <code>wiki/</code> cover the areas I track. For example:</p>
+
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Topic</th>
+                            <th>Coverage</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AI Agents</td>
+                            <td>Architectures, design patterns, agent overview</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>RAG Systems</td>
+                            <td>Retrieval strategies, chunking, vector stores</td>
+                            <td>Growing</td>
+                        </tr>
+                        <tr>
+                            <td>Tool Use &amp; MCP</td>
+                            <td>Function calling, MCP, tool integration</td>
+                            <td>Growing</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-Agent</td>
+                            <td>Orchestration, delegation, communication</td>
+                            <td>Growing</td>
+                        </tr>
+                        <tr>
+                            <td>Evaluation</td>
+                            <td>Benchmarks, failure modes, testing agents</td>
+                            <td>Growing</td>
+                        </tr>
+                        <tr>
+                            <td>Memory</td>
+                            <td>Context management, long-term memory, state</td>
+                            <td>Active</td>
+                        </tr>
+                        <tr>
+                            <td>Reasoning</td>
+                            <td>ReAct, planning, reflection, chain-of-thought</td>
+                            <td>Growing</td>
+                        </tr>
+                        <tr>
+                            <td>Frameworks</td>
+                            <td>LangGraph, CrewAI, AutoGen, Semantic Kernel</td>
+                            <td>Planned</td>
+                        </tr>
+                        <tr>
+                            <td>Production</td>
+                            <td>Deployment, observability, guardrails, cost</td>
+                            <td>Planned</td>
+                        </tr>
+                        <tr>
+                            <td>Dev Tools</td>
+                            <td>AI coding tools, IDEs, prompting techniques</td>
+                            <td>Planned</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>These topics weren&rsquo;t planned upfront. They emerged as I fed sources in and the agent organized them.
+                Some started as subcategories and got promoted to top-level topics. Others will probably merge as
+                the boundaries between them blur.</p>
+
+            <h2>Inside CLAUDE.md &mdash; The Agent&rsquo;s Brain</h2>
+
+            <p>The <code>CLAUDE.md</code> file is the heart of the system. It&rsquo;s a standing system prompt that
+                gives the LLM a persistent identity across sessions &mdash; every time you open a new conversation in
+                the vault, the agent picks up exactly where it left off because the instructions, the structure, and
+                the compile log are all right there on disk.</p>
+
+            <p>I&rsquo;ll walk through each section of the file. These aren&rsquo;t just configuration choices &mdash;
+                each one is a design decision that shapes how the system behaves.</p>
+
+            <h3>The Role &amp; Vault Structure</h3>
+
+            <p>The file opens by giving the agent a clear identity and showing it the territory. This matters more
+                than it might seem: without an explicit role declaration, the LLM defaults to being a general-purpose
+                assistant. With one, it becomes a specialist that understands its scope and boundaries.</p>
+
+            <pre><code class="language-markdown"># CLAUDE.md — Agentic AI Knowledge Base
+
+You are the librarian of this knowledge base. Your job is to compile,
+organize, maintain, and query a structured wiki about **Agentic AI**
+— covering AI agents, RAG systems, tool use, MCP, evaluation,
+multi-agent architectures, and related topics.
+
+## Vault Structure
+
+vault/
+├── raw/            ← Human's inbox. Dump zone. You NEVER modify files here.
+├── wiki/           ← YOUR domain. You write, update, and maintain everything here.
+├── output/         ← Query results, reports, comparisons, generated artifacts.
+├── _compile-log.md ← Tracks what's been compiled and when.
+└── CLAUDE.md       ← This file. Your operating instructions.</code></pre>
+
+            <p>The inline annotations (&ldquo;Human&rsquo;s inbox,&rdquo; &ldquo;YOUR domain&rdquo;) are
+                deliberate &mdash; they prime the agent&rsquo;s understanding of ownership before the formal rules
+                come later.</p>
+
+            <h3>Ownership Rules</h3>
+
+            <p>This is the most important design decision in the entire system. The human owns <code>raw/</code>,
+                the LLM owns <code>wiki/</code>. This clean boundary is what makes it safe to let the agent operate
+                autonomously. It can restructure, rewrite, and reorganize the wiki without any risk of corrupting
+                your original sources.</p>
+
+            <pre><code class="language-markdown">## Ownership Rules
+
+- **`raw/`** — The human drops files here (PDFs, clipped articles,
+  screenshots, links). These are immutable source documents. Never
+  modify, rename, move, or delete anything in `raw/`.
+
+- **`wiki/`** — This is entirely your domain. You create, edit,
+  restructure, and delete files here as needed. The human rarely
+  touches these files.
+
+- **`output/`** — Shared space. You write query results, comparison
+  tables, reports, and generated artifacts here. The human reads
+  from here.</code></pre>
+
+            <p>The word &ldquo;immutable&rdquo; for <code>raw/</code> is key. Even if the agent thinks a raw file
+                has a typo or would benefit from reformatting, it never touches it. Source documents stay exactly as
+                they arrived. This means you can always trace any wiki claim back to the original source and verify it.
+            </p>
+
+            <h3>Wiki Organization</h3>
+
+            <p>Knowledge in the wiki is structured at three levels: a master index, per-topic indexes, and
+                individual articles. The agent maintains all of these &mdash; the human never needs to touch them.</p>
+
+            <pre><code class="language-markdown">## Wiki Organization
+
+### Index Structure
+
+- **`wiki/_master-index.md`** — The entry point. Lists every topic
+  folder with a one-line description and article count. Always keep
+  this current.
+
+- **`wiki/&lt;topic&gt;/_index.md`** — Each topic folder has an index listing
+  all articles with brief descriptions. Always keep these current.</code></pre>
+
+            <p>Every article follows a consistent template that forces the agent to produce structured, linkable output:</p>
+
+            <pre><code class="language-markdown">### Article Format
+
+# Article Title
+
+> One-line summary of what this article covers.
+
+**Sources:** [[raw/filename.md]], [[raw/another-source.pdf]]
+**Related:** [[wiki links to related articles]]
+**Last updated:** YYYY-MM-DD
+
+## Key Takeaways
+
+- 3-5 bullet points capturing the essential insights.
+- Someone reading only this section should get the core idea.
+
+## Content
+
+Main body of the article. Use a mix of prose and structured elements.
+
+## Open Questions
+
+- Anything unresolved, contradictory, or worth exploring further.</code></pre>
+
+            <p>The <strong>Key Takeaways</strong> section is sacred. Someone skimming only the takeaways across
+                multiple articles should still build a coherent mental model of the domain. The <strong>Open
+                Questions</strong> section is equally important &mdash; it tells the agent where to focus when
+                new sources arrive.</p>
+
+            <p>Articles use Obsidian-style <code>[[wiki links]]</code> to connect related concepts. The instruction
+                is explicit: every article should link to at least two others. When the agent mentions a concept
+                that deserves its own article but doesn&rsquo;t have one yet, it notes the gap in the topic&rsquo;s
+                index. Connections between articles are the whole point &mdash; a wiki without links is just a
+                folder of files.</p>
+
+            <h3>Core Operations</h3>
+
+            <p>The agent knows four operations, each deterministic and scoped. The most important is
+                <strong>Compile</strong> &mdash; the workhorse that turns raw sources into wiki articles:</p>
+
+            <pre><code class="language-markdown">### Compile
+
+When the human says "compile", process all new/unprocessed files
+in `raw/`:
+
+1. Check `_compile-log.md` to identify what's already been processed.
+2. For each new raw file:
+   a. Read and understand the content.
+   b. Determine which topic(s) it belongs to.
+   c. Either create a new wiki article or update an existing one
+      with the new information.
+   d. If the source spans multiple topics, create or update articles
+      in each and cross-link them.
+   e. Update the topic's `_index.md`.
+3. Update `wiki/_master-index.md`.
+4. Log what was processed in `_compile-log.md` with the date and
+   a brief note.</code></pre>
+
+            <p>Source attribution is mandatory &mdash; every claim in a wiki article must trace back to a raw source
+                or be explicitly marked as the agent&rsquo;s own synthesis. And compilation is incremental: the agent
+                doesn&rsquo;t rewrite existing articles from scratch. It adds new information, updates outdated claims,
+                and strengthens connections.</p>
+
+            <p><strong>Compile with Research</strong> extends the base operation by letting the agent fill specific
+                gaps with targeted web research. The constraint here is deliberate:</p>
+
+            <blockquote>
+                <p>Maximum 3-5 research additions per article. Every research addition must be a specific fact,
+                    comparison, or update &mdash; not generic background. If you could have written it without
+                    searching, don&rsquo;t include it.</p>
+            </blockquote>
+
+            <p>Without this constraint, the agent would pad every article with background context it already knows.
+                The cap forces it to be surgical: fill the gap the source left, cite a primary reference, and
+                move on.</p>
+
+            <p>The other two operations are <strong>Query</strong> (ask questions against the wiki, get answers
+                grounded in your own curated sources) and <strong>Lint</strong> (audit the wiki for contradictions,
+                orphan pages, broken links, and stale content).</p>
+
+            <h3>Commands</h3>
+
+            <p>The <code>kb:</code> prefix creates a clean command vocabulary that any agent can parse without
+                ambiguity. No confusion with tool-specific slash commands or natural language that might be
+                misinterpreted.</p>
+
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Command</th>
+                            <th>What it does</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>kb:compile</code></td>
+                            <td>Process new raw files into the wiki</td>
+                        </tr>
+                        <tr>
+                            <td><code>kb:compile-research</code></td>
+                            <td>Compile + fill gaps with targeted web research</td>
+                        </tr>
+                        <tr>
+                            <td><code>kb:ingest &lt;url&gt;</code></td>
+                            <td>Fetch URL &rarr; save to raw &rarr; compile</td>
+                        </tr>
+                        <tr>
+                            <td><code>kb:ingest-only &lt;url&gt;</code></td>
+                            <td>Fetch URL &rarr; save to raw (compile later)</td>
+                        </tr>
+                        <tr>
+                            <td><code>kb:research &lt;topic&gt;</code></td>
+                            <td>Research a topic independently, no raw file needed</td>
+                        </tr>
+                        <tr>
+                            <td><code>kb:query &lt;question&gt;</code></td>
+                            <td>Ask a question against the wiki</td>
+                        </tr>
+                        <tr>
+                            <td><code>kb:lint</code></td>
+                            <td>Audit wiki for quality issues</td>
+                        </tr>
+                        <tr>
+                            <td><code>kb:status</code></td>
+                            <td>Quick health check</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p><code>kb:ingest</code> is the most convenient for single-source workflows &mdash; it fetches the URL,
+                saves it as markdown in <code>raw/</code>, and compiles it in one step. <code>kb:ingest-only</code>
+                is for batching: collect several sources first, then <code>kb:compile</code> them all at once.</p>
+
+            <h3>Guidelines</h3>
+
+            <p>The file closes with five principles that set the quality bar. These shape the agent&rsquo;s judgment
+                on questions that the rigid rules don&rsquo;t cover:</p>
+
+            <blockquote>
+                <ul>
+                    <li><strong>Conciseness over completeness.</strong> Articles should be dense with insight, not
+                        padded with filler. Aim for 300-800 words per article unless the topic genuinely demands
+                        more.</li>
+                    <li><strong>Connections are the point.</strong> The value of this wiki isn&rsquo;t individual
+                        articles &mdash; it&rsquo;s the web of links between them. Always ask: what does this
+                        connect to?</li>
+                    <li><strong>Evolve the structure.</strong> Don&rsquo;t be rigid about the initial topic folders.
+                        Split, merge, and rename as the knowledge base grows. The structure should serve the
+                        knowledge, not the other way around.</li>
+                    <li><strong>Preserve nuance.</strong> Don&rsquo;t flatten disagreements or open questions. If
+                        experts disagree on something, represent both sides.</li>
+                    <li><strong>Key Takeaways are sacred.</strong> Someone skimming only the Key Takeaways sections
+                        across multiple articles should still build a coherent mental model.</li>
+                </ul>
+            </blockquote>
+
+            <p>&ldquo;Connections are the point&rdquo; is the one I care about most. A folder of isolated articles
+                isn&rsquo;t a knowledge base &mdash; it&rsquo;s just a folder. The value compounds when the agent
+                links a new paper on tool use to an existing article on MCP, which links to multi-agent orchestration,
+                which links back to evaluation patterns. That&rsquo;s the web of understanding you can&rsquo;t build
+                manually at scale.</p>
+
+            <p>The full <code>CLAUDE.md</code> is available as a
+                <a href="https://gist.github.com/pytholic/8d1d9a7e9f85ceca03fe9b3a1b43da77" target="_blank">GitHub Gist</a>
+                if you want to use it as a starting point for your own knowledge base.</p>
+
+            <h2>How I Use It Today</h2>
+
+            <p>The day-to-day workflow is simple:</p>
+
+            <ol>
+                <li><strong>Clip an article.</strong> I use the Obsidian Web Clipper browser extension. It saves
+                    the article as markdown directly into <code>raw/</code>, and the Local Images Plus plugin
+                    downloads any inline images to <code>raw/assets/</code>.</li>
+                <li><strong>Compile.</strong> When I have a few new sources, I open a terminal in the vault and
+                    run <code>kb:compile</code> (or <code>kb:compile-research</code> if I want the agent to dig
+                    deeper). The agent reads each new file, creates or updates wiki articles, builds cross-links,
+                    and logs everything.</li>
+                <li><strong>Query.</strong> When I need to recall something &mdash; &ldquo;what are the tradeoffs
+                    between single-agent and multi-agent architectures?&rdquo; &mdash; I run <code>kb:query</code>.
+                    The answer comes grounded in my own curated sources, not a generic web search.</li>
+            </ol>
+
+            <p>For single URLs, <code>kb:ingest &lt;url&gt;</code> does everything in one step: fetch, save,
+                compile. No manual clipping needed.</p>
+
+            <p>The compile log (<code>_compile-log.md</code>) is surprisingly useful. It&rsquo;s a timeline of
+                everything the agent has processed:</p>
+
+            <pre><code class="language-markdown"># Compilation Log
+
+## 2026-04-07
+- Compiled `raw/react-paper.pdf` → Created `wiki/reasoning/react-pattern.md`
+- Compiled `raw/mcp-blog-post.md` → Updated `wiki/tool-use/mcp-overview.md`
+- Updated master index and topic indexes.
+
+## 2026-04-10
+- Compiled `raw/langgraph-docs.md` → Created `wiki/frameworks/langgraph.md`
+- Cross-linked with `wiki/multi-agent/orchestration-patterns.md`</code></pre>
+
+            <p>Scrolling through this log gives you a quick sense of what&rsquo;s in the wiki, what&rsquo;s recent,
+                and how the knowledge base has grown over time.</p>
+
+            <h2>Where It&rsquo;s Going &mdash; Autonomous Research Agent</h2>
+
+            <p>The knowledge base is human-triggered today: I clip articles, I run compile commands, I ask queries.
+                The natural next step is removing that trigger entirely.</p>
+
+            <figure class="my-8">
+                <img src="./daily-research-agent.png" alt="Architecture diagram of the autonomous daily research agent with orchestrator, subagents, and wiki bridge"
+                    class="w-full mx-auto rounded-lg border border-theme-border">
+                <figcaption>
+                    The research agent architecture. An orchestrator dispatches subagents (Arxiv, Web, Social) to gather sources, a filter and ranker scores them, and a wiki bridge drops high-signal articles directly into the vault.
+                </figcaption>
+            </figure>
+
+            <p>The idea is an autonomous research agent that runs on a schedule. An orchestrator dispatches
+                specialized subagents &mdash; one for Arxiv, one for the broader web, one for social channels &mdash;
+                to gather new sources on topics the KB tracks. A filter and ranker scores them for signal quality.
+                High-scoring sources produce a daily digest, and a wiki bridge drops them directly into
+                <code>raw/</code> for the next compile cycle.</p>
+
+            <p>The two systems connect cleanly: the research agent feeds the knowledge base, and the knowledge base
+                provides context back to the research agent (&ldquo;what do we already know about this topic? what
+                are the open questions?&rdquo;). One finds new material, the other organizes it. That&rsquo;s the
+                long-term vision.</p>
+
+            <h2>A Word of Caution &mdash; Curated vs. Automated Ingestion</h2>
+
+            <p>That all sounds great, but a little caution goes a long way. If you auto-ingest tons of content
+                you haven&rsquo;t read, the wiki stops being <em>your</em> knowledge base and becomes a mirror
+                of the internet you happen to host locally. The whole point of a personal KB is curated judgment
+                &mdash; lose track of what&rsquo;s in there, and you&rsquo;ve just built a fancier search engine.</p>
+
+            <p>There are really two modes of ingestion, and they serve different purposes:</p>
+
+            <div class="overflow-x-auto">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Curated (Read First)</th>
+                            <th>Automated (Add First)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Goal</strong></td>
+                            <td>Deep mastery, internalizing concepts</td>
+                            <td>Rapid coverage of a fast-moving field</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ownership</strong></td>
+                            <td>High &mdash; you know every source and why it&rsquo;s there</td>
+                            <td>Low &mdash; the wiki knows things you don&rsquo;t</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Signal</strong></td>
+                            <td>No knowledge debt; high signal-to-noise</td>
+                            <td>Risk of becoming a black box you don&rsquo;t trust</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Weakness</strong></td>
+                            <td>Slow; you might miss emerging trends</td>
+                            <td>Can outrun your understanding</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Karpathy himself <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f#operations" target="_blank">recommends</a>
+                ingesting one source at a time while staying involved &mdash; reading the summaries, checking
+                the updates, guiding the LLM on what to emphasize. Batch ingestion is a tradeoff you choose
+                knowingly, not the default.</p>
+
+            <p>My recommendation is a hybrid: curate the foundations, automate the periphery.</p>
+
+            <ul>
+                <li><strong>For core concepts</strong> (architectures, design patterns, foundational papers) &mdash;
+                    read first, then ingest. These shape your mental model and deserve your attention.</li>
+                <li><strong>For staying current</strong> (new releases, new papers, industry news) &mdash;
+                    auto-ingest, review the digest, promote what matters into the core wiki.</li>
+                <li><strong>Use the compile log as your audit trail.</strong> Every change is logged. If you see
+                    an entry you don&rsquo;t recognize, you know exactly where to look.</li>
+                <li><strong>Run <code>kb:lint</code> periodically.</strong> Ask the agent what&rsquo;s been added
+                    that you haven&rsquo;t reviewed. It keeps the wiki honest.</li>
+            </ul>
+
+            <p>The golden rule: the wiki should reflect your curated judgment, not just mirror
+                everything the internet produces.</p>
+
+            <h2>Closing</h2>
+
+            <p>The pattern here is simple and it generalizes. Three zones (inbox, wiki, output), a clear ownership
+                boundary, an instruction file that defines the agent&rsquo;s role, and a set of deterministic
+                commands. The only thing you change between domains is the <code>CLAUDE.md</code>.</p>
+
+            <p>If you track any fast-moving field &mdash; or just want a second brain that actually remembers what
+                you&rsquo;ve read &mdash; this is worth building. It took me an afternoon to set up, and it&rsquo;s
+                already more useful than any note-taking system I&rsquo;ve tried.</p>
+
+            <hr class="border-theme-border my-12">
+
+            <!-- References Section -->
+            <div class="post-references bg-theme-card rounded-lg p-6 mt-8">
+                <h2 class="text-2xl font-bold mb-4 text-theme-accent">References</h2>
+                <ol class="list-decimal ml-6 text-sm text-theme-muted space-y-2">
+                    <li><a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+                            target="_blank" class="text-theme-accent hover:underline">LLM Knowledge Base</a> -
+                        Andrej Karpathy, 2025</li>
+                    <li><a href="https://obsidian.md" target="_blank"
+                            class="text-theme-accent hover:underline">Obsidian</a> - Local-first markdown knowledge base</li>
+                    <li><a href="https://obsidian.md/clipper" target="_blank"
+                            class="text-theme-accent hover:underline">Obsidian Web Clipper</a> - Browser extension for clipping articles to Obsidian</li>
+                    <li><a href="https://gist.github.com/pytholic/8d1d9a7e9f85ceca03fe9b3a1b43da77" target="_blank"
+                            class="text-theme-accent hover:underline">CLAUDE.md Gist</a> - Full agent instructions for the Agentic AI Knowledge Base</li>
+                </ol>
+            </div>
+
+            <hr class="border-theme-border my-12">
+
+            <!-- Citation Section -->
+            <div class="post-citation bg-theme-card rounded-lg p-6 mt-12">
+                <h2 class="text-2xl font-bold mb-4 text-theme-accent">Citation</h2>
+                <p class="mb-4">If you found this post helpful and would like to cite it:</p>
+
+                <div class="bg-theme-bg rounded p-4 mb-4">
+                    <p class="text-sm text-theme-muted mb-2">Cited as:</p>
+                    <blockquote class="border-l-4 border-theme-accent pl-4 text-theme-secondary">
+                        <p>Haseeb, Raja. (Apr 2026). "Build a Personal LLM-Powered Knowledge Base". Personal
+                            Blog.</p>
+                        <p class="mt-2">https://pytholic.github.io/posts/llm-kb/</p>
+                    </blockquote>
+                </div>
+
+                <div class="bg-theme-bg rounded p-4">
+                    <p class="text-sm text-theme-muted mb-2">Or in BibTeX format:</p>
+                    <pre class="text-sm citation-bibtex"><code>@article{pytholic2026llmkb,
+    title   = "Build a Personal LLM-Powered Knowledge Base",
+    author  = "Haseeb, Raja",
+    journal = "pytholic.github.io",
+    year    = "2026",
+    month   = "Apr",
+    url     = "https://pytholic.github.io/posts/llm-kb/"
+}</code></pre>
+                </div>
+            </div>
+
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-theme-border mt-12">
+        <div class="max-w-5xl mx-auto px-6 py-6">
+            <div class="text-center text-theme-faint">
+                <p class="mb-2">&copy; 2026 Haseeb Raja. All rights reserved.</p>
+                <p class="text-sm">This work is licensed under <a
+                        href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank"
+                        class="text-theme-accent hover:underline">CC BY-NC-SA 4.0</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        });
+    </script>
+</body>
+
+</html>
