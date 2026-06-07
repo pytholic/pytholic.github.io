@@ -72,6 +72,68 @@
             <h2 class="text-2xl font-bold mb-6">NLP / LLM</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
 
+                <!-- CSG Data Agent -->
+                <a href="works/csg-data-agent/"
+                    class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">
+                    <div class="w-full h-48 bg-theme-surface flex items-center justify-center p-6">
+                        <svg viewBox="0 0 300 120" class="w-full max-w-xs" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <marker id="arrow-csg" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
+                                    markerHeight="6" orient="auto">
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#9ca3af" />
+                                </marker>
+                                <marker id="arrow-csg-y" viewBox="0 0 6 6" refX="6" refY="3" markerWidth="6"
+                                    markerHeight="6" orient="auto">
+                                    <path d="M0,0 L6,3 L0,6 Z" fill="#f59e0b" />
+                                </marker>
+                            </defs>
+                            <!-- User Query -->
+                            <rect x="110" y="5" width="80" height="20" rx="3" fill="#2d3748" stroke="#9ca3af"
+                                stroke-width="1.5" />
+                            <text x="150" y="19" text-anchor="middle" fill="#d1d5db" font-size="9"
+                                font-family="system-ui">User Query</text>
+                            <!-- Arrow to Orchestrator -->
+                            <path d="M150 25 L150 38" stroke="#f59e0b" stroke-width="1.5"
+                                marker-end="url(#arrow-csg-y)" />
+                            <!-- Orchestrator -->
+                            <rect x="85" y="38" width="130" height="22" rx="3" fill="#2d3748" stroke="#f59e0b"
+                                stroke-width="1.5" />
+                            <text x="150" y="53" text-anchor="middle" fill="#f59e0b" font-size="10"
+                                font-family="system-ui" font-weight="bold">Orchestrator</text>
+                            <!-- Fork arrows -->
+                            <path d="M118 60 L65 74" stroke="#9ca3af" stroke-width="1.2"
+                                marker-end="url(#arrow-csg)" />
+                            <path d="M182 60 L235 74" stroke="#9ca3af" stroke-width="1.2"
+                                marker-end="url(#arrow-csg)" />
+                            <!-- Data Agent -->
+                            <rect x="15" y="74" width="90" height="20" rx="3" fill="#2d3748" stroke="#9f7aea"
+                                stroke-width="1.5" />
+                            <text x="60" y="88" text-anchor="middle" fill="#9f7aea" font-size="8"
+                                font-family="system-ui">Data Agent</text>
+                            <!-- Knowledge Agent -->
+                            <rect x="195" y="74" width="90" height="20" rx="3" fill="#2d3748" stroke="#9f7aea"
+                                stroke-width="1.5" />
+                            <text x="240" y="88" text-anchor="middle" fill="#9f7aea" font-size="8"
+                                font-family="system-ui">Knowledge Agent</text>
+                            <!-- Tool labels -->
+                            <text x="60" y="104" text-anchor="middle" fill="#6b7280" font-size="7"
+                                font-family="system-ui">DAP · Analytics DB</text>
+                            <text x="240" y="104" text-anchor="middle" fill="#6b7280" font-size="7"
+                                font-family="system-ui">Confluence MCP</text>
+                            <!-- Air-gapped note -->
+                            <text x="150" y="116" text-anchor="middle" fill="#4b5563" font-size="7"
+                                font-family="system-ui" font-style="italic">local models · air-gapped</text>
+                        </svg>
+                    </div>
+                    <div class="p-4">
+                        <div class="flex items-center gap-2 mb-2">
+                            <h3 class="font-bold text-lg">CSG Data Agent</h3>
+                            <span class="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded-full">Ongoing</span>
+                        </div>
+                        <p class="text-theme-muted text-sm">Internal AI agent at Lunit that answers natural language queries about data, metrics, and specs — connecting to internal analytics tools and docs via subagent delegation.</p>
+                    </div>
+                </a>
+
                 <!-- MCP Walkthrough -->
                 <a href="works/mcp-walkthrough/"
                     class="block bg-theme-card rounded-lg overflow-hidden hover:ring-2 hover:ring-theme-accent transition-all">

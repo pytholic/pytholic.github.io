@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSG Data Agent - Haseeb Raja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            bg: 'var(--color-bg)',
+                            card: 'var(--color-card)',
+                            text: 'var(--color-text)',
+                            secondary: 'var(--color-text-secondary)',
+                            muted: 'var(--color-text-muted)',
+                            faint: 'var(--color-text-faint)',
+                            accent: 'var(--color-accent)',
+                            'accent-hover': 'var(--color-accent-hover)',
+                            border: 'var(--color-border)',
+                            'border-light': 'var(--color-border-light)',
+                            surface: 'var(--color-surface)',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..900;1,8..60,300..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../theme.css">
+    <script src="../../theme.js"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+</head>
+<body class="bg-theme-bg text-theme-text min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-theme-card border-b border-theme-border">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="../../index.html" class="text-xl font-bold text-theme-accent">Haseeb Raja</a>
+                <div class="flex gap-6 items-center">
+                    <a href="../../works.html" class="text-theme-accent">Works</a>
+                    <a href="../../posts.html" class="hover:text-theme-accent transition-colors">Posts</a>
+                    <a href="../../uses.html" class="hover:text-theme-accent transition-colors">Uses</a>
+                    <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-theme-surface transition-colors" aria-label="Toggle theme">
+                        <svg class="w-5 h-5 icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+                        </svg>
+                        <svg class="w-5 h-5 icon-moon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <!-- Back Button -->
+        <a href="../../works.html" class="inline-flex items-center gap-2 text-theme-accent hover:underline mb-8">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+            Back to Works
+        </a>
+
+        <!-- Project Title -->
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold mb-3">CSG Data Agent</h1>
+            <div class="flex items-center gap-3">
+                <span class="inline-block bg-theme-accent text-theme-bg px-3 py-1 rounded-full text-sm">2025</span>
+                <span class="text-xs bg-yellow-600 text-white px-2 py-0.5 rounded-full">Ongoing</span>
+            </div>
+        </div>
+
+        <!-- Project Description -->
+        <div class="space-y-6 text-theme-secondary leading-relaxed mb-12">
+            <p>
+                An AI agent built for the Cancer Screening Group at Lunit to let internal teams and external
+                stakeholders across the organization query data, metrics, and specifications through natural language.
+                Instead of digging through dashboards or documentation, users ask questions and the agent delegates
+                to the right specialist to find an answer.
+            </p>
+            <p>
+                I lead this project — scoping requirements, writing the technical plan, defining tasks and timelines,
+                selecting frameworks and models, authoring evaluation guides, implementing the core system, and
+                coordinating with team members on integrations and tooling.
+            </p>
+            <p>
+                The primary integration target is our internal DAP (Data Analytics Platform) — a tool that applies
+                pre-defined analytical functions over internal databases. By connecting the agent to DAP, users can
+                explore data without writing SQL or knowing the underlying schema. Future integrations include
+                Confluence MCP for internal documentation and wiki search.
+            </p>
+            <p>
+                The entire system runs on local models only. No data leaves the internal network — no cloud API calls,
+                no external providers. This was a hard constraint from the start given the sensitivity of clinical and
+                product data involved.
+            </p>
+
+            <h3 class="text-xl font-bold text-theme-text">Architecture</h3>
+            <p>
+                The agent follows a subagent delegation pattern built on <code>LangChain DeepAgents</code>, which compiles
+                down to a <code>LangGraph</code> graph. An orchestrator sits at the top: it receives the user query,
+                writes a structured TODO plan, then delegates each task to an isolated specialist subagent via a
+                <code>task()</code> tool call.
+            </p>
+            <p>
+                Each subagent operates in isolation — it only sees its task string, not the full chat history. Subagents
+                write their findings to a virtual shared filesystem (<code>write_file</code> / <code>read_file</code> /
+                <code>ls</code>), which acts as the shared memory layer between the orchestrator and its specialists.
+                The orchestrator synthesizes the final answer from these files once all delegated tasks complete.
+            </p>
+            <p>
+                Parallel delegation is a first-class concern: when multiple independent sub-tasks exist, the orchestrator
+                emits them all in a single iteration, letting LangGraph execute them concurrently rather than serially.
+            </p>
+
+            <h3 class="text-xl font-bold text-theme-text">Evaluation-Driven Development</h3>
+            <p>
+                Development is structured around evaluation from the start. Before building new capabilities, we define
+                ground-truth datasets and scoring criteria first — then implement until evals pass. This keeps the
+                system honest, surfaces failure modes early so we know where to focus, and a proper harness makes
+                those eval runs fast enough to run regularly.
+            </p>
+            <p>
+                The eval spans multiple parallel tracks, each on its own timeline:
+            </p>
+            <ul class="list-none space-y-3 ml-2">
+                <li>
+                    <span class="font-bold text-theme-text">Capability (v0.1–v0.4):</span>
+                    <span class="text-theme-secondary"> Phased by query complexity. v0.1 covers single-turn
+                    fully-specified queries: tool selection accuracy, end-to-end task success, tool call order, and
+                    schema compliance (are tool calls and subagent responses well-formed JSON?). v0.2 adds phrasing
+                    robustness and consistency rate across rephrased variants. v0.3 adds disambiguation rate,
+                    clarification quality, and parameter correctness for multi-turn queries. v0.4 adds error-recovery
+                    rate and tool-call ordering on long multi-step chains. Each query runs 3× and scores are averaged
+                    for a stability signal.</span>
+                </li>
+                <li>
+                    <span class="font-bold text-theme-text">LLM Judge (from v0.1):</span>
+                    <span class="text-theme-secondary"> Deterministic checks cover tool selection; the LLM judge
+                    handles the semantic answer check. The judge is validated before its scores are trusted: 2–3
+                    annotators independently label 30–50 examples (blind, no judge exposure), inter-annotator
+                    agreement is measured first to validate the rubric itself, then judge agreement against the
+                    consensus is checked. The rubric covers helpfulness, relevance, accuracy, faithfulness, and level
+                    of detail.</span>
+                </li>
+                <li>
+                    <span class="font-bold text-theme-text">Answer Faithfulness / Hallucinations (v0.2):</span>
+                    <span class="text-theme-secondary"> Once the capability baseline is green, added as a separate
+                    check: does the agent's response reflect what the tools actually returned? A tool returning 1,247
+                    while the agent says "about 2,000" is a faithfulness failure, not a tool failure — keeping the
+                    two checks separate means the failure points to the right fix.</span>
+                </li>
+                <li>
+                    <span class="font-bold text-theme-text">Scope (v0.3):</span>
+                    <span class="text-theme-secondary"> Out-of-scope refusal (does the agent decline requests outside
+                    its domain?) and over-refusal (does it still answer legitimate queries phrased in borderline
+                    ways?). Most out-of-scope filtering is the orchestrator's responsibility, so this track partly
+                    validates that boundary too.</span>
+                </li>
+                <li>
+                    <span class="font-bold text-theme-text">Orchestrator (separate track):</span>
+                    <span class="text-theme-secondary"> A dedicated eval for orchestrator-level decisions — routing
+                    accuracy, correct subagent delegation, and recovery when a subagent fails or returns nothing
+                    useful. Kept separate from the DAP subagent eval because the two have different failure surfaces
+                    and different fix owners.</span>
+                </li>
+                <li>
+                    <span class="font-bold text-theme-text">Safety (v1.0):</span>
+                    <span class="text-theme-secondary"> Prompt injection and adversarial resistance, built around an
+                    explicit threat model — who might attempt injection, where the attack surface is (direct prompts,
+                    retrieved docs), worst-case outcomes, and tolerance. Mitigations are chosen from the threat model:
+                    system prompt hardening, input sanitization, LLM-as-judge on inputs, or a dedicated classifier.
+                    Sequenced after the capability baseline so failures are attributable to one cause, not two.</span>
+                </li>
+                <li>
+                    <span class="font-bold text-theme-text">Operational (v1.0 + online):</span>
+                    <span class="text-theme-secondary"> Latency (P50/P95), token cost per query, and loop/retry rate.
+                    Post-deploy, online evals sample 1–5% of production traffic to catch silent failures, gradual
+                    drift, and query patterns the golden dataset never covered — things offline evals structurally
+                    miss.</span>
+                </li>
+            </ul>
+            <p>
+                Failures are tracked against a taxonomy — wrong tool, right tool wrong parameters, hallucinated tool,
+                failed to disambiguate, faithfulness drift, scope leak, prompt injection success — so each failure
+                class maps to a specific fix surface rather than "the model got it wrong."
+            </p>
+
+            <h3 class="text-xl font-bold text-theme-text">Observability</h3>
+            <p>
+                The agent streams structured events back to the caller: <code>trace</code> events for each agent/tool
+                step, <code>digest</code> events for streaming tokens in the final answer, <code>sources</code> for
+                extracted references, and <code>done</code> on completion. A gating mechanism prevents planning
+                tokens from leaking into the user-facing stream — only the synthesized answer is emitted.
+            </p>
+            <p>
+                Tracing is currently handled via <code>LangSmith</code>. The plan is to replace it with
+                <code>Langfuse</code> — a self-hosted alternative — to keep observability data on-prem alongside
+                the rest of the stack.
+            </p>
+        </div>
+
+        <!-- Project Info -->
+        <div class="bg-theme-card rounded-lg p-6 mb-12">
+            <dl class="space-y-4">
+                <div>
+                    <dt class="font-bold text-theme-accent mb-3">Stack</dt>
+                    <dd class="text-theme-secondary">LangChain DeepAgents, LangGraph, Ollama, LangSmith, Python 3.13, Pydantic, uv, pytest, ruff, pyright</dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-theme-accent mb-3">Integrations</dt>
+                    <dd>
+                        <ul class="list-disc list-inside space-y-2 text-theme-secondary ml-2">
+                            <li><span class="font-bold">DAP (Data Analytics Platform)</span> — internal analytics tool exposing pre-built functions over CSG databases</li>
+                            <li><span class="font-bold">Confluence MCP</span> — planned; natural language search over internal docs and specs</li>
+                            <li><span class="font-bold">Local LLMs via Ollama</span> — air-gapped, no external providers</li>
+                        </ul>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-theme-accent mb-3">Roadmap</dt>
+                    <dd>
+                        <ul class="list-disc list-inside space-y-2 text-theme-secondary ml-2">
+                            <li><span class="font-bold">Evaluation Harness</span> — automated eval runs, ground-truth datasets, prompt versioning, and A/B scoring</li>
+                            <li><span class="font-bold">Langfuse</span> — replace LangSmith with self-hosted Langfuse to keep tracing data on-prem</li>
+                            <li><span class="font-bold">Data Curation</span> — curated eval and fine-tuning datasets from real user queries</li>
+                            <li><span class="font-bold">SGLang</span> — scaled local inference with better throughput and batching</li>
+                            <li><span class="font-bold">Deep Agent Skills</span> — specialized skill modules for domain-specific reasoning patterns</li>
+                        </ul>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="font-bold text-theme-accent mb-1">Organization</dt>
+                    <dd class="text-theme-secondary">LUNIT Inc. — Cancer Screening Group</dd>
+                </div>
+            </dl>
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div class="space-y-4">
+            <h3 class="text-xl font-bold text-theme-text">System Architecture</h3>
+            <pre class="mermaid">
+graph TB
+    User["👤 User Query\n(CLI / API)"]
+
+    subgraph Core ["🤖 CSG Data Agent"]
+        Orch["Orchestrator\nwrite_todos · read_todos · task()"]
+        VFS["📁 Virtual Filesystem\nread_file · write_file · ls"]
+        Stream["📡 Streaming\ntrace · digest · sources · done"]
+    end
+
+    subgraph Specialists ["⚙️ Specialist Subagents (isolated context)"]
+        DataAgent["Data Agent\n(DAP Tools)"]
+        KnowAgent["Knowledge Agent\n(Confluence MCP)"]
+    end
+
+    subgraph Backends ["🔧 Backends"]
+        DAP["DAP\nData Analytics Platform"]
+        CMCP["Confluence MCP\nInternal Docs"]
+        LLM["Local LLMs\nOllama · air-gapped"]
+    end
+
+    User --> Orch
+    Orch -->|"parallel task() delegation"| DataAgent
+    Orch -->|"parallel task() delegation"| KnowAgent
+    Orch <-->|"shared memory"| VFS
+    DataAgent <-->|"write findings"| VFS
+    KnowAgent <-->|"write findings"| VFS
+    DataAgent --> DAP
+    KnowAgent --> CMCP
+    Core --> Stream
+    Stream --> User
+    Orch --- LLM
+    DataAgent --- LLM
+    KnowAgent --- LLM
+
+    style Orch fill:#2d3748,stroke:#f59e0b,color:#f59e0b
+    style VFS fill:#2d3748,stroke:#9ca3af,color:#e2e8f0
+    style Stream fill:#2d3748,stroke:#9ca3af,color:#e2e8f0
+    style DataAgent fill:#2d3748,stroke:#9f7aea,color:#e2e8f0
+    style KnowAgent fill:#2d3748,stroke:#9f7aea,color:#e2e8f0
+    style DAP fill:#2d3748,stroke:#9ca3af,color:#e2e8f0
+    style CMCP fill:#2d3748,stroke:#9ca3af,color:#e2e8f0
+    style LLM fill:#1a202c,stroke:#4b5563,color:#6b7280
+    style Core fill:#1a202c,stroke:#f59e0b,color:#d1d5db,stroke-width:2px
+    style Specialists fill:#1a202c,stroke:#9f7aea,color:#d1d5db,stroke-width:2px
+    style Backends fill:#1a202c,stroke:#4b5563,color:#6b7280,stroke-width:1px
+            </pre>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-theme-border mt-12">
+        <div class="max-w-4xl mx-auto px-6 py-6 text-center text-theme-faint">
+            <p>&copy; 2026 Haseeb Raja. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
