@@ -1,15 +1,22 @@
 # Personal Portfolio Website
 
-A simple, maintainable personal portfolio website built with plain HTML and Tailwind CSS (CDN).
+A simple, maintainable personal portfolio website built with Jekyll and Tailwind CSS (CDN).
 
 ## Structure
 
 ```
 portfolio/
 ├── index.html          # Home page
-├── works.html          # Projects showcase
-├── blog.html           # Blog posts (coming soon)
+├── works.html          # Projects showcase (hand-maintained list)
+├── posts.html          # Technical posts (hand-maintained list)
+├── notes.html          # Personal notes listing (auto-generated from _notes/)
 ├── uses.html           # Gear and setup
+├── works/<slug>/       # One folder per project
+├── posts/<slug>/       # One folder per technical post
+├── _notes/             # Markdown notes (philosophy, science, etc.) — auto-listed on notes.html
+├── _layouts/           # Jekyll layouts (default, post, note)
+├── _includes/          # Shared nav.html / footer.html
+├── _config.yml         # Jekyll config
 └── images/
     ├── dp.jpg          # Profile photo
     ├── works/          # Project thumbnails
@@ -18,26 +25,30 @@ portfolio/
 
 ## Features
 
-- **No build step**: Pure HTML with Tailwind CSS via CDN
-- **Dark mode**: Modern dark theme with blue accents
+- **Jekyll-powered**: shared nav/footer/layout live in one place (`_includes/`, `_layouts/`), not copy-pasted per page
+- **Tailwind CSS (CDN)**: no CSS build step
+- **Markdown notes**: write a `.md` file in `_notes/`, it's automatically listed on `/notes.html`
+- **Dark mode**: theme toggle, persisted via localStorage
 - **Responsive**: Mobile-first design
-- **Fast loading**: Minimal dependencies
-- **Easy to maintain**: Direct file editing
 
 ## Local Testing
 
-Simply open `index.html` in your browser:
+Requires Ruby + Jekyll (see [Setup](#setup) below if not installed yet).
 
 ```bash
-# Option 1: Direct file open
-open index.html
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"   # only needed once per terminal session (already in ~/.zshrc)
+bundle exec jekyll serve --livereload
+```
 
-# Option 2: Python HTTP server
-python3 -m http.server 8000
-# Then visit http://localhost:8000
+Then visit `http://localhost:4000`. `--livereload` auto-refreshes the browser on save; drop it to refresh manually. Stop with `Ctrl+C`.
 
-# Option 3: Node.js HTTP server
-npx http-server -p 8000
+### Setup (one-time)
+
+```bash
+brew install ruby
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+bundle config set --local path 'vendor/bundle'
+bundle install
 ```
 
 ## Deployment to GitHub Pages
@@ -64,35 +75,33 @@ git push -u origin main
 
 ## Updating Content
 
-### Add a new project to Works page
+### Add a new note
 
-1. Copy project thumbnail to `images/works/`
-2. Edit `works.html`
-3. Add a new card in the appropriate section:
+1. Create a Markdown file in `_notes/`, e.g. `_notes/my-new-note.md`
+2. Add front matter at the top:
+   ```yaml
+   ---
+   title: "Your Note Title"
+   date: 2026-08-09
+   tags: [Philosophy, Books]
+   ---
+   ```
+3. Write the body in Markdown below the front matter
+4. Save — it appears on `/notes.html` automatically (newest first), no other file to edit
 
-```html
-<a href="https://github.com/pytholic/project-name" target="_blank" class="block bg-dark-card rounded-lg overflow-hidden hover:ring-2 hover:ring-dark-accent transition-all">
-    <img src="images/works/project-thumb.png" alt="Project Name" class="w-full h-48 object-cover">
-    <div class="p-4">
-        <h3 class="font-bold text-lg mb-2">Project Name</h3>
-        <p class="text-gray-400 text-sm">Brief description</p>
-    </div>
-</a>
+### Add a new project to Works, or a new technical post
+
+These aren't Markdown-driven — copy an existing folder as a starting point:
+
+```bash
+cp -r works/some-existing-project works/my-new-project
+# or
+cp -r posts/some-existing-post posts/my-new-post
 ```
 
-### Add a blog post
-
-Edit `blog.html` and uncomment/duplicate the article template:
-
-```html
-<article class="bg-dark-card rounded-lg p-6 hover:ring-2 hover:ring-dark-accent transition-all">
-    <a href="https://medium.com/@username/post-slug" target="_blank" class="block">
-        <h2 class="text-xl font-bold mb-2 hover:text-dark-accent">Post Title</h2>
-        <p class="text-gray-400 text-sm mb-3">January 19, 2026</p>
-        <p class="text-gray-300">Brief description of the blog post...</p>
-    </a>
-</article>
-```
+1. Edit `<slug>/index.html`: keep the `---\ntitle: "..."\n---` front matter block at the top, replace the content below it
+2. Add a card linking to it in `works.html` or `posts.html` (these lists are still hand-maintained)
+3. For a Works project, copy its thumbnail/screenshots to `images/works/` or into the project folder itself, matching existing projects
 
 ### Update Bio
 
@@ -100,20 +109,26 @@ Edit `index.html` and modify the Bio section with new entries.
 
 ## Customization
 
+### Shared nav, footer, and page shell
+
+- **Nav links / active-tab logic** → `_includes/nav.html` (one edit applies to every page)
+- **Footer / copyright / license line** → `_includes/footer.html`
+- **Overall page shell** (`<head>`, fonts, Tailwind config, colors) → `_layouts/default.html`
+- **Post-style header** (title/date/tags block used by posts and notes) → `_layouts/post.html` / `_layouts/note.html`
+
 ### Change Colors
 
-Edit the Tailwind config in each HTML file's `<script>` tag:
+Edit the Tailwind config in `_layouts/default.html`:
 
 ```javascript
 tailwind.config = {
     theme: {
         extend: {
             colors: {
-                dark: {
-                    bg: '#1a202c',      // Background color
-                    card: '#2d3748',    // Card background
-                    text: '#e2e8f0',    // Text color
-                    accent: '#4299e1'   // Accent color (links, buttons)
+                theme: {
+                    bg: 'var(--color-bg)',
+                    accent: 'var(--color-accent)',
+                    // ...see _layouts/default.html for the full list
                 }
             }
         }
@@ -121,15 +136,17 @@ tailwind.config = {
 }
 ```
 
+The actual color values live in `theme.css` as CSS variables.
+
 ### Update Social Links
 
 Edit the social links section in `index.html` with your own URLs.
 
 ## Tech Stack
 
-- **HTML5**: Semantic markup
+- **Jekyll**: Static site generator (layouts, includes, Markdown collections)
 - **Tailwind CSS (CDN)**: Utility-first styling
-- **GitHub Pages**: Free hosting
+- **GitHub Pages**: Free hosting, builds Jekyll automatically on push
 
 ## License
 

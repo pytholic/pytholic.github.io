@@ -1,0 +1,38 @@
+---
+layout: default
+title: Notes
+---
+<main class="max-w-4xl mx-auto px-6 py-12">
+    <h1 class="text-3xl font-bold mb-4">Notes</h1>
+    <p class="text-theme-muted mb-8">Personal notes and reflections — philosophy, science, religion, and whatever
+        else I happen to be reading about.</p>
+
+    <div class="space-y-4">
+        {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
+        {% if sorted_notes.size == 0 %}
+        <p class="text-theme-faint italic">Nothing here yet — coming soon.</p>
+        {% endif %}
+        {% for note in sorted_notes %}
+        <a href="{{ note.url }}"
+            class="block bg-theme-card rounded-lg p-6 hover:ring-2 hover:ring-theme-accent transition-all">
+            <div class="flex justify-between items-start gap-4">
+                <div>
+                    <h3 class="text-lg font-bold mb-1">{{ note.title }}</h3>
+                    {% if note.excerpt %}
+                    <p class="text-theme-muted text-sm">{{ note.excerpt | strip_html | truncatewords: 30 }}</p>
+                    {% endif %}
+                </div>
+                <span class="text-theme-faint text-sm whitespace-nowrap">{{ note.date | date: "%b %Y" }}</span>
+            </div>
+            {% if note.tags %}
+            <div class="flex flex-wrap gap-2 mt-3">
+                {% for tag in note.tags %}
+                <span
+                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">{{ tag }}</span>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </a>
+        {% endfor %}
+    </div>
+</main>

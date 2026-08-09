@@ -2,6 +2,12 @@
 .playwright-cli/
 .vscode/
 
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+
 # macOS
 .DS_Store
 .AppleDouble
