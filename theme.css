@@ -193,6 +193,34 @@ body {
     text-decoration-color: currentColor;
 }
 
+/* ============================================
+   CONTENT LINKS
+   (inline text links in works/posts/uses lists — --color-accent is
+   intentionally close to --color-text for headings/badges, so links need
+   their own distinct color + underline to read as links)
+   ============================================ */
+
+main a[class*="hover:underline"],
+main a[class*="hover:text-theme-accent"] {
+    color: #8a6a4a;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* External links get a small icon automatically, unless one is already
+   hand-embedded in the markup (avoids double icons) */
+main a[target="_blank"]:not(:has(svg))::after {
+    content: "";
+    display: inline-block;
+    width: 0.7em;
+    height: 0.7em;
+    margin-left: 0.25em;
+    vertical-align: baseline;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%238a6a4a' stroke-width='2' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'/></svg>");
+}
+
 /* UI elements stay sans-serif */
 nav, footer, .tags, [class*="tag"] {
     font-family: var(--font-ui);
@@ -422,6 +450,15 @@ main a.bg-theme-card > div > span.text-sm {
 /* Toggle icon visibility */
 [data-theme="dark"] .prose a {
     color: #c49a6c;
+}
+
+[data-theme="dark"] main a[class*="hover:underline"],
+[data-theme="dark"] main a[class*="hover:text-theme-accent"] {
+    color: #c49a6c;
+}
+
+[data-theme="dark"] main a[target="_blank"]:not(:has(svg))::after {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23c49a6c' stroke-width='2' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' d='M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14'/></svg>");
 }
 
 [data-theme="dark"] .prose figcaption {
