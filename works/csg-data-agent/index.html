@@ -1,6 +1,11 @@
 ---
 title: "CSG Data Agent"
 ---
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+    </script>
+
     <!-- Main Content -->
     <main class="max-w-4xl mx-auto px-6 py-12">
         <!-- Back Button -->
@@ -94,14 +99,14 @@ title: "CSG Data Agent"
                     of detail.</span>
                 </li>
                 <li>
-                    <span class="font-bold text-theme-text">Answer Faithfulness / Hallucinations (v0.2):</span>
+                    <span class="font-bold text-theme-text">Answer Faithfulness / Hallucinations:</span>
                     <span class="text-theme-secondary"> Once the capability baseline is green, added as a separate
                     check: does the agent's response reflect what the tools actually returned? A tool returning 1,247
                     while the agent says "about 2,000" is a faithfulness failure, not a tool failure — keeping the
                     two checks separate means the failure points to the right fix.</span>
                 </li>
                 <li>
-                    <span class="font-bold text-theme-text">Scope (v0.3):</span>
+                    <span class="font-bold text-theme-text">Scope:</span>
                     <span class="text-theme-secondary"> Out-of-scope refusal (does the agent decline requests outside
                     its domain?) and over-refusal (does it still answer legitimate queries phrased in borderline
                     ways?). Most out-of-scope filtering is the orchestrator's responsibility, so this track partly
@@ -144,9 +149,8 @@ title: "CSG Data Agent"
                 tokens from leaking into the user-facing stream — only the synthesized answer is emitted.
             </p>
             <p>
-                Tracing is currently handled via <code>LangSmith</code>. The plan is to replace it with
-                <code>Langfuse</code> — a self-hosted alternative — to keep observability data on-prem alongside
-                the rest of the stack.
+                Tracing is handled via <code>Langfuse</code>, a self-hosted alternative to LangSmith, keeping
+                observability data on-prem alongside the rest of the stack.
             </p>
         </div>
 
@@ -155,7 +159,7 @@ title: "CSG Data Agent"
             <dl class="space-y-4">
                 <div>
                     <dt class="font-bold text-theme-accent mb-3">Stack</dt>
-                    <dd class="text-theme-secondary">LangChain DeepAgents, LangGraph, Ollama, LangSmith, Python 3.13, Pydantic, uv, pytest, ruff, pyright</dd>
+                    <dd class="text-theme-secondary">LangChain DeepAgents, LangGraph, Ollama, Langfuse, Python 3.13, Pydantic, uv, pytest, ruff, pyright</dd>
                 </div>
                 <div>
                     <dt class="font-bold text-theme-accent mb-3">Integrations</dt>
@@ -172,7 +176,6 @@ title: "CSG Data Agent"
                     <dd>
                         <ul class="list-disc list-inside space-y-2 text-theme-secondary ml-2">
                             <li><span class="font-bold">Evaluation Harness</span> — automated eval runs, ground-truth datasets, prompt versioning, and A/B scoring</li>
-                            <li><span class="font-bold">Langfuse</span> — replace LangSmith with self-hosted Langfuse to keep tracing data on-prem</li>
                             <li><span class="font-bold">Data Curation</span> — curated eval and fine-tuning datasets from real user queries</li>
                             <li><span class="font-bold">SGLang</span> — scaled local inference with better throughput and batching</li>
                             <li><span class="font-bold">Deep Agent Skills</span> — specialized skill modules for domain-specific reasoning patterns</li>
