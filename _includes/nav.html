@@ -4,8 +4,15 @@
             <a href="/" class="text-xl font-bold text-theme-accent">Haseeb Raja</a>
             <div class="flex gap-6 items-center">
                 <a href="/works.html" class="{% if page.url contains '/works' %}text-theme-accent{% else %}hover:text-theme-accent transition-colors{% endif %}">Works</a>
-                <a href="/posts.html" class="{% if page.url contains '/posts' %}text-theme-accent{% else %}hover:text-theme-accent transition-colors{% endif %}">Posts</a>
-                <a href="/notes.html" class="{% if page.url contains '/notes' %}text-theme-accent{% else %}hover:text-theme-accent transition-colors{% endif %}">Notes</a>
+                {% assign writing_section = false %}
+                {% if page.url == '/writing.html' or page.url == '/essays.html' or page.url == '/posts.html' or page.url == '/notes.html' %}
+                    {% assign writing_section = true %}
+                {% elsif page.url contains '/posts/' %}
+                    {% assign writing_section = true %}
+                {% elsif page.collection == 'notes' %}
+                    {% assign writing_section = true %}
+                {% endif %}
+                <a href="/writing.html" class="{% if writing_section %}text-theme-accent{% else %}hover:text-theme-accent transition-colors{% endif %}">Writing</a>
                 <a href="/uses.html" class="{% if page.url contains '/uses' %}text-theme-accent{% else %}hover:text-theme-accent transition-colors{% endif %}">Uses</a>
                 <button onclick="toggleTheme()" class="p-2 rounded-lg hover:bg-theme-surface transition-colors" aria-label="Toggle theme">
                     <svg class="w-5 h-5 icon-sun" fill="none" stroke="currentColor" viewBox="0 0 24 24">
