@@ -518,3 +518,53 @@ article {
         --font-reading-weight: 450;
     }
 }
+
+/* Essay layout: Medium-style paragraph rhythm and pull-quote */
+.prose.essay p {
+    margin-top: 0;
+    margin-bottom: 1.6em;
+}
+
+.prose.essay blockquote {
+    border-left: 3px solid var(--color-text);
+    padding-left: 1.5rem;
+    margin: 2.25rem 0 2.25rem 1.5rem;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.prose.essay blockquote p {
+    margin-bottom: 0;
+}
+
+.prose.essay hr.section-break {
+    border: 0;
+    height: auto;
+    background: none;
+    margin: 2.5rem 0;
+    text-align: center;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.6em;
+}
+
+.prose.essay hr.section-break::before {
+    content: ". . .";
+}
+
+.prose.essay blockquote.epigraph {
+    border-left: 0;
+    padding-left: 0;
+    margin: 0 0 3rem;
+    text-align: center;
+}
+
+.prose.essay blockquote.epigraph cite {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.8em;
+    font-style: normal;
+}
+
+.prose.essay blockquote.epigraph.closing {
+    margin: 3rem 0 1rem;
+}
