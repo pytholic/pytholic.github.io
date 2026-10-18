@@ -12,7 +12,6 @@ defaults:
       path: "posts"
     values:
       layout: post
-      license: true
   - scope:
       path: "works"
     values:
@@ -22,7 +21,6 @@ defaults:
       type: notes
     values:
       layout: note
-      license: true
 
 exclude:
   - Gemfile
