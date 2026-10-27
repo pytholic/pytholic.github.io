@@ -2,6 +2,7 @@
 title: "Some thoughts on Crime and Punishment"
 date: 2026-10-18
 tags: [Personal, Book]
+excerpt: "I recently finished Crime and Punishment by Dostoevsky. It took me a while, around three weeks, maybe a bit more."
 ---
 
 <blockquote class="epigraph">

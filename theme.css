@@ -568,3 +568,17 @@ article {
 .prose.essay blockquote.epigraph.closing {
     margin: 3rem 0 1rem;
 }
+
+.prose.essay blockquote.epigraph.mid {
+    margin: 2.5rem 0;
+}
+
+.prose.essay .annotations {
+    font-size: 0.9em;
+    color: var(--color-text-secondary);
+}
+
+.prose.essay .annotations h3 {
+    font-size: 1.1rem;
+    margin-top: 0;
+}
