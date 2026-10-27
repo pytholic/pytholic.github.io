@@ -574,11 +574,35 @@ article {
 }
 
 .prose.essay .annotations {
+    margin-top: 1rem;
     font-size: 0.9em;
+    line-height: 1.55;
     color: var(--color-text-secondary);
 }
 
 .prose.essay .annotations h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.prose.essay .annotations li {
+    margin-bottom: 0.5em;
+    scroll-margin-top: 5rem;
+}
+
+.prose.essay .annotations strong {
+    color: inherit;
+}
+
+.prose.essay .noteref {
+    font-size: 0.7em;
+    line-height: 0;
+    scroll-margin-top: 5rem;
+}
+
+.prose.essay .noteref a,
+.prose.essay .backref {
+    text-decoration: none;
 }
