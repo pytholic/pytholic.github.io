@@ -7,9 +7,7 @@
                 {% assign writing_section = false %}
                 {% if page.url == '/writing.html' or page.url == '/essays.html' or page.url == '/posts.html' or page.url == '/notes.html' %}
                     {% assign writing_section = true %}
-                {% elsif page.url contains '/posts/' %}
-                    {% assign writing_section = true %}
-                {% elsif page.collection == 'notes' %}
+                {% elsif page.url contains '/posts/' or page.url contains '/notes/' %}
                     {% assign writing_section = true %}
                 {% endif %}
                 <a href="/writing.html" class="{% if writing_section %}text-theme-accent{% else %}hover:text-theme-accent transition-colors{% endif %}">Writing</a>

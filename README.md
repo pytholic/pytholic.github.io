@@ -9,11 +9,11 @@ portfolio/
 ├── index.html          # Home page
 ├── works.html          # Projects showcase (hand-maintained list)
 ├── posts.html          # Technical posts (hand-maintained list)
-├── notes.html          # Personal notes listing (auto-generated from _notes/)
+├── essays.html         # Essays listing (hand-maintained list)
 ├── uses.html           # Gear and setup
 ├── works/<slug>/       # One folder per project
 ├── posts/<slug>/       # One folder per technical post
-├── _notes/             # Markdown notes (philosophy, science, etc.) — auto-listed on notes.html
+├── notes/<slug>/       # One folder per essay (plain HTML)
 ├── _layouts/           # Jekyll layouts (default, post, note)
 ├── _includes/          # Shared nav.html / footer.html
 ├── _config.yml         # Jekyll config
@@ -27,7 +27,6 @@ portfolio/
 
 - **Jekyll-powered**: shared nav/footer/layout live in one place (`_includes/`, `_layouts/`), not copy-pasted per page
 - **Tailwind CSS (CDN)**: no CSS build step
-- **Markdown notes**: write a `.md` file in `_notes/`, it's automatically listed on `/notes.html`
 - **Dark mode**: theme toggle, persisted via localStorage
 - **Responsive**: Mobile-first design
 
@@ -75,32 +74,20 @@ git push -u origin main
 
 ## Updating Content
 
-### Add a new note
+### Add a new project to Works, a technical post, or an essay
 
-1. Create a Markdown file in `_notes/`, e.g. `_notes/my-new-note.md`
-2. Add front matter at the top:
-   ```yaml
-   ---
-   title: "Your Note Title"
-   date: 2026-08-09
-   tags: [Philosophy, Books]
-   ---
-   ```
-3. Write the body in Markdown below the front matter
-4. Save — it appears on `/notes.html` automatically (newest first), no other file to edit
-
-### Add a new project to Works, or a new technical post
-
-These aren't Markdown-driven — copy an existing folder as a starting point:
+All pages are plain HTML. Copy an existing folder as a starting point:
 
 ```bash
 cp -r works/some-existing-project works/my-new-project
 # or
 cp -r posts/some-existing-post posts/my-new-post
+# or
+cp -r notes/some-existing-essay notes/my-new-essay
 ```
 
-1. Edit `<slug>/index.html`: keep the `---\ntitle: "..."\n---` front matter block at the top, replace the content below it
-2. Add a card linking to it in `works.html` or `posts.html` (these lists are still hand-maintained)
+1. Edit `<slug>/index.html`: keep the `---\ntitle: "..."\n---` front matter block at the top (essays also keep `date` and `tags`), replace the content below it
+2. Add a card linking to it in `works.html`, `writing.html`, or `essays.html` (these lists are hand-maintained)
 3. For a Works project, copy its thumbnail/screenshots to `images/works/` or into the project folder itself, matching existing projects
 
 ### Update Bio
@@ -144,7 +131,7 @@ Edit the social links section in `index.html` with your own URLs.
 
 ## Tech Stack
 
-- **Jekyll**: Static site generator (layouts, includes, Markdown collections)
+- **Jekyll**: Static site generator (layouts, includes)
 - **Tailwind CSS (CDN)**: Utility-first styling
 - **GitHub Pages**: Free hosting, builds Jekyll automatically on push
 

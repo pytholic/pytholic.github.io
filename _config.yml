@@ -3,11 +3,6 @@ description: AI Engineer based in South Korea
 url: "https://pytholic.github.io"
 timezone: Asia/Seoul
 
-collections:
-  notes:
-    output: true
-    permalink: /notes/:name/
-
 defaults:
   - scope:
       path: "posts"
@@ -18,8 +13,7 @@ defaults:
     values:
       layout: default
   - scope:
-      path: ""
-      type: notes
+      path: "notes"
     values:
       layout: note
 

@@ -9,31 +9,53 @@ title: Essays
         my mind keeps returning to, and whatever else I'm reading about.</p>
 
     <div class="space-y-4">
-        {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
-        {% if sorted_notes.size == 0 %}
-        <p class="text-theme-faint italic">Nothing here yet — coming soon.</p>
-        {% endif %}
-        {% for note in sorted_notes %}
-        <a href="{{ note.url }}"
+        <a href="/notes/concerning-the-concealed-half-of-existence/"
             class="block bg-theme-card rounded-lg p-6 hover:ring-2 hover:ring-theme-accent transition-all">
             <div class="flex justify-between items-start gap-4">
                 <div>
-                    <h3 class="text-lg font-bold mb-1">{{ note.title }}</h3>
-                    {% if note.excerpt %}
-                    <p class="text-theme-muted text-sm">{{ note.excerpt | strip_html | truncatewords: 30 }}</p>
-                    {% endif %}
+                    <h3 class="text-lg font-bold mb-1">Concerning the Concealed Half of Existence</h3>
+                    <p class="text-theme-muted text-sm">The idea of a deity that holds both halves, the good and the bad, suggests that we should acknowledge all our intrinsic dispositions, instead of being coerced to subdue certain proclivities.</p>
                 </div>
-                <span class="text-theme-faint text-sm whitespace-nowrap">{{ note.date | date: "%b %Y" }}</span>
+                <span class="text-theme-faint text-sm whitespace-nowrap">Nov 2026</span>
             </div>
-            {% if note.tags %}
             <div class="flex flex-wrap gap-2 mt-3">
-                {% for tag in note.tags %}
                 <span
-                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">{{ tag }}</span>
-                {% endfor %}
+                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">Personal</span>
+                <span
+                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">Philosophy</span>
             </div>
-            {% endif %}
         </a>
-        {% endfor %}
+        <a href="/notes/when-silence-becomes-noise/"
+            class="block bg-theme-card rounded-lg p-6 hover:ring-2 hover:ring-theme-accent transition-all">
+            <div class="flex justify-between items-start gap-4">
+                <div>
+                    <h3 class="text-lg font-bold mb-1">When silence becomes noise</h3>
+                    <p class="text-theme-muted text-sm">Once I saw the dreary reality, I was drawn toward nihilism. Not the deleterious kind, just the realization that my life has no intrinsic, objective, or cosmic purpose.</p>
+                </div>
+                <span class="text-theme-faint text-sm whitespace-nowrap">Oct 2026</span>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span
+                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">Personal</span>
+                <span
+                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">Philosophy</span>
+            </div>
+        </a>
+        <a href="/notes/some-thoughts-on-crime-and-punishment/"
+            class="block bg-theme-card rounded-lg p-6 hover:ring-2 hover:ring-theme-accent transition-all">
+            <div class="flex justify-between items-start gap-4">
+                <div>
+                    <h3 class="text-lg font-bold mb-1">Some thoughts on Crime and Punishment</h3>
+                    <p class="text-theme-muted text-sm">I recently finished Crime and Punishment by Dostoevsky. It took me a while, around three weeks, maybe a bit more.</p>
+                </div>
+                <span class="text-theme-faint text-sm whitespace-nowrap">Oct 2026</span>
+            </div>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span
+                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">Personal</span>
+                <span
+                    class="bg-theme-bg px-2 py-1 rounded text-xs text-theme-accent border border-theme-accent">Book</span>
+            </div>
+        </a>
     </div>
 </main>
